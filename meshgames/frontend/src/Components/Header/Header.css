@@ -1,0 +1,20 @@
+.header {
+  background: linear-gradient(to bottom, #9999ff 0%, #ff3399 100%);
+  height: 22vh;
+  width: 100vw;
+  font-size: 40px;
+  font-family: 'Courier New', Courier, monospace;
+  color: white;
+  position: sticky;
+  display: flex;
+  flex-flow: column wrap;
+  top: 0;
+  margin: 0;
+  overflow: hidden;
+  box-shadow: 3px 3px 5px 6px #ccc;
+  justify-content: center;
+}
+
+h1{
+  padding: 1rem;
+}
