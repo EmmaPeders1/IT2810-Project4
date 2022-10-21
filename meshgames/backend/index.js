@@ -3,14 +3,30 @@ const { ApolloServer, gql } = require("apollo-server");
 const neo4j = require("neo4j-driver");
 
 const typeDefs = gql`
-    type Mockdata {
-        game: String
-        publisher: String
+    type Game {
+        gameId: ID!
+        gameName: String
+        publisher: Publisher
+        platform: Platform @relationship(type: "ON_PLATFORM", direction: OUT)
+        genre: Genre
+    }
+
+    type Publisher {
+        publisherId: String!
+    }
+
+    type Platform {
+        platformId: String!
+
+    }
+
+    type Genre{
+        genreId: String!
     }
 `;
 
 const driver = neo4j.driver(
-    "bolt://localhost:7687",
+    "neo4j://it2810-17.idi.ntnu.no:7687",
     neo4j.auth.basic("neo4j", "neo4j")
 );
 
