@@ -56,6 +56,7 @@ body {
     left: 0;
     width: 250px;
     margin-top: 490px;
+    display: flex;
     transform: translateX(-250px);
     transition: transform 250ms ease-in-out;
     background: linear-gradient(to bottom, #ff3399 0%, #9999ff 100%);
