@@ -1,20 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Header.css';
-import { useState } from 'react';
-
 
 function Header() {
-
-  const [showNavbar, setShowNavbar] = useState(false);
-
-const ToggleSidebar = () => {
-    const [isOpen, setIsopen] = useState(false);
-
-    const ToggleSidebar = () => {
-        isOpen === true ? setIsopen(false) : setIsopen(true);
-    }
-}
-
   return (
     <div className="header">
       <h1>MeshGames</h1>
@@ -28,10 +16,18 @@ const ToggleSidebar = () => {
 
       <div id="sidebarMenu">
         <ul className="sidebarMenuInner">
-          <li>Home</li>
-          <li>Your favorites</li>
-          <li>Explore</li>
-          <li>Charts</li>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/favorites">Your favorites</Link>
+          </li>
+          <li>
+            <Link to="/about">About</Link>
+          </li>
+          <li>
+            <Link to="/charts">Charts</Link>
+          </li>
         </ul>
       </div>
     </div>
