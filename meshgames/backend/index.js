@@ -6,9 +6,9 @@ const typeDefs = gql`
     type Game {
         gameId: ID!
         gameName: String
-        publisher: Publisher
+        publisher: Publisher @relationship(type: "PUBLISHED_BY", direction: OUT)
         platform: Platform @relationship(type: "ON_PLATFORM", direction: OUT)
-        genre: Genre
+        genre: Genre @relationship(type: "HAS_GENRE", direction: OUT)
     }
 
     type Publisher {
