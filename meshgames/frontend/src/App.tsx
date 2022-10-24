@@ -6,6 +6,7 @@ import Home from './Pages/Home';
 import Favorites from './Pages/Favorites';
 import Charts from './Pages/Charts';
 import About from './Pages/About';
+import Sidebar from './Components/Sidebar/Sidebar';
 
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
     <div className="App">
       <Router>
         <Header/>
+        <Sidebar/>
         <Routes>
           <Route path="/" element={<Home />}/>
           <Route path="/favorites" element={<Favorites />}/>
