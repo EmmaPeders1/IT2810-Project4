@@ -1,3 +1,4 @@
+import GameCard from '../Components/GameCard/GameCard';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import React, { useState } from 'react';
 import Button from '../Components/Button/Button';
@@ -19,21 +20,22 @@ export default function Home(){
 return(
   <div className="home">
       <div className="search-container" >
-            <Input
-              className='URL-input'
-              onChange={handleInput}
-              placeholder={"Search for a game"}
-            />
-            <Button
-              onClick={handleSubmit}
-              label=" SEARCH "
-              className="search-button"
-              icon={faSearch}
-              onKeyDown={() => console.log("search!")}
-            />
-          </div>
-
+        <Input
+          className='URL-input'
+          onChange={handleInput}
+          placeholder={"Search for a game"}
+        />
+        <Button
+          onClick={handleSubmit}
+          label=" SEARCH "
+          className="search-button"
+          icon={faSearch}
+          onKeyDown={() => console.log("search!")}
+        />
+      </div>
+      <div className='gamecard-container'>
+        <GameCard />
+      </div>
   </div>
-
   );
 }
