@@ -8,9 +8,10 @@
   border-radius: 5px;
   font-size: inherit;
   width: max-content;
+  height: 61.5px;
   border: 0;
   background: #ff3399;
-  outline: 1.5px solid rgb(142, 84, 222);
+  border: 1.5px solid rgb(142, 84, 222);
   color: rgb(255, 255, 255);
   white-space: nowrap;
 }
