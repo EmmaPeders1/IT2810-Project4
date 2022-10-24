@@ -1,3 +1,4 @@
+import GameCard from '../Components/GameCard/GameCard';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import React, { useState } from 'react';
 import Button from '../Components/Button/Button';
@@ -71,9 +72,11 @@ return(
               onClick={handleOpen}
               label=" FILTER "
               className="filter-button"
-              icon={faSearch}
               onKeyDown={() => console.log("Filter!")}
             />
+             <div className='gamecard-container'>
+              <GameCard />
+            </div>
             <Modal
               open={open}
               onClose={handleClose}
