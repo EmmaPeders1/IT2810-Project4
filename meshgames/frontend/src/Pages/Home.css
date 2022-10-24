@@ -9,3 +9,15 @@
 .search-button {
   padding-right: 20px;
 }
+
+.gamecard-container {
+  margin: 3rem auto 0 auto;
+  justify-content: center;
+  width: 90%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 200px);
+  grid-template-rows: auto;
+  gap: 2em;
+
+}
