@@ -4,7 +4,7 @@ const neo4j = require("neo4j-driver");
 
 const typeDefs = gql`
     type Game {
-        gameId: ID!
+        gameId: String!
         gameName: String
         publisher: Publisher @relationship(type: "PUBLISHED_BY", direction: OUT)
         platform: Platform @relationship(type: "ON_PLATFORM", direction: OUT)
@@ -24,6 +24,7 @@ const typeDefs = gql`
         genreId: String!
     }
 `;
+
 
 const driver = neo4j.driver(
     "neo4j://it2810-17.idi.ntnu.no:7687",
