@@ -8,9 +8,7 @@ import Collapse from '@mui/material/Collapse';
 import IconButton, { IconButtonProps } from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
 import './GameCard.css';
 
 interface ExpandMoreProps extends IconButtonProps {
@@ -38,11 +36,12 @@ function GameCard() {
   return (
     <Card sx={{
       maxWidth: 250,
-      maxHeight: 500,
-      marginLeft: 12
+      maxHeight: 400,
+      minHeight: 200,
+      minWidth: 200
       }}>
       <CardHeader
-        title="Game #1"
+        title="Game Title"
         subheader="Publisher"
       />
       <div className='cardColorBox' />
@@ -61,8 +60,8 @@ function GameCard() {
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-          <Typography paragraph>Genre: genre #1</Typography>
-          <Typography paragraph>Platform: platform #1</Typography>
+          <Typography paragraph align='left'>Genre: genre #1</Typography>
+          <Typography paragraph align='left'>Platform: platform #1</Typography>
         </CardContent>
       </Collapse>
     </Card>

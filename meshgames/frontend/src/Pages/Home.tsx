@@ -19,7 +19,6 @@ export default function Home(){
 
 return(
   <div className="home">
-      <GameCard />
       <div className="search-container" >
         <Input
           className='URL-input'
@@ -33,6 +32,9 @@ return(
           icon={faSearch}
           onKeyDown={() => console.log("search!")}
         />
+      </div>
+      <div className='gamecard-container'>
+        <GameCard />
       </div>
   </div>
   );
