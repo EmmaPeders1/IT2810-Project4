@@ -4,18 +4,38 @@ import React, { useState } from 'react';
 import Button from '../Components/Button/Button';
 import Input from '../Components/Input/Input';
 import './Home.css';
-import  {gql, useQuery} from '@apollo/client'
+import { gql, useQuery } from '@apollo/client';
 
-const GET_GAMEDATA = gql`
-  query GamesIdandName{
-    games {
+export default function Home(){
+
+  const GET_GAMEDATA = gql`
+  query Games($where: GameWhere, $options: GameOptions){
+    games(where: $where, options: $options){
       gameId
       gameName
+      publisher{
+        publisherId
+      }
+      platform{
+        platformId
+      }
+      genre{
+        genreId
+      }
     }
   }
 `;
 
-export default function Home(){
+const info = {
+  /*"where": {
+    "gameId_CONTAINS": "Wii"
+  },*/
+  "options":{
+    "limit": 10
+  }
+}
+
+  const { loading, error, data } = useQuery(GET_GAMEDATA, {variables: info});
 
   const [input, setInput] = useState<string>("");
 
@@ -27,30 +47,27 @@ export default function Home(){
     event.preventDefault();
   }
 
-  const {loading, error, data} = useQuery(GET_GAMEDATA);
-  if(loading) return <p>'Loading...'</p>;
-  else{
-    return(
-      <div className="home" >
-          <div className="search-container" >
-            <Input
-              className='URL-input'
-              onChange={handleInput}
-              placeholder={"Search for a game"}
-            />
-            <Button
-              onClick={handleSubmit}
-              label=" SEARCH "
-              className="search-button"
-              icon={faSearch}
-              onKeyDown={() => console.log("search!")}
-            />
-          </div>
-          <div className='gamecard-container'>
-            <div>{JSON.stringify(data)}</div>
-            <GameCard gameId={'id'} gameName={'game name'} publisher={'publisher'} platform={'platform'} genre={'genre'} />
-          </div>
-      </div>
-    );
-  }
+  if(loading) return <p>Loading...</p>;
+  if(error) return <p>Error: {error.message}</p>;
+  return(
+    <div className="home" >
+        <div className="search-container" >
+          <Input
+            className='URL-input'
+            onChange={handleInput}
+            placeholder={"Search for a game"}
+          />
+          <Button
+            onClick={handleSubmit}
+            label=" SEARCH "
+            className="search-button"
+            icon={faSearch}
+            onKeyDown={() => console.log("search!")}
+          />
+        </div>
+        <div className='gamecard-container'>
+          {data.games.map((cardData: { gameId: string; gameName: string; publisher: {publisherId: string}; platform: {platformId: string}; genre: {genreId: string} }) => <GameCard key={cardData.gameId} gameId={cardData.gameId} gameName={cardData.gameName} publisher={cardData.publisher.publisherId} platform={cardData.platform.platformId} genre={cardData.genre.genreId} />)}
+        </div>
+    </div>
+  );
 }

@@ -46,16 +46,18 @@ const GameCard: FC<GameCardProps> = ({ gameId, gameName, publisher, platform, ge
   return (
     <Card
       sx={{
-        maxWidth: 250,
-        maxHeight: 400,
-        minHeight: 200,
-        minWidth: 200
+        width: 250,
+        maxHeight: 500,
+        minHeight: 250,
       }}
       id={gameId}
       >
       <CardHeader
         title={gameName}
         subheader={publisher}
+        sx={{
+          minHeight: 150,
+        }}
       />
       <div className='cardColorBox' />
       <CardActions disableSpacing>
