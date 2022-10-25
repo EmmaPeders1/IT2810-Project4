@@ -2,9 +2,9 @@ const { Neo4jGraphQL } = require("@neo4j/graphql");
 const { ApolloServer, gql } = require("apollo-server");
 const neo4j = require("neo4j-driver");
 
-const typeDefs = gql`
+const typeDefs = gql`#graphql
     type Game {
-        gameId: String!
+        gameId: Int!
         gameName: String
         publisher: Publisher @relationship(type: "PUBLISHED_BY", direction: OUT)
         platform: Platform @relationship(type: "ON_PLATFORM", direction: OUT)
@@ -22,6 +22,11 @@ const typeDefs = gql`
 
     type Genre{
         genreId: String!
+    }
+
+    type Query{
+        getAllGames: [Game]
+        getGameByName(gameName: String!): Game
     }
 `;
 
