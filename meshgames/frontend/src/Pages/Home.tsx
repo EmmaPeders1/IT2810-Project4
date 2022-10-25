@@ -2,8 +2,9 @@ import GameCard from '../Components/GameCard/GameCard';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import React, { useState } from 'react';
 import Button from '../Components/Button/Button';
-import Input from '../Components/Input/Input';
 import './Home.css';
+import Autocomplete from '@mui/material/Autocomplete';
+import TextField from '@mui/material/TextField';
 
 import {
   Box,
@@ -19,6 +20,7 @@ import {
   Stack,
   Typography,
 } from '@mui/material';
+import Search from '../Components/Input/Search';
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -32,6 +34,22 @@ const style = {
   boxShadow: 24,
   p: 4,
 };
+
+const publishers = [
+  { name: 'Organise'},
+  { name: 'Joha'},
+  { name: 'Terminator'},
+  { name: 'Dull'},
+  { name: 'Nzaza'},
+];
+
+const platforms = [
+  { name: 'Platform1'},
+  { name: 'Platform2'},
+  { name: 'Platform3'},
+  { name: 'Platform4'},
+  { name: 'Platform5'},
+];
 
 
 export default function Home(){
@@ -56,17 +74,13 @@ export default function Home(){
 return(
   <div className="home">
       <div className="search-container" >
-            <Input
-              className='URL-input'
-              onChange={handleInput}
-              placeholder={"Search for a game"}
-            />
+            <Search></Search>
             <Button
               onClick={handleSubmit}
               label=" SEARCH "
               className="search-button"
               icon={faSearch}
-              onKeyDown={() => console.log("search!")}
+              onKeyDown={() => console.log("Search!")}
             />
             <Button
               onClick={handleOpen}
@@ -83,7 +97,7 @@ return(
               aria-labelledby="modal-modal-title"
               aria-describedby="modal-modal-description"
             >
-              <Box sx={style}>
+            <Box sx={style}>
             <Typography
               variant="h5"
               component="h2"
@@ -100,44 +114,22 @@ return(
                 flexDirection: 'column',
               }}
             >
-              <Stack component="form" noValidate spacing={3} justifyContent="center"/>
-              <Grid display="flex" justifyContent="center">
-                <div>
-                  <FormControl sx={{ m: 1, minWidth: 150 }}>
-                    <InputLabel id="label-location">Publisher</InputLabel>
-                    <Select
-                      labelId="label-publisher"
-                      id="label-publisher"
-                      fullWidth
-                      label="Publisher"
-                    >
-                      <MenuItem value="Publisher1">Publisher1</MenuItem>
-                      <MenuItem value="Publisher2">Publisher2</MenuItem>
-                      <MenuItem value="Publisher3">Publisher3</MenuItem>
-                      <MenuItem value="Publisher4">Publisher4</MenuItem>
-                      <MenuItem value="Publisher5">Publisher5</MenuItem>
-                    </Select>
-                  </FormControl>
-                </div>
-
-                <div>
-                  <FormControl sx={{ m: 1, minWidth: 150 }}>
-                    <InputLabel id="label-age">Platform</InputLabel>
-                    <Select
-                      labelId="label-age"
-                      id="label-age"
-                      fullWidth
-                      label="Platform"
-                    >
-                     <MenuItem value="Platform1">Platform1</MenuItem>
-                      <MenuItem value="Platform2">Platform2</MenuItem>
-                      <MenuItem value="Platform3">Platform3</MenuItem>
-                      <MenuItem value="Platform4">Platform4</MenuItem>
-                      <MenuItem value="Platform5">Platform5</MenuItem>
-                    </Select>
-                  </FormControl>
-                </div>
-              </Grid>
+              <Stack direction="row" spacing={3} justifyContent="center">
+                <Autocomplete
+                  id="choose-publisher"
+                  freeSolo
+                  sx={{ width: 300 }}
+                  options={publishers.map((publisher) => publisher.name)}
+                  renderInput={(params) => <TextField {...params} label="Publisher" />}
+                />
+                <Autocomplete
+                  id="choose-platform"
+                  freeSolo
+                  sx={{ width: 300 }}
+                  options={platforms.map((publisher) => publisher.name)}
+                  renderInput={(params) => <TextField {...params} label="Platform" />}
+                />
+                </Stack>
               <Grid item xs={12}>
                 <Typography sx={{ textAlign: 'center', m: 1, fontWeight: 'bold' }}>
                   Genre
