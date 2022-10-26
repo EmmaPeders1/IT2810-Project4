@@ -2,10 +2,10 @@ import React from 'react';
 import './App.css';
 import Header from './Components/Header/Header';
 import { HashRouter as Router, Route, Routes } from 'react-router-dom';
-import Home from './Pages/Home';
-import Favorites from './Pages/Favorites';
-import Charts from './Pages/Charts';
-import About from './Pages/About';
+import Home from './Pages/Home/Home';
+import Favorites from './Pages/Favorites/Favorites';
+import Charts from './Pages/Charts/Charts';
+import About from './Pages/About/About';
 import Sidebar from './Components/Sidebar/Sidebar';
 
 

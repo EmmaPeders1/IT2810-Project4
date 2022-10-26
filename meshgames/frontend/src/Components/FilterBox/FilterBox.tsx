@@ -1,13 +1,8 @@
-import GameCard from '../Components/GameCard/GameCard';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import React, { useState } from 'react';
-import Button from '../Components/Button/Button';
-import './Home.css';
+import Button from '../../Components/Button/Button';
 import { gql, useQuery } from '@apollo/client';
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
-
-import Search from '../Components/Input/Search';
 import {
   Box,
   Checkbox,
@@ -24,106 +19,53 @@ import {
 } from '@mui/material';
 
 const style = {
-  position: 'absolute' as 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 600,
-  length: 100,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4,
-};
+    position: 'absolute' as 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 600,
+    length: 100,
+    bgcolor: 'background.paper',
+    border: '2px solid #000',
+    boxShadow: 24,
+    p: 4,
+  };
 
-const publishers = [
-  { name: 'Organise'},
-  { name: 'Joha'},
-  { name: 'Terminator'},
-  { name: 'Dull'},
-  { name: 'Nzaza'},
-];
+  const publishers = [
+    { name: 'Organise'},
+    { name: 'Joha'},
+    { name: 'Terminator'},
+    { name: 'Dull'},
+    { name: 'Nzaza'},
+  ];
+  
+  const platforms = [
+    { name: 'Platform1'},
+    { name: 'Platform2'},
+    { name: 'Platform3'},
+    { name: 'Platform4'},
+    { name: 'Platform5'},
+  ];
 
-const platforms = [
-  { name: 'Platform1'},
-  { name: 'Platform2'},
-  { name: 'Platform3'},
-  { name: 'Platform4'},
-  { name: 'Platform5'},
-];
-
-
-export default function Home(){
-
-  const GET_GAMEDATA = gql`
-  query Games($where: GameWhere, $options: GameOptions){
-    games(where: $where, options: $options){
-      gameId
-      gameName
-      publisher{
-        publisherId
-      }
-      platform{
-        platformId
-      }
-      genre{
-        genreId
-      }
-    }
-  }
-`;
-
-const info = {
-  /*"where": {
-    "gameId_CONTAINS": "Wii"
-  },*/
-  "options":{
-    "limit": 10
-  }
+function handleFilter(event: React.MouseEvent<HTMLButtonElement>) {
+  event.preventDefault();
 }
 
-  const { loading, error, data } = useQuery(GET_GAMEDATA, {variables: info});
+function FilterBox() {
+    const [open, setOpen] = useState(false);
 
-  const [input, setInput] = useState<string>("");
-  const [open, setOpen] = useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
 
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-
-  function handleInput(e: React.ChangeEvent<HTMLInputElement>) {
-    setInput(e.target.value);
-  }
-
-  function handleSubmit(event: React.MouseEvent<HTMLButtonElement>) {
-    event.preventDefault();
-  }
-  function handleFilter(event: React.MouseEvent<HTMLButtonElement>) {
-    event.preventDefault();
-  }
-  if(loading) return <p>Loading...</p>;
-  if(error) return <p>Error: {error.message}</p>;
-  return(
-    <div className="home">
-        <div className="search-container" >
-              <Search></Search>
-              <Button
-                onClick={handleSubmit}
-                label=" SEARCH "
-                className="search-button"
-                icon={faSearch}
-                onKeyDown={() => console.log("Search!")}
-              />
-              <Button
+    return (
+        <div>
+        <Button
                 onClick={handleOpen}
                 label=" FILTER "
                 className="filter-button"
                 onKeyDown={() => console.log("Filter!")}
               />
-              <div className='gamecard-container'>
-              {data.games.map((cardData: { gameId: string; gameName: string; publisher: {publisherId: string}; platform: {platformId: string}; genre: {genreId: string} }) => <GameCard key={cardData.gameId} gameId={cardData.gameId} gameName={cardData.gameName} publisher={cardData.publisher.publisherId} platform={cardData.platform.platformId} genre={cardData.genre.genreId} />)}
-
-              </div>
-              <Modal
+        <Modal
                 open={open}
                 onClose={handleClose}
                 aria-labelledby="modal-modal-title"
@@ -276,7 +218,8 @@ const info = {
               </Box>
             </Box>
             </Modal>
-          </div>
-    </div>
+            </div>
     );
 }
+
+export default FilterBox;
