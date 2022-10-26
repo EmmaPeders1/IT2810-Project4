@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
-import './FilterBox.css';
-import Button from '../../Components/Button/Button';
-import { gql, useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client';
+import { faArrowDown, faFilter } from '@fortawesome/free-solid-svg-icons';
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
+import Button from '../../Components/Button/Button';
+import getPlatformData from '../../GraphQL/Queries/getPlatformData';
+import getPublisherData from '../../GraphQL/Queries/getPublisherData';
+import './FilterBox.css';
 import {
   Box,
   Checkbox,
@@ -12,9 +15,6 @@ import {
   Modal,
   Typography,
 } from '@mui/material';
-import getPlatformData from '../../GraphQL/Queries/getPlatformData';
-import getPublisherData from '../../GraphQL/Queries/getPublisherData';
-import { faArrowDown, faFilter } from '@fortawesome/free-solid-svg-icons';
 
 function handleFilter(event: React.MouseEvent<HTMLButtonElement>) {
   event.preventDefault();
@@ -28,7 +28,6 @@ function PopulatePlatforms(){
 
     if(data){
         platforms = data.platforms;
-        console.log(platforms);
     }
     if(loading) return <p>Loading...</p>;
     if(error) return <p>Error: {error.message}</p>;
@@ -39,7 +38,6 @@ function PopulatePublishers(){
 
     if(data){
         publishers = data.publishers;
-        console.log(publishers);
     }
     if(loading) return <p>Loading...</p>;
     if(error) return <p>Error: {error.message}</p>;

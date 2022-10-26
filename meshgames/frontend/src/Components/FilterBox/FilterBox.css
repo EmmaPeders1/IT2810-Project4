@@ -23,7 +23,7 @@
     padding: 5px;
 }
 
-#checkboxContainer {
+#radioContainer {
     display: flex;
     flex-flow: row wrap;
     justify-content: center;

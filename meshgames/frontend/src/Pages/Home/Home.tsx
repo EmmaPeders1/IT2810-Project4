@@ -4,8 +4,6 @@ import React, { useState } from 'react';
 import Button from '../../Components/Button/Button';
 import './Home.css';
 import { useQuery } from '@apollo/client';
-import Autocomplete from '@mui/material/Autocomplete';
-import TextField from '@mui/material/TextField';
 import Search from '../../Components/Input/Search';
 import FilterBox from '../../Components/FilterBox/FilterBox';
 import getGameDataForCards from '../../GraphQL/Queries/getGameDataForCards';
@@ -22,18 +20,17 @@ interface CardDataProps{
 export default function Home(){
 
   const [input, setInput] = useState<string>("");
-  const [filter, setFilter] = useState<String>("");
 
   let info = {
     "where": {
       "publisher": {
-        "publisherId": "Nintendo"
+        "publisherId_CONTAINS": ""
       },
       "platform": {
-        "platformId": "Wii"
+        "platformId_CONTAINS": ""
       },
       "genre": {
-        "genreId": "Sports"
+        "genreId_CONTAINS": ""
       },
       "gameName_CONTAINS": input
     },
@@ -42,9 +39,7 @@ export default function Home(){
     }
   }
 
-
   const { loading, error, data } = useQuery(getGameDataForCards, {variables: info});
-
 
   function handleInput(event: React.MouseEvent<HTMLButtonElement>) {
     let input = document.getElementById("search-game") as HTMLInputElement;
