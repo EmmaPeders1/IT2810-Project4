@@ -12,37 +12,53 @@ import {
   Modal,
   Typography,
 } from '@mui/material';
-
-const publishers = [
-{ name: 'Organise'},
-{ name: 'Joha'},
-{ name: 'Terminator'},
-{ name: 'Dull'},
-{ name: 'Nzaza'},
-];
-
-const platforms = [
-{ name: 'Platform1'},
-{ name: 'Platform2'},
-{ name: 'Platform3'},
-{ name: 'Platform4'},
-{ name: 'Platform5'},
-];
+import getPlatformData from '../../GraphQL/Queries/getPlatformData';
+import getPublisherData from '../../GraphQL/Queries/getPublisherData';
+import { faArrowDown, faFilter } from '@fortawesome/free-solid-svg-icons';
 
 function handleFilter(event: React.MouseEvent<HTMLButtonElement>) {
   event.preventDefault();
 }
 
+let platforms: { platformId: String; }[] = [];
+let publishers: { publisherId: String; }[] = [];
+
+function PopulatePlatforms(){
+    const { loading, error, data } = useQuery(getPlatformData);
+
+    if(data){
+        platforms = data.platforms;
+        console.log(platforms);
+    }
+    if(loading) return <p>Loading...</p>;
+    if(error) return <p>Error: {error.message}</p>;
+}
+
+function PopulatePublishers(){
+    const { loading, error, data } = useQuery(getPublisherData);
+
+    if(data){
+        publishers = data.publishers;
+        console.log(publishers);
+    }
+    if(loading) return <p>Loading...</p>;
+    if(error) return <p>Error: {error.message}</p>;
+}
+
 function FilterBox() {
+
+    PopulatePlatforms();
+    PopulatePublishers();
+
     const [open, setOpen] = useState(false);
 
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
-
     return (
         <div id="filterbox">
                 <Button
                         onClick={handleOpen}
+                        icon={faArrowDown}
                         label=" FILTER "
                         className="filter-button"
                         onKeyDown={() => console.log("Filter!")}
@@ -74,15 +90,15 @@ function FilterBox() {
                             <Autocomplete
                                 id="choose-publisher"
                                 freeSolo
-                                sx={{ width: '250px', padding: '2px' }}
-                                options={publishers.map((publisher) => publisher.name)}
+                                sx={{ width: '250px', padding: '2px', margin: '3px' }}
+                                options={publishers.map((publisher: { publisherId: String }) => publisher.publisherId)}
                                 renderInput={(params) => <TextField {...params} label="Publisher" />}
                             />
                             <Autocomplete
                                 id="choose-platform"
                                 freeSolo
-                                sx={{ width: '250px', padding: '2px' }}
-                                options={platforms.map((publisher) => publisher.name)}
+                                sx={{ width: '250px', padding: '2px', margin: '3px' }}
+                                options={platforms.map((platform: { platformId: String; }) => platform.platformId)}
                                 renderInput={(params) => <TextField {...params} label="Platform" />}
                             />
                         </div>
@@ -181,6 +197,7 @@ function FilterBox() {
                         <div id="innerButtonContainer">
                             <Button
                                 onClick={handleFilter}
+                                icon={faFilter}
                                 label=" FILTER "
                                 className="filter-button"
                                 onKeyDown={() => console.log("filter!")}

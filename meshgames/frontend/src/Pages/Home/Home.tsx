@@ -22,15 +22,26 @@ interface CardDataProps{
 export default function Home(){
 
   const [input, setInput] = useState<string>("");
+  const [filter, setFilter] = useState<String>("");
 
   let info = {
     "where": {
-      "gameName_CONTAINS": input,
+      "publisher": {
+        "publisherId": "Nintendo"
+      },
+      "platform": {
+        "platformId": "Wii"
+      },
+      "genre": {
+        "genreId": "Sports"
+      },
+      "gameName_CONTAINS": input
     },
-    "options":{
+    "options": {
       "limit": 10
     }
   }
+
 
   const { loading, error, data } = useQuery(getGameDataForCards, {variables: info});
 
