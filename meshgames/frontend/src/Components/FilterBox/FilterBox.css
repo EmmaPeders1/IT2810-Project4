@@ -21,14 +21,12 @@
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
     padding: 5px;
-    overflow-y: scroll;
 }
 
 #checkboxContainer {
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
-    overflow-y: scroll;
 }
 
 #searchBarContainer {
@@ -41,4 +39,11 @@
 
 #innerButtonContainer {
     margin-top: 10px;
+}
+
+@media (max-width: 408px) {
+    #filterboxInner, #checkboxContainer {
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
 }
