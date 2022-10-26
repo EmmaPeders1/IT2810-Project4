@@ -43,6 +43,12 @@ const GameCard: FC<GameCardProps> = ({ gameId, gameName, publisher, platform, ge
     setExpanded(!expanded);
   };
 
+  //TODO when this is called: toggle color of icon so that favorited games have a colored heart, toggle isFavorited field of the game with a mutation
+  const handleFavorite = (e: React.MouseEvent<HTMLElement>) => {
+    console.log("game with id: " + gameId + " was clicked")
+  }
+
+
   return (
     <Card
       sx={{
@@ -51,7 +57,7 @@ const GameCard: FC<GameCardProps> = ({ gameId, gameName, publisher, platform, ge
         minHeight: 250,
       }}
       id={gameId}
-      >
+    >
       <CardHeader
         title={gameName}
         subheader={publisher}
@@ -61,7 +67,7 @@ const GameCard: FC<GameCardProps> = ({ gameId, gameName, publisher, platform, ge
       />
       <div className='cardColorBox' />
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
+        <IconButton onClick={handleFavorite} aria-label="add to favorites">
           <FavoriteIcon />
         </IconButton>
         <ExpandMore

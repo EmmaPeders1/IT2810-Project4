@@ -6,6 +6,7 @@ const typeDefs = gql`#graphql
     type Game {
         gameId: Int!
         gameName: String
+        isFavorited: Boolean
         publisher: Publisher @relationship(type: "PUBLISHED_BY", direction: OUT)
         platform: Platform @relationship(type: "ON_PLATFORM", direction: OUT)
         genre: Genre @relationship(type: "HAS_GENRE", direction: OUT)
