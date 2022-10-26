@@ -20,14 +20,16 @@ interface CardDataProps{
 export default function Home(){
 
   const [input, setInput] = useState<string>("");
+  const [platformName, setPlatformName] = useState<string>();
+  const [publisherName, setPublisherName] = useState<string>();
 
   let info = {
     "where": {
       "publisher": {
-        "publisherId_CONTAINS": ""
+        "publisherId_CONTAINS": publisherName
       },
       "platform": {
-        "platformId_CONTAINS": ""
+        "platformId_CONTAINS": platformName
       },
       "genre": {
         "genreId_CONTAINS": ""
@@ -46,6 +48,11 @@ export default function Home(){
     setInput(input.value);
   }
 
+  function handleFilter(platformInput: string, publisherInput: string) {
+    setPlatformName(platformInput);
+    setPublisherName(publisherInput);
+  }
+
   if(loading) return <p>Loading...</p>;
   if(error) return <p>Error: {error.message}</p>;
   return(
@@ -58,7 +65,7 @@ export default function Home(){
           className="search-button"
           icon={faSearch}
         />
-        <FilterBox/>
+        <FilterBox handleFilter={handleFilter}/>
         <div className='gamecard-container'>
           {data.games.map((cardData: CardDataProps ) =>
           <GameCard

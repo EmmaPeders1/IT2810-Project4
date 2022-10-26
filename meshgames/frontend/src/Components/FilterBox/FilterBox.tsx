@@ -16,10 +16,6 @@ import {
   Typography,
 } from '@mui/material';
 
-function handleFilter(event: React.MouseEvent<HTMLButtonElement>) {
-  event.preventDefault();
-}
-
 let platforms: { platformId: String; }[] = [];
 let publishers: { publisherId: String; }[] = [];
 
@@ -43,15 +39,28 @@ function PopulatePublishers(){
     if(error) return <p>Error: {error.message}</p>;
 }
 
-function FilterBox() {
+interface filterBoxProps {
+    handleFilter: (platformInput: string, publisherInput: string) => void;
+}
+
+function FilterBox(props: filterBoxProps) {
 
     PopulatePlatforms();
     PopulatePublishers();
 
     const [open, setOpen] = useState(false);
 
+
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+
+    function handleFilter() {
+        let platformInput = document.getElementById("choose-platform") as HTMLInputElement;
+        let publisherInput = document.getElementById("choose-publisher") as HTMLInputElement;
+        props.handleFilter(platformInput.value, publisherInput.value)
+        setOpen(false);
+    }
+
     return (
         <div id="filterbox">
                 <Button
