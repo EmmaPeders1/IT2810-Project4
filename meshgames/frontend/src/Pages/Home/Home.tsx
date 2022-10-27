@@ -22,6 +22,7 @@ export default function Home(){
   const [input, setInput] = useState<string>("");
   const [platformName, setPlatformName] = useState<string>();
   const [publisherName, setPublisherName] = useState<string>();
+  const [genreName, setGenreName] = useState<string>();
 
   let info = {
     "where": {
@@ -32,7 +33,7 @@ export default function Home(){
         "platformId_CONTAINS": platformName
       },
       "genre": {
-        "genreId_CONTAINS": ""
+        "genreId_CONTAINS": genreName
       },
       "gameName_CONTAINS": input
     },
@@ -48,15 +49,22 @@ export default function Home(){
     setInput(input.value);
   }
 
-  function handleFilter(platformInput: string, publisherInput: string) {
+  function handleFilter(platformInput: string, publisherInput: string, genreInput:string) {
     setPlatformName(platformInput);
     setPublisherName(publisherInput);
+    setGenreName(genreInput);
   }
 
   if(loading) return <p>Loading...</p>;
   if(error) return <p>Error: {error.message}</p>;
   return(
     <div className="home">
+      <div>
+          Search: {input} <br />
+          Publisher: {publisherName} <br />
+          Platform: {platformName} <br />
+          Genre:{genreName} <br />
+      </div>
       <div className="search-container" >
         <Search />
         <Button
@@ -66,16 +74,16 @@ export default function Home(){
           icon={faSearch}
         />
         <FilterBox handleFilter={handleFilter}/>
-        <div className='gamecard-container'>
-          {data.games.map((cardData: CardDataProps ) =>
-          <GameCard
-          key={cardData.gameId}
-          gameId={cardData.gameId}
-          gameName={cardData.gameName}
-          publisher={cardData.publisher.publisherId}
-          platform={cardData.platform.platformId}
-          genre={cardData.genre.genreId} />)}
-        </div>
+      </div>
+      <div className='gamecard-container'>
+        {data.games.map((cardData: CardDataProps ) =>
+        <GameCard
+        key={cardData.gameId}
+        gameId={cardData.gameId}
+        gameName={cardData.gameName}
+        publisher={cardData.publisher.publisherId}
+        platform={cardData.platform.platformId}
+        genre={cardData.genre.genreId} />)}
       </div>
     </div>
     );
