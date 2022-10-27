@@ -1,5 +1,6 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
+import { faChartColumn, faHeart, faHome, faQuestion } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './Sidebar.css';
 
 function Sidebar() {
@@ -15,16 +16,16 @@ function Sidebar() {
             <div id="sidebarMenu">
                 <ul className="sidebarMenuInner">
                 <li>
-                    <Link to="/">Home</Link>
+                    <Link to="/"><FontAwesomeIcon icon={faHome} /> Home</Link>
                 </li>
                 <li>
-                    <Link to="/favorites">Your favorites</Link>
+                    <Link to="/favorites"><FontAwesomeIcon icon={faHeart} /> Your favorites</Link>
                 </li>
                 <li>
-                    <Link to="/about">About</Link>
+                    <Link to="/about"><FontAwesomeIcon icon={faQuestion} /> About</Link>
                 </li>
                 <li>
-                    <Link to="/charts">Charts</Link>
+                    <Link to="/charts"><FontAwesomeIcon icon={faChartColumn} /> Charts</Link>
                 </li>
                 </ul>
             </div>

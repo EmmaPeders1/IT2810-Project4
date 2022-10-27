@@ -1,195 +1,104 @@
 import React, { useState } from 'react';
-import './FilterBox.css';
-import Button from '../../Components/Button/Button';
-import { gql, useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client';
+import { faArrowDown, faFilter, faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
+import Button from '../../Components/Button/Button';
+import getPlatformData from '../../GraphQL/Queries/getPlatformData';
+import getPublisherData from '../../GraphQL/Queries/getPublisherData';
+import getGenreData from '../../GraphQL/Queries/getGenreData';
+import './FilterBox.css';
 import {
   Box,
-  Checkbox,
-  FormControlLabel,
   Grid,
   Modal,
+  Paper,
   Typography,
 } from '@mui/material';
 
-const publishers = [
-{ name: 'Organise'},
-{ name: 'Joha'},
-{ name: 'Terminator'},
-{ name: 'Dull'},
-{ name: 'Nzaza'},
-];
+let platforms: { platformId: String; }[] = [];
+let publishers: { publisherId: String; }[] = [];
+let genres: { genreId: String; }[] = [];
 
-const platforms = [
-{ name: 'Platform1'},
-{ name: 'Platform2'},
-{ name: 'Platform3'},
-{ name: 'Platform4'},
-{ name: 'Platform5'},
-];
+function PopulatePlatforms(){
+    const { loading, error, data } = useQuery(getPlatformData);
 
-function handleFilter(event: React.MouseEvent<HTMLButtonElement>) {
-  event.preventDefault();
+    if(data){
+        platforms = data.platforms;
+    }
+    if(loading) return <p>Loading...</p>;
+    if(error) return <p>Error: {error.message}</p>;
 }
 
-function FilterBox() {
-    const [open, setOpen] = useState(false);
+function PopulatePublishers(){
+    const { loading, error, data } = useQuery(getPublisherData);
 
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
+    if(data){
+        publishers = data.publishers;
+    }
+    if(loading) return <p><FontAwesomeIcon icon={faSpinner} />Loading...</p>;
+    if(error) return <p>Error: {error.message}</p>;
+}
+
+function PopulateGenres(){
+    const { loading, error, data } = useQuery(getGenreData);
+
+    if(data){
+        genres = data.genres;
+    }
+    if(loading) return <p><FontAwesomeIcon icon={faSpinner} />Loading...</p>;
+    if(error) return <p>Error: {error.message}</p>;
+}
+
+interface filterBoxProps {
+    handleFilter: (platformInput: string, publisherInput: string, genreInput: string) => void;
+}
+
+function FilterBox(props: filterBoxProps) {
+
+    PopulatePlatforms();
+    PopulatePublishers();
+    PopulateGenres();
+
+    function handleFilter() {
+        let platformInput = document.getElementById("choose-platform") as HTMLInputElement;
+        let publisherInput = document.getElementById("choose-publisher") as HTMLInputElement;
+        let genreInput = document.getElementById("choose-genre") as HTMLInputElement;
+        props.handleFilter(platformInput.value, publisherInput.value, genreInput.value)
+    }
 
     return (
         <div id="filterbox">
-                <Button
-                        onClick={handleOpen}
+            <div id="searchBarContainer">
+                <Autocomplete
+                    id="choose-publisher"
+                    sx={{ width: '250px', padding: '2px', margin: '3px', bgcolor: 'white'}}
+                    options={publishers.map((publisher: { publisherId: String }) => publisher.publisherId)}
+                    renderInput={(params) => <TextField {...params} label="Publisher" />}
+                />
+                <Autocomplete
+                    id="choose-platform"
+                    sx={{ width: '150px', padding: '2px', margin: '3px', bgcolor: 'white' }}
+                    options={platforms.map((platform: { platformId: String; }) => platform.platformId)}
+                    renderInput={(params) => <TextField {...params} label="Platform" />}
+                />
+                <Autocomplete
+                    id="choose-genre"
+                    sx={{ width: '150px', padding: '2px', margin: '3px', bgcolor: 'white' }}
+                    options={genres.map((genre: { genreId: String; }) => genre.genreId)}
+                    renderInput={(params) => <TextField {...params} label="Genre" />}
+                />
+                <div id="innerButtonContainer">
+                    <Button
+                        onClick={handleFilter}
+                        icon={faFilter}
                         label=" FILTER "
                         className="filter-button"
-                        onKeyDown={() => console.log("Filter!")}
-                />
-            <Modal
-                    open={open}
-                    onClose={handleClose}
-                    aria-labelledby="modal-modal-title"
-                    aria-describedby="modal-modal-description"
-                >
-                <div id="filterboxInner">
-                    <Typography
-                        variant="h5"
-                        component="h2"
-                        sx={{ textAlign: 'center', m: 1, fontWeight: 'bold' }}
-                        >
-                        Filter games
-                    </Typography>
-                    <Box
-                        sx={{
-                        textAlign: 'center',
-                        m: 1,
-                        width: '100%',
-                        display: 'flex',
-                        flexFlow: 'column wrap',
-                        }}
-                        >
-                        <div id="searchBarContainer">
-                            <Autocomplete
-                                id="choose-publisher"
-                                freeSolo
-                                sx={{ width: '250px', padding: '2px' }}
-                                options={publishers.map((publisher) => publisher.name)}
-                                renderInput={(params) => <TextField {...params} label="Publisher" />}
-                            />
-                            <Autocomplete
-                                id="choose-platform"
-                                freeSolo
-                                sx={{ width: '250px', padding: '2px' }}
-                                options={platforms.map((publisher) => publisher.name)}
-                                renderInput={(params) => <TextField {...params} label="Platform" />}
-                            />
-                        </div>
-                        <Grid item xs={12}>
-                            <Typography sx={{ textAlign: 'center', m: 1, fontWeight: 'bold' }}>
-                                Genre
-                            </Typography>
-                        </Grid>
-                            <div id="checkboxContainer">
-                                <FormControlLabel sx={{ width: '150px'}}
-                                    control={
-                                    <Checkbox color="success"/>
-                                    }
-                                    label="Misc"
-                                    value="Misc"
-                                />
-                                <FormControlLabel sx={{ width: '150px'}}
-                                    control={
-                                    <Checkbox color="success"/>
-                                    }
-                                    label="Shooter"
-                                    value="Shooter"
-                                />
-                                <FormControlLabel sx={{ width: '150px'}}
-                                    control={
-                                    <Checkbox color="success"/>
-                                    }
-                                    label="Simulation"
-                                    value="Simulation"
-                                />
-                                <FormControlLabel sx={{ width: '150px'}}
-                                    control={
-                                    <Checkbox color="success"/>
-                                    }
-                                    label="Action"
-                                    value="Action"
-                                />
-                                <FormControlLabel sx={{ width: '150px'}}
-                                control={
-                                <Checkbox color="success"/>
-                                }
-                                label="Adventure"
-                                value="Adventure"
-                                />
-                                <FormControlLabel sx={{ width: '150px'}}
-                                    control={
-                                    <Checkbox color="success" />
-                                    }
-                                    label="Sports"
-                                    value="Sports"
-                                />
-                                <FormControlLabel sx={{ width: '150px'}}
-                                    control={
-                                    <Checkbox color="success" />
-                                    }
-                                    label="Platform"
-                                    value="Platform"
-                                />
-                                <FormControlLabel sx={{ width: '150px'}}
-                                    control={
-                                    <Checkbox color="success"/>
-                                    }
-                                    label="Strategy"
-                                    value="Strategy"
-                                />
-                                <FormControlLabel sx={{ width: '150px'}}
-                                    control={
-                                    <Checkbox color="success"/>
-                                    }
-                                    label="Puzzle"
-                                    value="Puzzle"
-                                />
-                                <FormControlLabel sx={{ width: '150px'}}
-                                    control={
-                                    <Checkbox color="success"/>
-                                    }
-                                    label="Role-Playing"
-                                    value="Role-Playing"
-                                />
-                                <FormControlLabel sx={{ width: '150px'}}
-                                    control={
-                                    <Checkbox color="success"/>
-                                    }
-                                    label="Racing"
-                                    value="Racing"
-                                />
-                                <FormControlLabel sx={{ width: '150px'}}
-                                    control={
-                                    <Checkbox color="success"/>
-                                    }
-                                    label="Fighting"
-                                    value="Fighting"
-                                />
-                            </div>
-                        <Grid justifyContent="center" display="flex">
-                        <div id="innerButtonContainer">
-                            <Button
-                                onClick={handleFilter}
-                                label=" FILTER "
-                                className="filter-button"
-                                onKeyDown={() => console.log("filter!")}
-                            />
-                        </div>
-                        </Grid>
-                    </Box>
+                        onKeyDown={() => console.log("filter!")}
+                    />
                 </div>
-            </Modal>
+            </div>
         </div>
     );
 }

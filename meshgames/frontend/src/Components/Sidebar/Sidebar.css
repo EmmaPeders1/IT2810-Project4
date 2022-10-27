@@ -3,6 +3,7 @@
     width: 250px;
     position: fixed;
     z-index: 2;
+    text-align: left;
 }
 
 #sidebarMenu {
