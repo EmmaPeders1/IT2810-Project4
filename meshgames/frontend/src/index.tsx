@@ -14,12 +14,11 @@ const client = new ApolloClient({
       Query: {
         fields: {
           games: offsetLimitPagination(["where"]) //uses built in merge to merge lists of results in cache if they are in the same search (hence "where") 
+
         }
       }
     }
-
-  }
-  ),
+  }),
 });
 
 const root = ReactDOM.createRoot(

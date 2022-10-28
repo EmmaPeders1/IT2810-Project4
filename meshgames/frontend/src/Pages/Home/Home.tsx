@@ -42,23 +42,20 @@ export default function Home() {
     setInput(input.value);
   }
 
+
+  //known bug: the first time "load more is pressed", nothing happens. The following times, the expected behaviour happens.
+  //we believe this to be a problem regarding the cache. On the web, many people have experienced something similar, but we could'nt find a solution
   function handleLoadMore(e: React.MouseEvent<HTMLButtonElement>) {
     e.preventDefault();
-    console.log("load more");
-    const currentLength: number = data.games.length;
-    setLimit(currentLength + 8);
+    const newLimit = limit + 8;
     fetchMore({
       variables: {
-        offset: currentLength,
-        limit: limit,
+        offset: 0,
+        limit: newLimit,
       },
     }).then(fetchMoreResult => {
-      // Update variables.limit for the original query to include
-      // the newly added feed items.
-      console.log(data.games.length);
-      console.log(fetchMoreResult.data.games.length);
+      setLimit(newLimit);
     });
-
 
   }
 
