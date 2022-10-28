@@ -1,23 +1,11 @@
-import Autocomplete from '@mui/material/Autocomplete';
-import TextField from '@mui/material/TextField';
-
-const history = [
-
-  { game: 'Game1'},
-  { game: 'Game2'},
-  { game: 'Game3'},
-  { game: 'Game4'},
-  { game: 'Game5'},
-]
+import { Input } from '@mui/material';
 
 function Search() {
   return (
-    <Autocomplete
+    <Input
       id="search-game"
-      freeSolo
-      sx={{ width: 500, height: '56px', bgcolor: 'white' }}
-      options={history.map((search) => search.game)}
-      renderInput={(params) => <TextField {...params} label="Search for a game!" />}
+      sx={{ width: 500, height: '56px', bgcolor: 'white', padding: '10px' }}
+      placeholder={"Search for a game"}
     />
   )
 }
