@@ -13,15 +13,18 @@ const typeDefs = gql`#graphql
 
     type Publisher {
         publisherId: String!
+        games: [Game!]! @relationship(type: "PUBLISHED_BY", direction: IN)
     }
 
     type Platform {
         platformId: String!
+        games: [Game!]! @relationship(type: "ON_PLATFORM", direction: IN)
 
     }
 
     type Genre{
         genreId: String!
+        games: [Game!]! @relationship(type: "HAS_GENRE", direction: IN)
     }
 
     type Query{
