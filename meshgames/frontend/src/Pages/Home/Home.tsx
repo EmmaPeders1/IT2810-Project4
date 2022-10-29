@@ -9,21 +9,22 @@ import FilterBox from '../../Components/FilterBox/FilterBox';
 import getGameDataForCards from '../../GraphQL/Queries/getGameDataForCards';
 import SortBox from '../../Components/SortBox/SortBox';
 
-interface CardDataProps{
+interface CardDataProps {
   gameId: string;
   gameName: string;
-  publisher: {publisherId: string};
-  platform: {platformId: string};
-  genre: {genreId: string};
+  publisher: { publisherId: string };
+  platform: { platformId: string };
+  genre: { genreId: string };
 }
 
-export default function Home(){
+export default function Home() {
 
   const [input, setInput] = useState<string>("");
   const [platformName, setPlatformName] = useState<string>();
   const [publisherName, setPublisherName] = useState<string>();
   const [genreName, setGenreName] = useState<string>();
   const [sortInput, setSortInput] = useState<string>();
+  const [limit, setLimit] = useState<number>(8);
 
   let info = {
     "where": {
@@ -39,7 +40,8 @@ export default function Home(){
       "gameName_CONTAINS": input
     },
     "options": {
-      "limit": 10,
+      "limit": limit,
+      "offset": 0,
       "sort": [
         {
           "gameName": null
@@ -48,17 +50,36 @@ export default function Home(){
     }
   }
 
-  const { loading, error, data } = useQuery(getGameDataForCards, {variables: info});
+  const { loading, error, data, fetchMore } = useQuery(getGameDataForCards, { variables: info });
+
 
   function handleInput(event: React.MouseEvent<HTMLButtonElement>) {
     let input = document.getElementById("search-game") as HTMLInputElement;
     setInput(input.value);
+    setLimit(8);
   }
 
-  function handleFilter(platformInput: string, publisherInput: string, genreInput:string) {
+  function handleFilter(platformInput: string, publisherInput: string, genreInput: string) {
     setPlatformName(platformInput);
     setPublisherName(publisherInput);
     setGenreName(genreInput);
+    setLimit(8);
+  }
+
+
+  //known bug: the first time "load more is pressed", nothing happens. The following times, the expected behaviour happens.
+  //we believe this to be a problem regarding the cache. On the web, many people have experienced something similar, but we could'nt find a solution
+  function handleLoadMore(e: React.MouseEvent<HTMLButtonElement>) {
+    e.preventDefault();
+    const newLimit = limit + 8;
+    fetchMore({
+      variables: {
+        offset: 0,
+        limit: newLimit,
+      },
+    }).then(fetchMoreResult => {
+      setLimit(newLimit);
+    });
   }
 
   function handleSort(sortInput:string) {
@@ -72,10 +93,10 @@ export default function Home(){
   return(
     <div className="home">
       <div>
-          Search: {input} <br />
-          Publisher: {publisherName} <br />
-          Platform: {platformName} <br />
-          Genre:{genreName} <br />
+        Search: {input} <br />
+        Publisher: {publisherName} <br />
+        Platform: {platformName} <br />
+        Genre:{genreName} <br />
       </div>
       <div className="search-container" >
         <Search />
@@ -89,15 +110,22 @@ export default function Home(){
         <SortBox handleSort= {handleSort}/>
       </div>
       <div className='gamecard-container'>
-        {data.games.map((cardData: CardDataProps ) =>
-        <GameCard
-        key={cardData.gameId}
-        gameId={cardData.gameId}
-        gameName={cardData.gameName}
-        publisher={cardData.publisher.publisherId}
-        platform={cardData.platform.platformId}
-        genre={cardData.genre.genreId} />)}
+        {data.games.map((cardData: CardDataProps) =>
+          <GameCard
+            key={cardData.gameId}
+            gameId={cardData.gameId}
+            gameName={cardData.gameName}
+            publisher={cardData.publisher.publisherId}
+            platform={cardData.platform.platformId}
+            genre={cardData.genre.genreId} />)}
+      </div>
+      <div className="loadButton-container">
+
+        <Button
+          className="load-button"
+          onClick={handleLoadMore}>
+          <p>"Load More.."</p></Button>
       </div>
     </div>
-    );
+  );
 }
