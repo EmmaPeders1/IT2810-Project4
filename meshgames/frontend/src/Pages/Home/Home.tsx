@@ -38,24 +38,26 @@ export default function Home() {
       },
       "gameName_CONTAINS": input
     },
-    "options":  {
+    "options": {
       "offset": 0,
       "limit": limit
     }
   }
 
-  const { loading, error, data, fetchMore } = useQuery(getGameDataForCards, {variables: info});
+  const { loading, error, data, fetchMore } = useQuery(getGameDataForCards, { variables: info });
 
 
   function handleInput(event: React.MouseEvent<HTMLButtonElement>) {
     let input = document.getElementById("search-game") as HTMLInputElement;
     setInput(input.value);
+    setLimit(8);
   }
 
-  function handleFilter(platformInput: string, publisherInput: string, genreInput:string) {
+  function handleFilter(platformInput: string, publisherInput: string, genreInput: string) {
     setPlatformName(platformInput);
     setPublisherName(publisherInput);
     setGenreName(genreInput);
+    setLimit(8);
   }
 
 
@@ -79,10 +81,10 @@ export default function Home() {
   return (
     <div className="home">
       <div>
-          Search: {input} <br />
-          Publisher: {publisherName} <br />
-          Platform: {platformName} <br />
-          Genre:{genreName} <br />
+        Search: {input} <br />
+        Publisher: {publisherName} <br />
+        Platform: {platformName} <br />
+        Genre:{genreName} <br />
       </div>
       <div className="search-container" >
         <Search />
@@ -92,17 +94,17 @@ export default function Home() {
           className="search-button"
           icon={faSearch}
         />
-        <FilterBox handleFilter={handleFilter}/>
+        <FilterBox handleFilter={handleFilter} />
       </div>
       <div className='gamecard-container'>
-        {data.games.map((cardData: CardDataProps ) =>
-        <GameCard
-        key={cardData.gameId}
-        gameId={cardData.gameId}
-        gameName={cardData.gameName}
-        publisher={cardData.publisher.publisherId}
-        platform={cardData.platform.platformId}
-        genre={cardData.genre.genreId} />)}
+        {data.games.map((cardData: CardDataProps) =>
+          <GameCard
+            key={cardData.gameId}
+            gameId={cardData.gameId}
+            gameName={cardData.gameName}
+            publisher={cardData.publisher.publisherId}
+            platform={cardData.platform.platformId}
+            genre={cardData.genre.genreId} />)}
       </div>
       <div className="loadButton-container">
 
