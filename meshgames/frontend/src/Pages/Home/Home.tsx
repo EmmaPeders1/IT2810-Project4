@@ -7,7 +7,7 @@ import { useQuery } from '@apollo/client';
 import Search from '../../Components/Input/Search';
 import FilterBox from '../../Components/FilterBox/FilterBox';
 import getGameDataForCards from '../../GraphQL/Queries/getGameDataForCards';
-
+import SortBox from '../../Components/SortBox/SortBox';
 
 interface CardDataProps{
   gameId: string;
@@ -23,6 +23,7 @@ export default function Home(){
   const [platformName, setPlatformName] = useState<string>();
   const [publisherName, setPublisherName] = useState<string>();
   const [genreName, setGenreName] = useState<string>();
+  const [sortInput, setSortInput] = useState<string>();
 
   let info = {
     "where": {
@@ -38,7 +39,12 @@ export default function Home(){
       "gameName_CONTAINS": input
     },
     "options": {
-      "limit": 10
+      "limit": 10,
+      "sort": [
+        {
+          "gameName": null
+        }
+      ]
     }
   }
 
@@ -55,8 +61,14 @@ export default function Home(){
     setGenreName(genreInput);
   }
 
+  function handleSort(sortInput:string) {
+    setSortInput(sortInput);
+    console.log(sortInput);
+  }
+
   if(loading) return <p>Loading...</p>;
   if(error) return <p>Error: {error.message}</p>;
+
   return(
     <div className="home">
       <div>
@@ -74,6 +86,7 @@ export default function Home(){
           icon={faSearch}
         />
         <FilterBox handleFilter={handleFilter}/>
+        <SortBox handleSort= {handleSort}/>
       </div>
       <div className='gamecard-container'>
         {data.games.map((cardData: CardDataProps ) =>
