@@ -1,0 +1,27 @@
+#filterbox {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    width: 100%;
+    z-index: 1;
+}
+
+#searchBarContainer {
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+    margin: 0 auto 0 auto;
+    justify-content: center;
+}
+
+#innerButtonContainer {
+    padding: 2px;
+    margin: 3px;
+}
+
+@media (max-width: 408px) {
+    #filterboxInner, #checkboxContainer {
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
+}
