@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useQuery } from '@apollo/client';
-import { faArrowDown, faFilter, faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { faFilter, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
@@ -9,13 +9,6 @@ import getPlatformData from '../../GraphQL/Queries/getPlatformData';
 import getPublisherData from '../../GraphQL/Queries/getPublisherData';
 import getGenreData from '../../GraphQL/Queries/getGenreData';
 import './FilterBox.css';
-import {
-  Box,
-  Grid,
-  Modal,
-  Paper,
-  Typography,
-} from '@mui/material';
 
 let platforms: { platformId: String; }[] = [];
 let publishers: { publisherId: String; }[] = [];
