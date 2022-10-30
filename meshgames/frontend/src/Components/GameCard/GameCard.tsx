@@ -69,6 +69,7 @@ const GameCard: FC<GameCardProps> = ({ gameId, gameName, publisher, platform, ge
           onClick={handleExpandClick}
           aria-expanded={expanded}
           aria-label="show more"
+          data-testid="ExpandMoreButton"
         >
           <ExpandMoreIcon />
         </ExpandMore>
