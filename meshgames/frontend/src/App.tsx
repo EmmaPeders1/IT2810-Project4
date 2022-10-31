@@ -9,7 +9,7 @@ import About from './Pages/About/About';
 import Sidebar from './Components/Sidebar/Sidebar';
 
 
-function App() {
+export default function App() {
   return (
     <div className="App">
       <Router>
@@ -25,5 +25,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
