@@ -11,12 +11,6 @@
   padding-right: 20px;
 }
 
-.load-button {}
-
-#zero-message{
-  display: none;
-}
-
 .loadButton-container {
   display: flex;
   justify-content: center;

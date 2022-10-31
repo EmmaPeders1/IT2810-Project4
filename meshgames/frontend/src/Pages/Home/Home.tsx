@@ -50,7 +50,6 @@ export default function Home() {
     let input = document.getElementById("search-game") as HTMLInputElement;
     setInput(input.value);
     setLimit(8);
-    checkDataLength();
   }
 
   function handleFilter(platformInput: string, publisherInput: string, genreInput: string) {
@@ -58,27 +57,6 @@ export default function Home() {
     setPublisherName(publisherInput);
     setGenreName(genreInput);
     setLimit(8);
-    checkDataLength();
-  }
-
-  function checkDataLength(){
-    let loadMore = document.getElementById("loadButton-container") as HTMLDivElement;
-    let zeroMessage = document.getElementById("zero-message") as HTMLParagraphElement;
-    if(loadMore != null && zeroMessage != null){
-      if(data.games.length === 0){
-        loadMore.style.display = "none";
-        zeroMessage.style.display = "inline";
-        console.log("length is zero");
-      }
-      else if(data.games.length < 8){
-        loadMore.style.display = "none";
-      }
-      else{
-        loadMore.style.display = "inline";
-        zeroMessage.style.display = "none";
-        console.log(data.games.length);
-      }
-    }
   }
 
   //known bug: the first time "load more" is pressed, nothing happens. The following times, the expected behaviour happens.
@@ -116,8 +94,11 @@ export default function Home() {
         />
         <FilterBox handleFilter={handleFilter} />
       </div>
+      {data.games.length === 0 &&
+        <p>There are no games that match your search...</p>
+      }
       <div className='gamecard-container'>
-        <p id="zero-message">There are no games that match your search</p>
+        {console.log(data.games.length)}
         {data.games.map((cardData: CardDataProps) =>
           <GameCard
             key={cardData.gameId}
@@ -127,15 +108,17 @@ export default function Home() {
             platform={cardData.platform.platformId}
             genre={cardData.genre.genreId} />)}
       </div>
-      <div className="loadButton-container" id="loadButton-container">
-        <Button
-          className="load-button"
-          id="load-button"
-          label='LOAD MORE'
-          icon={faArrowDown}
-          onClick={handleLoadMore}
-        />
-      </div>
+      {data.games.length >= 8 &&
+        <div className="loadButton-container" id="loadButton-container">
+          <Button
+            className="load-button"
+            id="load-button"
+            label='LOAD MORE'
+            icon={faArrowDown}
+            onClick={handleLoadMore}
+          />
+        </div>
+      }
     </div>
   );
 }
