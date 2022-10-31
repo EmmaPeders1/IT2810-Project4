@@ -106,13 +106,13 @@ export default function Home() {
 
   return (
     <div className="home">
-      <div>
+      {/* <div>
         Search: {input} <br />
         Publisher: {publisherName} <br />
         Platform: {platformName} <br />
         Genre:{genreName} <br />
         Sort:{sortInput} <br />
-      </div>
+      </div> */}
       <div className="search-container" >
         <Search />
         <Button

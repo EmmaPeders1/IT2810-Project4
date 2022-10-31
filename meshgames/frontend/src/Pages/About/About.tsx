@@ -1,8 +1,7 @@
-import { Link } from 'react-router-dom';
 import './About.css';
 
+// About-page with information about the application
 export default function About(){
-
 return(
   <div className="about">
     <h1>About the application</h1>
