@@ -14,7 +14,7 @@
     flex-flow: column wrap;
     transform: translateX(-250px);
     transition: transform 250ms ease-in-out;
-    background: linear-gradient(to bottom, #ff3399 0%, #9999ff 100%);
+    background: linear-gradient(to bottom, #514ab0 0%, #9d00a8 100%);
 }
 .sidebarMenuInner{
     margin:75;

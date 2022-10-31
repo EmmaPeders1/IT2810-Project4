@@ -10,30 +10,14 @@
   width: max-content;
   height: 56px;
   border: 0;
-  background: #ff3399;
-  border: 1.5px solid rgb(142, 84, 222);
+  background: #514ab0;
+  border: 1.5px solid #9d00a8;
   color: rgb(255, 255, 255);
   white-space: nowrap;
 }
 
-.button-component:disabled {
-  filter: grayscale(80%);
-  cursor: not-allowed;
-}
-
 .button-component:focus:not(:disabled),
 .button-component:hover:not(:disabled) {
-  background: rgb(145, 124, 240);
+  background: #9d00a8;
   outline: 1.5px solid rgb(4, 52, 71);
-}
-
-[data-type="danger"] {
-  background-color: red;
-  color: whitesmoke;
-}
-
-[data-type="danger"]:focus:not(:disabled),
-[data-type="danger"]:hover:not(:disabled) {
-  outline: 1.5px solid rgb(113, 8, 8);
-  background-color: rgb(189, 20, 20);
 }
