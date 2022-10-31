@@ -18,7 +18,7 @@ function Sidebar() {
                     <Link to="/"><FontAwesomeIcon icon={faHome} /> Home</Link>
                 </li>
                 <li>
-                    <Link to="/favorites"><FontAwesomeIcon icon={faHeart} /> Your favorites</Link>
+                    <Link to="/favorites"><FontAwesomeIcon icon={faHeart} /> Favorites</Link>
                 </li>
                 <li>
                     <Link to="/about"><FontAwesomeIcon icon={faQuestion} /> About</Link>
