@@ -46,7 +46,7 @@ The user can also navigate to other pages by use of the sidebar. At the upper le
 
 The *"Favorite"*-page looks similar to the *Home*-page. Here are all the games the user has favorited. If the user has not favorited any games, then a simple text is visible. All the favorited games will be visible here, and the group can add filter options, search options and pagination for further improvement. The page has also a button labeled *"Reload"*, which will reload the site. This is due to the fact that the favorization of a game will not automatically reload the page. The group has decided to use this method as a reload for each favorite would result in the *Home*-page reloading each time (which would not be sustainable as it would do a new query each time).  
 
-The *"About"*-page consists of simple text with information about the project. 
+The *"About"*-page consists of simple text with information about the application. 
 
 ###  Functionality
 
@@ -70,8 +70,14 @@ In testing the user interface and responsive design, the group has used the devi
 
 To adhere to universal accessability, the application has gone through a color change from lighter to darker colors. Such change makes the constrast between text and background greater, which passes all the tests according to the WCAG guidelines. The placeholders in the input fields does not pass these tests, but this is not changed due to being the default from MUI. The fonts used on the website are easy to read, with no extra distractions. The text is also easily readable, and the group has chosen not to implement a manual font size change due to most web browsers already having this functionality implemented (which is tested to work on our application in Chrome). The buttons also adhere to universal accessability as they change both color and cursor upon hovering, which signals the change to the user. 
 
+
+# :point_right: Improvements for next time
+
+In this section is functionality we would like to implement or improve on the application:
+
+- Split the filter and sort function 
+- Make the query case insensitive (this is not a feature in GraphQL, but could be implemented by the use of element.lowecased())
+
 # :sweat: In retrospective
 
-In retrospective, we have gained experience and have some thoughts on what we could have done better.
-We would like to split the filter and sort function, making it more intuitive. 
-
+In retrospective, we have gained experience and have some thoughts on what we could have done better. 
