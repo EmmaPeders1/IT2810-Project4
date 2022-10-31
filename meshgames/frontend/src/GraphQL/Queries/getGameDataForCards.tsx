@@ -14,6 +14,7 @@ query Games($where: GameWhere, $options: GameOptions){
     genre{
       genreId
     }
+    isFavorited
   }
 }
 `;
