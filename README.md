@@ -57,9 +57,13 @@ The solution has a responsive web design. Layout, scaling and interaction posibi
 
 # :gear: Testing
 
-Testing is mainly done by explorative testing done by members of the group and fellow students. This is done by giving the students prompts or letting them explore by themselves. The grou pmembers then took notes of where the students had problems understanding or when an unexpected bug appeared. The project also consists of X unit tests and an end-to-end test.
+Testing is partly done by explorative testing done by members of the group and fellow students. This is done by giving the students prompts or letting them explore by themselves. The group pmembers then took notes of where the students had problems understanding or when an unexpected bug appeared. The project also consists of 2 unit tests and an end-to-end test. All the test files are allocated in the same folder as the component/file that is being tested. In such a manner, the components being tested are close to the test and the imports are kept short. 
 
-In testing the user interface and responsive design, the group has used the device emaluation in the web browser to simulate the application on a phone screen (vertically and horizontally) and an ordinary PC (big screen) as well as an IPad (medium screen).
+The unit tests have been created using Jest and React's testing library. For example does the unit test GameCard.test.tsx render a GameCard component using mockdata and checks wheter or not the mockdata is displayed in the rendered card. Further it tests that the expand button in the card works and that information is both shown and hidden again when pressing the expand button. The unit test Header.test.tsx makes use of a snapshot to check that the Header component is rendered as expected. 
+
+The end-to-end test is implemented using Cypress. 
+
+In testing the user interface and responsive design, the group has used the device emaluation in the web browser to simulate the application on different phone screens (vertically and horizontally) and ordinary PCs (big screen) as well as IPads (medium screen).
 
 # :earth_africa: Universal accessability
 
