@@ -19,5 +19,5 @@
 .button-component:focus:not(:disabled),
 .button-component:hover:not(:disabled) {
   background: #9d00a8;
-  outline: 1.5px solid rgb(4, 52, 71);
+  border: 1.5px solid rgb(4, 52, 71);
 }
