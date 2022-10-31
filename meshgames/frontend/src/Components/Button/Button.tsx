@@ -12,6 +12,7 @@ interface ButtonProps {
   icon?: IconDefinition;
   type?: string;
   className?: string;
+  id?: string;
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
   onKeyDown?: (e: React.KeyboardEvent<HTMLButtonElement>) => void;
   dataTestid?: string;
@@ -24,6 +25,7 @@ const Button: FC<ButtonProps> = ({
   icon,
   type,
   className,
+  id,
   onClick,
   onKeyDown,
   dataTestid }) => {
@@ -31,6 +33,7 @@ const Button: FC<ButtonProps> = ({
     <button
       disabled={disabled}
       className={`button-component ${className}`}
+      id={id}
       data-type={type}
       onClick={onClick}
       onKeyDown={onKeyDown}

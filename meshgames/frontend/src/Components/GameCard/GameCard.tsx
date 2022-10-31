@@ -1,5 +1,5 @@
 import React from 'react';
-import { FC } from 'react';
+import { FC, useState, useEffect } from 'react';
 import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
@@ -11,6 +11,8 @@ import Typography from '@mui/material/Typography';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import './GameCard.css';
+import { useMutation } from '@apollo/client';
+import updateIsFavoritedById from '../../GraphQL/Mutations/updateIsFavoritedById';
 
 
 interface ExpandMoreProps extends IconButtonProps {
@@ -34,14 +36,38 @@ interface GameCardProps {
   publisher: string;
   platform: string;
   genre: string;
+  isFavorited: boolean;
 }
 
-const GameCard: FC<GameCardProps> = ({ gameId, gameName, publisher, platform, genre }) => {
-  const [expanded, setExpanded] = React.useState(false);
+const GameCard: FC<GameCardProps> = ({ gameId, gameName, publisher, platform, genre, isFavorited }) => {
+
+  const info = {
+    "where": {
+      "gameId": gameId
+    },
+    "update": {
+      "isFavorited": !isFavorited
+    }
+  }
+
+  const [expanded, setExpanded] = useState(false);
+  const [isFavoriteState, setIsFavoriteState] = useState<boolean>(isFavorited)
+  const [heartColor, setHeartColor] = useState<string>(isFavorited ? "#ff3399" : "disabled");
+  const [toggleIsFavorited] = useMutation(updateIsFavoritedById, { variables: info });
+
+  useEffect(() => {
+    setHeartColor(isFavoriteState ? "#ff3399" : "disabled");
+  }, [isFavoriteState]);
+
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+
+  const handleToggleFavorite = (e: React.MouseEvent<HTMLElement>) => {
+    toggleIsFavorited();
+    setIsFavoriteState(!isFavoriteState);
+  }
 
   return (
     <Card
@@ -51,7 +77,7 @@ const GameCard: FC<GameCardProps> = ({ gameId, gameName, publisher, platform, ge
         minHeight: 250,
       }}
       id={gameId}
-      >
+    >
       <CardHeader
         title={gameName}
         subheader={publisher}
@@ -61,14 +87,15 @@ const GameCard: FC<GameCardProps> = ({ gameId, gameName, publisher, platform, ge
       />
       <div className='cardColorBox' />
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
+        <IconButton onClick={handleToggleFavorite} aria-label="add to favorites">
+          <FavoriteIcon sx={{ color: heartColor }} />
         </IconButton>
         <ExpandMore
           expand={expanded}
           onClick={handleExpandClick}
           aria-expanded={expanded}
           aria-label="show more"
+          data-testid="ExpandMoreButton"
         >
           <ExpandMoreIcon />
         </ExpandMore>

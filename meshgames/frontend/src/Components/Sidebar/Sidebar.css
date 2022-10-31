@@ -1,5 +1,5 @@
 .sidebar {
-    height: 100%;
+    height: 1px;
     width: 250px;
     position: fixed;
     z-index: 2;
@@ -9,11 +9,12 @@
 #sidebarMenu {
     height: 100%;
     width: 250px;
+    position: fixed;
     display: flex;
     flex-flow: column wrap;
     transform: translateX(-250px);
     transition: transform 250ms ease-in-out;
-    background: linear-gradient(to bottom, #ff3399 0%, #9999ff 100%);
+    background: linear-gradient(to bottom, #514ab0 0%, #9d00a8 100%);
 }
 .sidebarMenuInner{
     margin:75;
@@ -41,8 +42,10 @@
     cursor: pointer;
     text-decoration: none;
 }
+
 input[type="checkbox"]:checked ~ #sidebarMenu {
     transform: translateX(0);
+
 }
 
 input[type=checkbox] {

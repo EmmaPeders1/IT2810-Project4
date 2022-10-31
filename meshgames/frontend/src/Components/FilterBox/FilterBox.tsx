@@ -1,4 +1,4 @@
-import { DocumentNode, OperationVariables, TypedDocumentNode, useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 import { faFilter, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Autocomplete from '@mui/material/Autocomplete';

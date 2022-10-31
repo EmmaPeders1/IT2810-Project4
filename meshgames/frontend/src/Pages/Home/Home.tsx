@@ -1,5 +1,5 @@
 import GameCard from '../../Components/GameCard/GameCard';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faArrowDown, faSearch } from '@fortawesome/free-solid-svg-icons';
 import React, { useState } from 'react';
 import Button from '../../Components/Button/Button';
 import './Home.css';
@@ -14,6 +14,7 @@ interface CardDataProps {
   publisher: { publisherId: string };
   platform: { platformId: string };
   genre: { genreId: string };
+  isFavorited: boolean;
 }
 
 export default function Home() {
@@ -51,7 +52,6 @@ export default function Home() {
 
   const { loading, error, data, fetchMore } = useQuery(getGameDataForCards, { variables: info });
 
-
   function handleInput(event: React.MouseEvent<HTMLButtonElement>) {
     let input = document.getElementById("search-game") as HTMLInputElement;
     setInput(input.value);
@@ -66,8 +66,8 @@ export default function Home() {
     setLimit(8);
   }
 
-  //known bug: the first time "load more is pressed", nothing happens. The following times, the expected behaviour happens.
-  //we believe this to be a problem regarding the cache. On the web, many people have experienced something similar, but we couldn´t find a solution
+  //known bug: the first time "load more" is pressed, nothing happens. The following times, the expected behaviour happens.
+  //we believe this to be a problem regarding the cache. On the web, many people have experienced something similar, but we could'nt find a solution
   function handleLoadMore(e: React.MouseEvent<HTMLButtonElement>) {
     e.preventDefault();
     const newLimit = limit + 8;
@@ -102,7 +102,11 @@ export default function Home() {
         />
         <FilterBox handleFilter={handleFilter}/>
       </div>
+      {data.games.length === 0 &&
+        <p>There are no games that match your search...</p>
+      }
       <div className='gamecard-container'>
+        {console.log(data.games.length)}
         {data.games.map((cardData: CardDataProps) =>
           <GameCard
             key={cardData.gameId}
@@ -110,16 +114,20 @@ export default function Home() {
             gameName={cardData.gameName}
             publisher={cardData.publisher.publisherId}
             platform={cardData.platform.platformId}
-            genre={cardData.genre.genreId} />)}
+            genre={cardData.genre.genreId}
+            isFavorited={cardData.isFavorited} />)}
       </div>
-      <div className="loadButton-container">
-
-        <Button
-          className="load-button"
-          label=' LOAD MORE '
-          onClick={handleLoadMore}
-        />
-      </div>
+      {data.games.length >= 8 &&
+        <div className="loadButton-container" id="loadButton-container">
+          <Button
+            className="load-button"
+            id="load-button"
+            label='LOAD MORE'
+            icon={faArrowDown}
+            onClick={handleLoadMore}
+          />
+        </div>
+      }
     </div>
   );
 }
