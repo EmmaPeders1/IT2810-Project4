@@ -15,6 +15,7 @@ interface CardDataProps {
   publisher: { publisherId: string };
   platform: { platformId: string };
   genre: { genreId: string };
+  isFavorited: boolean;
 }
 
 export default function Home() {
@@ -106,7 +107,8 @@ export default function Home() {
             gameName={cardData.gameName}
             publisher={cardData.publisher.publisherId}
             platform={cardData.platform.platformId}
-            genre={cardData.genre.genreId} />)}
+            genre={cardData.genre.genreId}
+            isFavorited={cardData.isFavorited} />)}
       </div>
       {data.games.length >= 8 &&
         <div className="loadButton-container" id="loadButton-container">
