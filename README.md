@@ -49,8 +49,6 @@ The user can also navigate to other pages by use of the sidebar. At the upper le
 
 ###  Functionality
 
-
-
 ## :wrench: Technical requirements
 
 The application retrieves data from a csv file found at [Kaggle.com](https://www.kaggle.com/datasets/gregorut/videogamesales?resource=download). The data consist of 16 598 games with information about their publisher, platform, genre release year and sales in different areas. This data is added to a Neo4j database which is connected to an Apollo server. The data is retrieved to the frontend by the use of GraphQL. 
@@ -63,9 +61,12 @@ Testing is mainly done by explorative testing done by members of the group and f
 
 In testing the user interface and responsive design, the group has used the device emaluation in the web browser to simulate the application on a phone screen (vertically and horizontally) and an ordinary PC (big screen) as well as an IPad (medium screen).
 
+# :earth_africa: Universal accessability
+
+To adhere to universal accessability, the application has gone through a color change from lighter to darker colors. Such change makes the constrast between text and background greater, which passes all the tests according to the WCAG guidelines. The placeholders in the input fields does not pass these tests, but this is not changed due to being the default from MUI. The fonts used on the website are easy to read, with no extra distractions. The text is also easily readable, and the group has chosen not to implement a manual font size change due to most web browsers already having this functionality implemented (which is tested to work on our application in Chrome). The buttons also adhere to universal accessability as they change both color and cursor upon hovering, which signals the change to the user. 
 
 # :sweat: In retrospective
 
 In retrospective, we have gained experience and have some thoughts on what we could have done better.
-
+We would like to split the filter and sort function, making it more intuitive. 
 
