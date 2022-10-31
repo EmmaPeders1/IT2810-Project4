@@ -24,6 +24,7 @@ export default function Home() {
   const [platformName, setPlatformName] = useState<string>();
   const [publisherName, setPublisherName] = useState<string>();
   const [genreName, setGenreName] = useState<string>();
+  const [sortInput, setSortInput] = useState<string>();
   const [limit, setLimit] = useState<number>(8);
 
   let info = {
@@ -40,8 +41,13 @@ export default function Home() {
       "gameName_CONTAINS": input
     },
       "options": {
+        "sort": [
+          {
+            "gameName": sortInput
+          }
+        ],
+        "limit": limit,
         "offset": 0,
-        "limit": limit
       },
       "gamesAggregateWhere2": {
         "publisher": {
@@ -65,10 +71,18 @@ export default function Home() {
     setLimit(8);
   }
 
-  function handleFilter(platformInput: string, publisherInput: string, genreInput: string) {
+  function handleFilter(platformInput: string, publisherInput: string, genreInput: string, sortInput: string) {
     setPlatformName(platformInput);
     setPublisherName(publisherInput);
     setGenreName(genreInput);
+
+    if (sortInput === "") {
+      setSortInput("ASC");
+    }
+    else {
+      setSortInput(sortInput);
+    }
+
     setLimit(8);
   }
 
@@ -89,6 +103,7 @@ export default function Home() {
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
+
   return (
     <div className="home">
       <div>
@@ -96,6 +111,7 @@ export default function Home() {
         Publisher: {publisherName} <br />
         Platform: {platformName} <br />
         Genre:{genreName} <br />
+        Sort:{sortInput} <br />
       </div>
       <div className="search-container" >
         <Search />
