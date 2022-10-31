@@ -23,9 +23,6 @@ function Sidebar() {
                 <li>
                     <Link to="/about"><FontAwesomeIcon icon={faQuestion} /> About</Link>
                 </li>
-                <li>
-                    <Link to="/charts"><FontAwesomeIcon icon={faChartColumn} /> Charts</Link>
-                </li>
                 </ul>
             </div>
         </div>
