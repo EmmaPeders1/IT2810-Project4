@@ -24,7 +24,7 @@ export default function Home() {
   const [platformName, setPlatformName] = useState<string>();
   const [publisherName, setPublisherName] = useState<string>();
   const [genreName, setGenreName] = useState<string>();
-  const [sortInput, setSortInput] = useState<string>();
+  const [sortInput, setSortInput] = useState<null | string>("ASC");
   const [limit, setLimit] = useState<number>(8);
 
   let info = {
