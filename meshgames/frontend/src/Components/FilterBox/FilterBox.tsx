@@ -74,19 +74,19 @@ function FilterBox(props: filterBoxProps) {
                 />
                 <Autocomplete
                     id="choose-platform"
-                    sx={{ width: '150px', padding: '2px', margin: '3px', bgcolor: 'white' }}
+                    sx={{ width: '130px', padding: '2px', margin: '3px', bgcolor: 'white' }}
                     options={platforms.map((platform: { platformId: String; }) => platform.platformId)}
                     renderInput={(params) => <TextField {...params} label="Platform" />}
                 />
                 <Autocomplete
                     id="choose-genre"
-                    sx={{ width: '150px', padding: '2px', margin: '3px', bgcolor: 'white' }}
+                    sx={{ width: '180px', padding: '2px', margin: '3px', bgcolor: 'white' }}
                     options={genres.map((genre: { genreId: String; }) => genre.genreId)}
                     renderInput={(params) => <TextField {...params} label="Genre" />}
                 />
                 <Autocomplete
                     id="choose-sort"
-                    sx={{ width: '250px', padding: '2px', margin: '3px', bgcolor: 'white'}}
+                    sx={{ width: '130px', padding: '2px', margin: '3px', bgcolor: 'white'}}
                     options={sortOptions}
                     renderInput={(params) => <TextField {...params} label="Sort by" />}
                 />
