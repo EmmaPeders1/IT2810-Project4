@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 
 const getGameDataForCards = gql`
-query Games($where: GameWhere, $options: GameOptions){
+query Games($where: GameWhere, $options: GameOptions, $gamesAggregateWhere2: GameWhere){
   games(where: $where, options: $options){
     gameId
     gameName
@@ -15,6 +15,9 @@ query Games($where: GameWhere, $options: GameOptions){
       genreId
     }
     isFavorited
+  }
+  gamesAggregate(where: $gamesAggregateWhere2) {
+    count
   }
 }
 `;

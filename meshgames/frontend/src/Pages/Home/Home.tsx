@@ -8,6 +8,7 @@ import Search from '../../Components/Input/Search';
 import FilterBox from '../../Components/FilterBox/FilterBox';
 import getGameDataForCards from '../../GraphQL/Queries/getGameDataForCards';
 
+
 interface CardDataProps {
   gameId: string;
   gameName: string;
@@ -23,7 +24,6 @@ export default function Home() {
   const [platformName, setPlatformName] = useState<string>();
   const [publisherName, setPublisherName] = useState<string>();
   const [genreName, setGenreName] = useState<string>();
-  const [sortInput, setSortInput] = useState<null | string>("ASC");
   const [limit, setLimit] = useState<number>(8);
 
   let info = {
@@ -39,15 +39,22 @@ export default function Home() {
       },
       "gameName_CONTAINS": input
     },
-    "options": {
-      "sort": [
-        {
-          "gameName": sortInput
-        }
-      ],
-      "limit": limit,
-      "offset": 0,
-    }
+      "options": {
+        "offset": 0,
+        "limit": limit
+      },
+      "gamesAggregateWhere2": {
+        "publisher": {
+          "publisherId_CONTAINS": publisherName
+        },
+        "platform": {
+          "platformId_CONTAINS": platformName
+        },
+        "genre": {
+          "genreId_CONTAINS": genreName
+        },
+        "gameName_CONTAINS": input
+      }
   }
 
   const { loading, error, data, fetchMore } = useQuery(getGameDataForCards, { variables: info });
@@ -58,11 +65,10 @@ export default function Home() {
     setLimit(8);
   }
 
-  function handleFilter(platformInput: string, publisherInput: string, genreInput: string, sortInput: string) {
+  function handleFilter(platformInput: string, publisherInput: string, genreInput: string) {
     setPlatformName(platformInput);
     setPublisherName(publisherInput);
     setGenreName(genreInput);
-    setSortInput(sortInput);
     setLimit(8);
   }
 
@@ -81,10 +87,9 @@ export default function Home() {
     });
   }
 
-  if(loading) return <p>Loading...</p>;
-  if(error) return <p>Error: {error.message}</p>;
-
-  return(
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>;
+  return (
     <div className="home">
       <div>
         Search: {input} <br />
@@ -100,13 +105,12 @@ export default function Home() {
           className="search-button"
           icon={faSearch}
         />
-        <FilterBox handleFilter={handleFilter}/>
+        <FilterBox handleFilter={handleFilter} />
       </div>
-      {data.games.length === 0 &&
+      {data.gamesAggregate.count === 0 &&
         <p>There are no games that match your search...</p>
       }
       <div className='gamecard-container'>
-        {console.log(data.games.length)}
         {data.games.map((cardData: CardDataProps) =>
           <GameCard
             key={cardData.gameId}
@@ -117,7 +121,7 @@ export default function Home() {
             genre={cardData.genre.genreId}
             isFavorited={cardData.isFavorited} />)}
       </div>
-      {data.games.length >= 8 &&
+      {(data.gamesAggregate.count > data.games.length) &&
         <div className="loadButton-container" id="loadButton-container">
           <Button
             className="load-button"
