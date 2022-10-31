@@ -37,15 +37,16 @@ Run *npm run build* to build the application.
 
 ### Content
 
-When starting the application, the user will be at the home-page. 
-The home page's main components are a searchbar, three filter options and ten game cards (which is the group's chosen way of presenting the data) with information. The user can scroll to the bottom and click on a button labeled *"Load more..."* which will make ten more cards visible for the user. This process can be repeated until the user is satisfied. The game cards show the title and publisher of the game. The user can click on an icon on the bottom right which will make the card expand and reveal more information. On the bottom left is a heart icon. The game is favorited when the user clicks it, which is communicated through a color change.
+When starting the application, the user will be at the *"Home"*-page. 
+The home page's main components are a searchbar, three filter options, a sort option and eight game cards (which is the group's chosen way of presenting the data) with information. The user can scroll to the bottom and click on a button labeled *"Load more..."* which will make eight more cards visible for the user. This process can be repeated until the user is satisfied or there are no more games to load. The game cards show the title and publisher of the game. The user can click on an icon on the bottom right of the card which will make a pop up appear and reveal more information. On the bottom left is a heart icon. The game is favorited when the user clicks it, which is communicated through a color change.
 
-The user can also choose which games they want too see. This can be done by searching for a game at the search field and clicking the button labeled *"Search"*. For further precision, the user can filter by *Publisher*, *Platform* or *Genre*. The filters are applied upon clicking the button labeled *"Filter*. The user does not have to have done a search before filtering. The user can also sort the game cards by pressing the dropdown labeled *"Sort by"*. The user can choose to sort the games alphabetically or by the year of release. 
+The user can also choose which games they want too see. This can be done by searching for a game at the search field and clicking the button labeled *"Search"*. For further precision, the user can filter by *Publisher*, *Platform* or *Genre*. The filters are applied upon clicking the button labeled *"Filter*. The user does not have to have done a search before filtering. The user can also sort the game cards by pressing the dropdown labeled *"Sort by"*. The user can choose to sort the games alphabetically or by the year of release. If the filtering or searching results in no games, the user will be informed by a simple text. 
 
-The user can also navigate to other pages by use of the sidebar. At the upper left corner is an icon which will make the sidebar visible to the user. The user can also close it by clicking the same icon. When seeing the sidebar, the user can  click on one of the tabs which will redirect them to the desired page. 
+The user can also navigate to other pages by use of the sidebar. At the upper left corner is an icon which will make the sidebar visible to the user. The user can also close it by clicking the same icon. When seeing the sidebar, the user can click on one of the tabs which will redirect them to the desired page. 
 
+The *"Favorite"*-page looks similar to the *Home*-page. Here are all the games the user has favorited. If the user has not favorited any games, then a simple text is visible. All the favorited games will be visible here, and the group can add filter options, search options and pagination for further improvement. The page has also a button labeled *"Reload"*, which will reload the site. This is due to the fact that the favorization of a game will not automatically reload the page. The group has decided to use this method as a reload for each favorite would result in the *Home*-page reloading each time (which would not be sustainable as it would do a new query each time).  
 
-
+The *"About"*-page consists of simple text with information about the project. 
 
 ###  Functionality
 
