@@ -54,7 +54,7 @@ function FilterBox(props: filterBoxProps) {
     PopulatePlatforms();
     PopulatePublishers();
     PopulateGenres();
-
+// useRef
     function handleFilter() {
         let platformInput = document.getElementById("choose-platform") as HTMLInputElement;
         let publisherInput = document.getElementById("choose-publisher") as HTMLInputElement;
@@ -68,7 +68,7 @@ function FilterBox(props: filterBoxProps) {
             <div id="searchBarContainer">
                 <Autocomplete
                     id="choose-publisher"
-                    sx={{ width: '250px', padding: '2px', margin: '3px', bgcolor: 'white'}}
+                    sx={{ width: '250px', padding: '2px', margin: '3px'}}
                     options={publishers.map((publisher: { publisherId: String }) => publisher.publisherId)}
                     renderInput={(params) => <TextField {...params} label="Publisher" />}
                 />
