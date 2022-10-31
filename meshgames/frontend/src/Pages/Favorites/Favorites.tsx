@@ -3,7 +3,7 @@ import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import Button from '../../Components/Button/Button';
 import GameCard from '../../Components/GameCard/GameCard';
 import getFavorites from '../../GraphQL/Queries/getFavorites';
-import '../Home/Home.css';
+import './Favorites.css';
 
 // Props which is passed into the GameCards
 interface CardDataProps {
@@ -37,7 +37,7 @@ export default function Favorites(){
   return(
     <div>
       <h1>Favorites</h1>
-      <div className="loadButton-container">
+      <div className="reloadButton-container">
         <Button
           className="reload-button"
           id="reload-button"
