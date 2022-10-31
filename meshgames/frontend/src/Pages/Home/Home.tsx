@@ -62,7 +62,14 @@ export default function Home() {
     setPlatformName(platformInput);
     setPublisherName(publisherInput);
     setGenreName(genreInput);
-    setSortInput(sortInput);
+
+    if (sortInput === "") {
+      setSortInput("ASC");
+    }
+    else {
+      setSortInput(sortInput);
+    }
+
     setLimit(8);
   }
 
