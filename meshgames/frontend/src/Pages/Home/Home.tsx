@@ -8,7 +8,6 @@ import Search from '../../Components/Input/Search';
 import FilterBox from '../../Components/FilterBox/FilterBox';
 import getGameDataForCards from '../../GraphQL/Queries/getGameDataForCards';
 
-
 interface CardDataProps {
   gameId: string;
   gameName: string;
@@ -24,6 +23,7 @@ export default function Home() {
   const [platformName, setPlatformName] = useState<string>();
   const [publisherName, setPublisherName] = useState<string>();
   const [genreName, setGenreName] = useState<string>();
+  const [sortInput, setSortInput] = useState<null | string>("ASC");
   const [limit, setLimit] = useState<number>(8);
 
   let info = {
@@ -40,8 +40,13 @@ export default function Home() {
       "gameName_CONTAINS": input
     },
     "options": {
+      "sort": [
+        {
+          "gameName": sortInput
+        }
+      ],
+      "limit": limit,
       "offset": 0,
-      "limit": limit
     }
   }
 
@@ -53,10 +58,11 @@ export default function Home() {
     setLimit(8);
   }
 
-  function handleFilter(platformInput: string, publisherInput: string, genreInput: string) {
+  function handleFilter(platformInput: string, publisherInput: string, genreInput: string, sortInput: string) {
     setPlatformName(platformInput);
     setPublisherName(publisherInput);
     setGenreName(genreInput);
+    setSortInput(sortInput);
     setLimit(8);
   }
 
@@ -75,9 +81,10 @@ export default function Home() {
     });
   }
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error.message}</p>;
-  return (
+  if(loading) return <p>Loading...</p>;
+  if(error) return <p>Error: {error.message}</p>;
+
+  return(
     <div className="home">
       <div>
         Search: {input} <br />
@@ -93,7 +100,7 @@ export default function Home() {
           className="search-button"
           icon={faSearch}
         />
-        <FilterBox handleFilter={handleFilter} />
+        <FilterBox handleFilter={handleFilter}/>
       </div>
       {data.games.length === 0 &&
         <p>There are no games that match your search...</p>
