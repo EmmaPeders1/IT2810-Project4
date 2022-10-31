@@ -43,8 +43,10 @@ function PopulateGenres(){
     if(error) return <p>Error: {error.message}</p>;
 }
 
+const sortOptions = ['ASC', 'DESC'];
+
 interface filterBoxProps {
-    handleFilter: (platformInput: string, publisherInput: string, genreInput: string) => void;
+    handleFilter: (platformInput: string, publisherInput: string, genreInput: string, sortInput: string) => void;
 }
 
 function FilterBox(props: filterBoxProps) {
@@ -57,7 +59,8 @@ function FilterBox(props: filterBoxProps) {
         let platformInput = document.getElementById("choose-platform") as HTMLInputElement;
         let publisherInput = document.getElementById("choose-publisher") as HTMLInputElement;
         let genreInput = document.getElementById("choose-genre") as HTMLInputElement;
-        props.handleFilter(platformInput.value, publisherInput.value, genreInput.value)
+        let sortInput = document.getElementById("choose-sort") as HTMLInputElement;
+        props.handleFilter(platformInput.value, publisherInput.value, genreInput.value, sortInput.value)
     }
 
     return (
@@ -80,6 +83,12 @@ function FilterBox(props: filterBoxProps) {
                     sx={{ width: '150px', padding: '2px', margin: '3px', bgcolor: 'white' }}
                     options={genres.map((genre: { genreId: String; }) => genre.genreId)}
                     renderInput={(params) => <TextField {...params} label="Genre" />}
+                />
+                <Autocomplete
+                    id="choose-sort"
+                    sx={{ width: '250px', padding: '2px', margin: '3px', bgcolor: 'white'}}
+                    options={sortOptions}
+                    renderInput={(params) => <TextField {...params} label="Sort by" />}
                 />
                 <div id="innerButtonContainer">
                     <Button

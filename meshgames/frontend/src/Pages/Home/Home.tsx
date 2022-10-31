@@ -7,7 +7,6 @@ import { useQuery } from '@apollo/client';
 import Search from '../../Components/Input/Search';
 import FilterBox from '../../Components/FilterBox/FilterBox';
 import getGameDataForCards from '../../GraphQL/Queries/getGameDataForCards';
-import SortBox from '../../Components/SortBox/SortBox';
 
 interface CardDataProps {
   gameId: string;
@@ -23,7 +22,7 @@ export default function Home() {
   const [platformName, setPlatformName] = useState<string>();
   const [publisherName, setPublisherName] = useState<string>();
   const [genreName, setGenreName] = useState<string>();
-  const [sortInput, setSortInput] = useState<string>();
+  const [sortInput, setSortInput] = useState<null | string>("ASC");
   const [limit, setLimit] = useState<number>(8);
 
   let info = {
@@ -40,13 +39,13 @@ export default function Home() {
       "gameName_CONTAINS": input
     },
     "options": {
-      "limit": limit,
-      "offset": 0,
       "sort": [
         {
-          "gameName": null
+          "gameName": sortInput
         }
-      ]
+      ],
+      "limit": limit,
+      "offset": 0,
     }
   }
 
@@ -59,16 +58,16 @@ export default function Home() {
     setLimit(8);
   }
 
-  function handleFilter(platformInput: string, publisherInput: string, genreInput: string) {
+  function handleFilter(platformInput: string, publisherInput: string, genreInput: string, sortInput: string) {
     setPlatformName(platformInput);
     setPublisherName(publisherInput);
     setGenreName(genreInput);
+    setSortInput(sortInput);
     setLimit(8);
   }
 
-
   //known bug: the first time "load more is pressed", nothing happens. The following times, the expected behaviour happens.
-  //we believe this to be a problem regarding the cache. On the web, many people have experienced something similar, but we could'nt find a solution
+  //we believe this to be a problem regarding the cache. On the web, many people have experienced something similar, but we couldn´t find a solution
   function handleLoadMore(e: React.MouseEvent<HTMLButtonElement>) {
     e.preventDefault();
     const newLimit = limit + 8;
@@ -80,11 +79,6 @@ export default function Home() {
     }).then(fetchMoreResult => {
       setLimit(newLimit);
     });
-  }
-
-  function handleSort(sortInput:string) {
-    setSortInput(sortInput);
-    console.log(sortInput);
   }
 
   if(loading) return <p>Loading...</p>;
@@ -107,7 +101,6 @@ export default function Home() {
           icon={faSearch}
         />
         <FilterBox handleFilter={handleFilter}/>
-        <SortBox handleSort= {handleSort}/>
       </div>
       <div className='gamecard-container'>
         {data.games.map((cardData: CardDataProps) =>
@@ -123,8 +116,9 @@ export default function Home() {
 
         <Button
           className="load-button"
-          onClick={handleLoadMore}>
-          <p>"Load More.."</p></Button>
+          label=' LOAD MORE '
+          onClick={handleLoadMore}
+        />
       </div>
     </div>
   );
