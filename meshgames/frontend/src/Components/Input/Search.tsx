@@ -4,7 +4,7 @@ function Search() {
   return (
     <Input
       id="search-game"
-      sx={{ width: 500, height: '56px', bgcolor: 'white', padding: '10px' }}
+      sx={{ width: 500, height: '56px', bgcolor: 'background.paper', padding: '10px' }}
       placeholder={"Search for a game"}
     />
   )
