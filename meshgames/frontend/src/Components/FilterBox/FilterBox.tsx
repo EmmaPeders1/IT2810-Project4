@@ -75,25 +75,25 @@ function FilterBox(props: filterBoxProps) {
             <div id="searchBarContainer">
                 <Autocomplete
                     id="choose-publisher"
-                    sx={{ width: '250px', padding: '2px', margin: '3px', bgcolor: 'background.paper' }}
+                    sx={{ width: '250px', padding: '2px', margin: '3px', bgcolor: 'background.paper', borderRadius: '10%'}}
                     options={publishers.map((publisher: { publisherId: String }) => publisher.publisherId)}
                     renderInput={(params) => <TextField {...params} label="Publisher" />}
                 />
                 <Autocomplete
                     id="choose-platform"
-                    sx={{ width: '130px', padding: '2px', margin: '3px', bgcolor: 'background.paper' }}
+                    sx={{ width: '130px', padding: '2px', margin: '3px', bgcolor: 'background.paper', borderRadius: '10%' }}
                     options={platforms.map((platform: { platformId: String; }) => platform.platformId)}
                     renderInput={(params) => <TextField {...params} label="Platform" />}
                 />
                 <Autocomplete
                     id="choose-genre"
-                    sx={{ width: '180px', padding: '2px', margin: '3px', bgcolor: 'background.paper' }}
+                    sx={{ width: '180px', padding: '2px', margin: '3px', bgcolor: 'background.paper', borderRadius: '10%' }}
                     options={genres.map((genre: { genreId: String; }) => genre.genreId)}
                     renderInput={(params) => <TextField {...params} label="Genre" />}
                 />
                 <Autocomplete
                     id="choose-sort"
-                    sx={{ width: '130px', padding: '2px', margin: '3px', bgcolor: 'background.paper' }}
+                    sx={{ width: '135px', padding: '2px', margin: '3px', bgcolor: 'background.paper', borderRadius: '10%' }}
                     options={sortOptions}
                     renderInput={(params) => <TextField {...params} label="Sort by" />}
                 />
