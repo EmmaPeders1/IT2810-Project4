@@ -1,13 +1,13 @@
-import './App.css';
-import Header from './Components/Header/Header';
 import { HashRouter as Router, Route, Routes } from 'react-router-dom';
+import { RecoilRoot } from 'recoil';
+import Header from './Components/Header/Header';
+import ModeToggleButton from './Components/ModeToggleButton/ModeToggleButton';
+import Sidebar from './Components/Sidebar/Sidebar';
 import Home from './Pages/Home/Home';
 import Favorites from './Pages/Favorites/Favorites';
 import About from './Pages/About/About';
-import Sidebar from './Components/Sidebar/Sidebar';
-import { RecoilRoot } from 'recoil';
 import AppThemeProvider from './Recoil/ThemeProvider/ThemeProvider';
-import ModeToggleButton from './Components/ModeToggleButton/ModeToggleButton';
+import './App.css';
 
 export default function App() {
   return (

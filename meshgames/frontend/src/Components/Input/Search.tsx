@@ -1,5 +1,8 @@
 import { Input } from '@mui/material';
 
+/**
+ * A Funtional component that contains the searchbar
+ */
 function Search() {
   return (
     <Input

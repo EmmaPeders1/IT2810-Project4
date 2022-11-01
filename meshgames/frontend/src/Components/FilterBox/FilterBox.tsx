@@ -4,15 +4,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 import Button from '../../Components/Button/Button';
+import getGenreData from '../../GraphQL/Queries/getGenreData';
 import getPlatformData from '../../GraphQL/Queries/getPlatformData';
 import getPublisherData from '../../GraphQL/Queries/getPublisherData';
-import getGenreData from '../../GraphQL/Queries/getGenreData';
 import './FilterBox.css';
 
+// Initializing lists to populate filter fields with data from database
 let platforms: { platformId: String; }[] = [];
 let publishers: { publisherId: String; }[] = [];
 let genres: { genreId: String; }[] = [];
 
+// Functions which populate the different autocompletes components
 function PopulatePlatforms() {
     const { loading, error, data } = useQuery(getPlatformData);
 
@@ -49,12 +51,17 @@ interface filterBoxProps {
     handleFilter: (platformInput: string, publisherInput: string, genreInput: string, sortInput: string) => void;
 }
 
+/**
+* A function for displaying filtering options and handle filtering
+* @param filterBoxProps interface
+* @returns a component containing input fields and button for filter functionality
+*/
 function FilterBox(props: filterBoxProps) {
 
     PopulatePlatforms();
     PopulatePublishers();
     PopulateGenres();
-    // useRef
+
     function handleFilter() {
         let platformInput = document.getElementById("choose-platform") as HTMLInputElement;
         let publisherInput = document.getElementById("choose-publisher") as HTMLInputElement;

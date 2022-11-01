@@ -1,19 +1,18 @@
 import React from 'react';
 import { FC, useState, useEffect } from 'react';
-import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardActions from '@mui/material/CardActions';
-import IconButton, { IconButtonProps } from '@mui/material/IconButton';
+import IconButton from '@mui/material/IconButton';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { useMutation } from '@apollo/client';
-import updateIsFavoritedById from '../../GraphQL/Mutations/updateIsFavoritedById';
 import GameCardInfo from '../GameCardInfo/GameCardInfo';
+import updateIsFavoritedById from '../../GraphQL/Mutations/updateIsFavoritedById';
 import './GameCard.css';
 
 
 // props which the GameCard use
-interface GameCardProps {
+interface gameCardProps {
   gameId: string;
   gameName: string;
   publisher: string;
@@ -22,7 +21,12 @@ interface GameCardProps {
   isFavorited: boolean;
 }
 
-const GameCard: FC<GameCardProps> = ({ gameId, gameName, publisher, platform, genre, isFavorited }) => {
+/**
+* A functional component that displays the information in Card-components
+* @param gameCardProps interface
+* @returns a component displaying the information in Card-components
+*/
+const GameCard: FC<gameCardProps> = ({ gameId, gameName, publisher, platform, genre, isFavorited }) => {
 
   // variables for the mutation
   const info = {

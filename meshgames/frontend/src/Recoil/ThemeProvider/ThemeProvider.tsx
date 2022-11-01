@@ -1,4 +1,4 @@
-import React, { ReactElement, useMemo } from 'react';
+import { ReactElement, useMemo } from 'react';
 import { useRecoilValue } from 'recoil';
 import { createTheme, CssBaseline, PaletteMode, ThemeProvider } from '@mui/material';
 import { appThemeMode } from '../Atom/AppThemeMode';
@@ -7,10 +7,14 @@ interface Props {
   children: ReactElement;
 }
 
-function AppThemeProvider({ children }: Props): ReactElement {
+/**
+ * A Funtional component that wraps MUI's Themeprovider after providing it with a palette foreither dark or light theme
+ * @returns a Themeprovider with the correct color pallette
+ */
+function AppThemeProvider({ children }: Props) {
   const mode = useRecoilValue(appThemeMode);
 
-  //Determine which color palette to use depending on the PalleteMode retrieved by recoil 
+  //Determine which color palette to use depending on the PalleteMode retrieved by recoil
   const getDesignTokens = (mode: PaletteMode) => ({
     palette: {
       mode,
@@ -26,7 +30,7 @@ function AppThemeProvider({ children }: Props): ReactElement {
           text: {
             primary: '#212121',
           },
-        }: 
+        }:
         {
           // palette values for dark mode
           background: {
@@ -48,7 +52,7 @@ function AppThemeProvider({ children }: Props): ReactElement {
 
   //update theme used when mode toggles
   const theme = useMemo(() => createTheme(getDesignTokens(mode)), [mode]);
-  
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />

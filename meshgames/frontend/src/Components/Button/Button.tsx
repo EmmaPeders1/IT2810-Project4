@@ -5,7 +5,8 @@ import { FC } from 'react';
 
 import './Button.css';
 
-interface ButtonProps {
+// props which the Button uses
+interface buttonProps {
   children?: JSX.Element;
   disabled?: boolean;
   label?: string;
@@ -18,7 +19,12 @@ interface ButtonProps {
   dataTestid?: string;
 }
 
-const Button: FC<ButtonProps> = ({
+/**
+* A functional component for a button
+* @param buttonProps interface
+* @returns a button with specific styling and parameters tied to it
+*/
+const Button: FC<buttonProps> = ({
   children,
   disabled,
   label,
