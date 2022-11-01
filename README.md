@@ -11,20 +11,25 @@ Developed by:
 
 ## :computer: Tech stack
 
-The application is built using the GRAND-Stack
+The application is built using the GRAND-Stack, Recoil and some elements from [MUI](https://mui.com/).
 
 ### Backend
 
 - GraphQL
+    - The group uses GraphQL to query the database. 
 - Apollo server
+    - The Apollo server is used to connected to the database. The Apollo server also has the great feature of automatically creating queries defined from the typeDefs. The group used these queries throughout the whole development. 
 - Neo4j Database
+    - The Neo4j Database is a graph database. This means all the nodes are connected to each other through relationships. This makes for faster seraches which is more sustainable in the long run. Another great advantage of using the Neo4j database was that the group didn't need to create resolvers. The dataset is added to the database through the use of the Cypher query language. 
 
 ### Frontend
 
-- React 
--Typescript
+- React Typescript
+    - React Typescript is used to develop this application per the requirements. 
 - Apollo client 
+    - Apollo client is used to retrieve and modify the data from the database. This is mainly done through *"useState"*. The group discovered the *"Apollo Sandbox"* to be a great way of getting a better understanding of the queries. By using the sandbox, the group was able to easily create and test queries. 
 - Recoil
+    - Recoil is used as the global state manager which keeps track the user's choice of theme. 
 
 ## :arrow_forward: Running the application
 
@@ -84,7 +89,7 @@ Testing is partly done by explorative testing done by members of the group and f
 
 The unit tests have been created using Jest and React's testing library. For example does the unit test GameCard.test.tsx render a GameCard component using mockdata and checks wheter or not the mockdata is displayed in the rendered card. Further it tests that the expand button in the card works and that information is both shown and hidden again when pressing the expand button. The unit test Header.test.tsx makes use of a snapshot to check that the Header component is rendered as expected. 
 
-The end-to-end test is implemented using Cypress. 
+The end-to-end test is implemented using Cypress. The test mimics a user's journey through the application. This is done through testing all the main functionality (see above), except visiting the *About*-page.
 
 In testing the user interface and responsive design, the group has used the device emaluation in the web browser to simulate the application on different phone screens (vertically and horizontally) and ordinary PCs (big screen) as well as IPads (medium screen).
 
