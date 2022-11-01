@@ -81,6 +81,7 @@ const GameCard: FC<gameCardProps> = ({ gameId, gameName, publisher, platform, ge
         <IconButton
           onClick={handleToggleFavorite}
           aria-label="add to favorites"
+          data-testid="favoriteIcon"
         >
           <FavoriteIcon sx={{ color: heartColor }} />
         </IconButton>
