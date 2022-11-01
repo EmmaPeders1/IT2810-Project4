@@ -11,6 +11,8 @@ Developed by:
 
 ## :computer: Tech stack
 
+The application is built using the GRAND-Stack
+
 ### Backend
 
 - GraphQL
@@ -22,6 +24,7 @@ Developed by:
 - React 
 -Typescript
 - Apollo client 
+- Recoil
 
 ## :arrow_forward: Running the application
 
@@ -52,13 +55,16 @@ The *"About"*-page consists of simple information about the application.
 
 The main functionality is the search function. The user can choose which games they want too view. This can be done by searching for a game at the search field and clicking the button labeled *"Search"*. Notice that the functionality is case sensitive, meaning lowecase lettering will not result in an item with uppercase letters. 
 
-For further precision, the user can filter by *Publisher*, *Platform* or *Genre*. The filters are applied when clicking the button labeled *"Filter*. The user does not have to search before filtering. The user can also sort the game cards by pressing the dropdown labeled *"Sort by"*, where one can sort the games ascending or descending (alphabetically). The default sorting is set to ascending. If the filtering or searching results in no games, the user will be informed by a simple text. A known bug, which we decided to abandon in dialogue with student assistants, is the fact that if the user first filters and chooses a sorting, and then wants to sort differently on the same result set, the functionality will not update. In other words, the user must change one of the filter options to make a new sorting.
+For further precision, the user can filter by *Publisher*, *Platform* or *Genre*. The filters are applied when clicking the button labeled *"Filter"*. The user does not have to search before filtering. The user can also sort the game cards by pressing the dropdown labeled *"Sort by"*, where one can sort the games ascending or descending (alphabetically). The default sorting is set to ascending. If the filtering or searching results in no games, the user will be informed by a simple text. A known bug, which we decided to abandon in dialogue with student assistants, is the fact that if the user first filters and chooses a sorting, and then wants to sort differently on the same result set, the results will not update. In other words, the user must change one of the filter options to make a new sorting.
 
-The application implements pagination. The user can scroll to the bottom and click on a button labeled *"Load more..."* which will make eight more cards visible for the user. This process can be repeated until the user is satisfied or there are no more games to load. The game cards display the title and publisher of the game. The user can click on an icon on the bottom right of the card which will make a pop up appear and reveal more informationa about the game. On the bottom left is a heart icon. The game is favorited when the user clicks it, which is communicated through a color change. 
+The application implements pagination. The user can scroll to the bottom and click on a button labeled *"Load more..."* which will make eight more cards visible for the user. This process can be repeated until the user is satisfied or there are no more games to load. 
 
-The user can also navigate to other pages by use of the sidebar. When viewing the sidebar, the user can click on one of the tabs which will redirect them to the desired page. 
+The game cards display the title and publisher of the game. The user can click on an icon on the bottom right of the card which will make a pop up appear and reveal more informationa about the game. 
 
-To favorize a game, the user can click on the heart icon located on the lower left corner of the game cards.
+On the bottom left is a heart icon. The game is favorited when the user clicks it, which is communicated through a color change. 
+
+The user can navigate to other pages by use of the sidebar. When viewing the sidebar, the user can click on one of the tabs which will redirect them to the desired page. 
+
 
 To switch theme of the page, the user can click on the white moon icon on the upper right corner located on the header. This icon will toggle between light and dark mode, and swtiches to a gray sun on dark mode. The group followed a [guide](https://dev.to/skinnypetethegiraffe/lightdark-mode-toggle-using-mui-and-recoil-ts-3bj0), and did some modifications to make it fit for application. 
 
@@ -86,11 +92,9 @@ In testing the user interface and responsive design, the group has used the devi
 
 To adhere to universal accessebility, the application has gone through a color change from lighter to darker colors. Such change makes the constrast between text and background greater, which passes all the tests according to the WCAG guidelines. The placeholders in the input fields does not pass these tests, but this is not changed due to being the default from MUI. The fonts used on the website are easy to read, with no extra distractions. The text is also easily readable, and the group has chosen not to implement a manual font size change due to most web browsers already having this functionality implemented (which is tested to work on our application in Chrome). The buttons also adhere to universal accessability as they change both color and cursor upon hovering, which signals the change to the user. 
 
-# :sweat: In retrospective
-
-In retrospective, the group have gained experience and have some thoughts on what we could have done better. 
-
-Improvements for next time:
+# :pushpin: Improvements for next time:
 
 - Make the query case insensitive. Graphql does not have native support for this. It could be implemented with the help of Neo4j 'Search index', but the group found themselves short of time and decided to drop this feature.
 - Make the sidebar remove itself when clicking outside of it. As of now the user must click the 'close' button to go back to the homepage
+- Fix known bug/shortcoming of having to change one ore more filters in order to change the sorting from ascending to descending, or vice versa.
+- Exclude the filter button entirely, and rather apply new filters as selection changes
