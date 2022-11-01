@@ -5,7 +5,10 @@
   display: flex;
   justify-content: center;
   margin: 0 auto 1em auto;
+  color: #fff;
+  align-items: center;
 }
+
 .card :hover{
   cursor: pointer;
 }
