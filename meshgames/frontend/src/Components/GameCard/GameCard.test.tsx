@@ -1,10 +1,12 @@
 import { render, screen } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
 import React from 'react';
 import GameCard from "./GameCard";
+import { MockedProvider } from '@apollo/react-testing';
+
 
 let mockobject = {
-  key: '1', gameId: '1',
+  key: '1', 
+  gameId: '1',
   gameName: 'GameName',
   publisher: 'GamePublisher',
   platform: 'GamePlatform',
@@ -12,25 +14,16 @@ let mockobject = {
   isFavorited: false
 };
 
-
 describe('Test GameCard', () => {
   test('Render a GameCard correctly', () => {
-    render(<GameCard {...mockobject} />);
+    render(<MockedProvider mocks={[]} addTypename={false}>
+      <GameCard {...mockobject}/>
+    </MockedProvider>);
+
     expect(screen.getByText('GameName')).toBeInTheDocument();
     expect(screen.getByText('GamePublisher')).toBeInTheDocument();
+    expect(screen.getByTestId('InfoButton')).toBeInTheDocument();
+    expect(screen.getByTestId('favoriteIcon')).toBeInTheDocument();
   });
-
-  test('Expand body button', () => {
-    render(<GameCard {...mockobject} />);
-    const expandButton = screen.getByTestId('ExpandMoreButton');
-    expect(expandButton).toBeInTheDocument();
-    expect(expandButton.getAttribute("aria-expanded")).toBe("false");
-
-    userEvent.click(expandButton);
-    expect(expandButton.getAttribute("aria-expanded")).toBe("true");
-    expect(screen.getByText('Genre: GameGenre')).toBeInTheDocument();
-    expect(screen.getByText('Platform: GamePlatform')).toBeInTheDocument();
-  });
-
 });
 

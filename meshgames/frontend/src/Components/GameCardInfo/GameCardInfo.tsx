@@ -25,8 +25,8 @@ function GameCardInfo(props: gameCardInfoProps) {
   return (
     <div>
       {/* Icon which will show the information if clicked on */}
-      <div onClick={handleOpen} className="infoIcon">
-        <FontAwesomeIcon icon={faInfoCircle} />
+      <div onClick={handleOpen} className="infoIcon" data-testid="InfoButton">
+        <FontAwesomeIcon icon={faInfoCircle}/>
       </div>
 
       {/* Modal which handles the open and close functions */}
