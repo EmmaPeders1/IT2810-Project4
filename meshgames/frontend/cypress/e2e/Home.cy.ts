@@ -6,7 +6,7 @@ describe('Test home page', () => {
 
   it('Search for "Wii" and check for right output', () => {
     
-    //search for titles containing Wii
+    // Search for titles containing 'Wii', checks that the rendered cards are the expected ones
     cy.get('[id="search-game"]')
       .type('Wii')
     cy.get('[class = "button-component search-button"]').click()
@@ -38,7 +38,7 @@ describe('Test home page', () => {
     cy.get('[class = "gamecard-container"]')
       .children()
       .should('have.length', 8)
-    cy.get('[class = "button-component load-button"]').click().click()
+    cy.get('[class = "button-component load-button"]').click()
     cy.get('[class = "gamecard-container"]')
       .children()
       .should('have.length', 16)
@@ -63,17 +63,17 @@ describe('Test home page', () => {
   it('Test dark mode', () => {
     cy.get('body')
       .should('have.css', 'background-color', 'rgb(245, 245, 245)')
-    cy.get('[data-testid = "LightModeIcon"]').click()
+    cy.get('[data-testid = "DarkModeIcon"]').click()
     cy.get('body')
       .should('have.css', 'background-color', 'rgb(31, 31, 31)')
-    cy.get('[data-testid = "DarkModeIcon"]').click()
+    cy.get('[data-testid = "LightModeIcon"]').click()
     cy.get('body')
       .should('have.css', 'background-color', 'rgb(245, 245, 245)')
   });
 
   it('Test filtering', () => {
 
-    //Filter by publisher
+    // Filter by publisher
     cy.get('[id="choose-publisher"]')
       .type('Nintendo')
     cy.get('[class = "button-component filter-button"]').click()
@@ -87,7 +87,7 @@ describe('Test home page', () => {
     .next()
     .should('have.id', '839')
 
-    //filter by platform
+    // Filter by platform
     cy.get('[id="choose-platform"]')
       .type('NES')
     cy.get('[class = "button-component filter-button"]').click()
@@ -101,7 +101,7 @@ describe('Test home page', () => {
     .next()
     .should('have.id', '12387')
 
-    //filter by genre
+    // Filter by genre
     cy.get('[id="choose-genre"]')
       .type('Shooter')
     cy.get('[class = "button-component filter-button"]').click()
@@ -115,7 +115,7 @@ describe('Test home page', () => {
     .next()
     .should('have.id', '4578')
 
-    //sort by DESC
+    // Sort by DESC
     cy.get('[id="choose-sort"]')
       .type('DESC')
     cy.get('[class = "button-component filter-button"]').click()
@@ -130,6 +130,9 @@ describe('Test home page', () => {
     .should('have.id', '15526')
   });
 
+  // Search for the game 'God of War: Ghost of Sparta' and favorite this game. 
+  // Then checks the 'Favorite' page and finds the game.
+  // Then unfavorites the game, presses the reload button and checks that the game is no longer displayed in the 'favorite' page
   it('Test favorite functionality', () => {
     cy.get('[id="search-game"]')
       .type('God of War: Ghost of Sparta')
