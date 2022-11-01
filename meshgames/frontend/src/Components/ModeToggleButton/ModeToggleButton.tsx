@@ -3,10 +3,13 @@ import { useRecoilState } from 'recoil';
 import { IconButton } from '@mui/material';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
-import { ThemeMode, appThemeMode } from '../../Recoil/Atom/AppThemeMode';
+import { appThemeMode } from '../../Recoil/Atom/AppThemeMode';
+import { PaletteMode } from '@mui/material';
+import { Stack } from '@mui/material';
+import './ModeToggleButton.css';
 
 interface DynamicIconProps {
-  mode: ThemeMode;
+  mode: PaletteMode;
 }
 
 function DynamicIcon({ mode }: DynamicIconProps): ReactElement {
@@ -24,9 +27,11 @@ function ModeToggleButton(): ReactElement {
   };
 
   return (
-    <IconButton onClick={toggleMode} sx={{ width: 40, height: 40 }}>
-      <DynamicIcon mode={mode} />
-    </IconButton>
+    <Stack className="modeButton" direction="row" justifyContent="flex-end">
+      <IconButton onClick={toggleMode} sx={{ width: 40, height: 40 }}>
+        <DynamicIcon mode={mode} />
+      </IconButton>
+    </Stack>
   );
 }
 

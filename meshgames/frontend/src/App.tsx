@@ -10,23 +10,22 @@ import AppThemeProvider from './Recoil/ThemeProvider/ThemeProvider';
 import ModeToggleButton from './Components/ModeToggleButton/ModeToggleButton';
 
 export default function App() {
-
   return (
     <RecoilRoot>
       <AppThemeProvider>
         <div className="App">
           <Router>
-            <Header/>
-            <Sidebar/>
-            <ModeToggleButton/>
+            <Header />
+            <ModeToggleButton />
+            <Sidebar />
             <Routes>
-              <Route path="/" element={<Home />}/>
-              <Route path="/favorites" element={<Favorites />}/>
-              <Route path="/about" element={<About />}/>
+              <Route path="/" element={<Home />} />
+              <Route path="/favorites" element={<Favorites />} />
+              <Route path="/about" element={<About />} />
             </Routes>
           </Router>
         </div>
-    </AppThemeProvider>
-  </RecoilRoot>
+      </AppThemeProvider>
+    </RecoilRoot>
   );
 }

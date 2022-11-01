@@ -1,10 +1,9 @@
 import { atom, AtomEffect} from 'recoil';
-
-export type ThemeMode = 'light' | 'dark';
+import { PaletteMode } from '@mui/material';
 
 const localStorageEffect = 
 
-  (key: string): AtomEffect<ThemeMode> =>
+  (key: string): AtomEffect<PaletteMode> =>
   ({ setSelf, onSet }) => {
     // Retrieve the value stored at the specified key
     const stored = localStorage.getItem(key);
@@ -25,10 +24,10 @@ const localStorageEffect =
     });
   };
 
-export const appThemeMode = atom<ThemeMode>({
+export const appThemeMode = atom<PaletteMode>({
   key: 'AppThemeMode',
   default: 'light',
-  effects: [localStorageEffect('example-theme-mode')],
+  effects: [localStorageEffect('theme-mode')],
 });
 
 export default appThemeMode

@@ -13,7 +13,7 @@ interface gameCardInfoProps {
   genreInfo: string;
 }
 
-function GameCardInfo(props: gameCardInfoProps){
+function GameCardInfo(props: gameCardInfoProps) {
 
   // function which keeps track of wheter the information is visible or not
   const [open, setOpen] = useState(false);
@@ -36,34 +36,36 @@ function GameCardInfo(props: gameCardInfoProps){
       >
         {/* div where the information is visible */}
         <div className="infoBoxInner">
-          <Typography
-            variant="h5"
-            component="h2"
-            sx={{ textAlign: 'center', m: 1, fontWeight: 'bold' }}
-          >
-            Game information:
-          </Typography>
+          <Box sx={{ backgroundColor: 'background.default', borderRadius: '5%', border: 'solid #9d00a8' }}>
+            <Typography
+              variant="h5"
+              component="h2"
+              sx={{ textAlign: 'center', m: 1, fontWeight: 'bold', bgcolor: 'background.default' }}
+            >
+              Game information:
+            </Typography>
 
-          {/* Information given by the props */}
-          <Typography
-            sx={{ marginBottom: '20px' }}>
-            <b>Title: </b> {props.gameNameInfo} <br />
-            <b>Publisher: </b> {props.publisherInfo} <br />
-            <b>Platform: </b> {props.platformInfo} <br />
-            <b>Genre: </b> {props.genreInfo} <br />
-          </Typography>
+            {/* Information given by the props */}
+            <Typography
+              sx={{ marginLeft: 'auto', marginRight: 'auto', marginBottom: '20px', bgcolor: 'background.default' }}>
+              <b>Title: </b> {props.gameNameInfo} <br />
+              <b>Publisher: </b> {props.publisherInfo} <br />
+              <b>Platform: </b> {props.platformInfo} <br />
+              <b>Genre: </b> {props.genreInfo} <br />
+            </Typography>
 
-          {/* Button to close the field (the user can also just click outside of the box, but added just in case) */}
-          <div className="button-container">
-            <Button
-              icon={faClose}
-              label=" CLOSE "
-              onClick={handleClose}
-            />
-          </div>
+            {/* Button to close the field (the user can also just click outside of the box, but added just in case) */}
+            <div className="button-container">
+              <Button
+                icon={faClose}
+                label=" CLOSE "
+                onClick={handleClose}
+              />
+            </div>
+          </Box>
         </div>
-      </Modal>
-    </div>
+      </Modal >
+    </div >
   );
 }
 

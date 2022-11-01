@@ -1,6 +1,6 @@
 import React, { ReactElement, useMemo } from 'react';
 import { useRecoilValue } from 'recoil';
-import { createTheme, CssBaseline, GlobalStyles, ScopedCssBaseline, ThemeProvider } from '@mui/material';
+import { createTheme, CssBaseline, PaletteMode, ThemeProvider } from '@mui/material';
 import { appThemeMode } from '../Atom/AppThemeMode';
 
 interface Props {
@@ -9,26 +9,49 @@ interface Props {
 
 function AppThemeProvider({ children }: Props): ReactElement {
   const mode = useRecoilValue(appThemeMode);
-  const theme = useMemo(
-    () =>
-      createTheme({
-        palette: {
-          mode,
+
+  //Determine which color palette to use depending on the PalleteMode retrieved by recoil 
+  const getDesignTokens = (mode: PaletteMode) => ({
+    palette: {
+      mode,
+      ...(mode === 'light'
+        ? {
+          // palette values for light mode
           primary: {
-            main: '#61dafb',
+            main: '#6a1b9a',
+          },
+          background: {
+            default: '#f5f5f5',
+          },
+          text: {
+            primary: '#212121',
+          },
+        }: 
+        {
+          // palette values for dark mode
+          background: {
+            default: '#1f1f1f',
+            paper: '#2b2b2b'
+          },
+          primary: {
+            main: '#514ab0',
           },
           secondary: {
             main: '#EB9612CC',
           },
-        },
-      }),
-    [mode]
-  );
+          text: {
+            primary: 'white',
+          },
+        }),
+      },
+  });
+
+  //update theme used when mode toggles
+  const theme = useMemo(() => createTheme(getDesignTokens(mode)), [mode]);
   
   return (
     <ThemeProvider theme={theme}>
-      <CssBaseline/>
-      <ScopedCssBaseline enableColorScheme> </ScopedCssBaseline>
+      <CssBaseline />
       {children}
     </ThemeProvider>
   );
