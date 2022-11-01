@@ -1,5 +1,5 @@
 import GameCard from '../../Components/GameCard/GameCard';
-import { faArrowDown, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faArrowDown, faRefresh, faSearch, faTrash } from '@fortawesome/free-solid-svg-icons';
 import React, { useState } from 'react';
 import Button from '../../Components/Button/Button';
 import './Home.css';
@@ -71,6 +71,13 @@ export default function Home() {
     setLimit(8);
   }
 
+  function handleClear(){
+    setInput("");
+    setPublisherName("");
+    setPlatformName("");
+    setGenreName("");
+  }
+
   function handleFilter(platformInput: string, publisherInput: string, genreInput: string, sortInput: string) {
     setPlatformName(platformInput);
     setPublisherName(publisherInput);
@@ -106,13 +113,6 @@ export default function Home() {
 
   return (
     <div className="home">
-      <div>
-        Search: {input} <br />
-        Publisher: {publisherName} <br />
-        Platform: {platformName} <br />
-        Genre:{genreName} <br />
-        Sort:{sortInput} <br />
-      </div>
       <div className="search-container" >
         <Search />
         <Button
@@ -123,8 +123,20 @@ export default function Home() {
         />
         <FilterBox handleFilter={handleFilter} />
       </div>
+      <div className="info-container">
+        <p className='info-p'><b>Title: </b> {input}</p>
+        <p className='info-p'><b>Publisher: </b> {publisherName} </p>
+        <p className='info-p'><b>Platform: </b> {platformName} </p>
+        <p className='info-p'><b>Genre: </b>{genreName} </p>
+        <p className='info-p'><b>Sort: </b>{sortInput} </p>
+        <Button
+          label='CLEAR'
+          icon={faTrash}
+          onClick={handleClear}
+        />
+      </div>
       {data.gamesAggregate.count === 0 &&
-        <p>There are no games that match your search...</p>
+        <p className='zero-message'>There are no games that match your search...</p>
       }
       <div className='gamecard-container'>
         {data.games.map((cardData: CardDataProps) =>
