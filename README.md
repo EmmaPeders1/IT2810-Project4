@@ -33,14 +33,23 @@ The application is built using the GRAND-Stack, Recoil and some elements from [M
 
 ## :arrow_forward: Running the application
 
-In the project directory, you can run the project by typing `npm start` in the terminal.
+- `npm install` (in both backend and frontend)
+
+- cd into backend and start the Apollo server with the command `node index.js`
+
+- cd into frontend and start the React application by typing `npm start` 
+
 Runs the app in the development mode.
 Open http://localhost:3000 to view it in the browser.
 The page will reload on edits.
 
-Run `npm test` to test the application.
+### To run the tests:
 
-Run `npm run build` to build the application.
+- cd into frontend
+
+- Run `npm test` to test the application.
+
+- Run `npm run cypress:open` to run the end-to-end tests. 
 
 
 ## :page_with_curl: Content and functionality
@@ -70,14 +79,13 @@ On the bottom left is a heart icon. The game is favorited when the user clicks i
 
 The user can navigate to other pages by use of the sidebar. When viewing the sidebar, the user can click on one of the tabs which will redirect them to the desired page. 
 
-
 To switch theme of the page, the user can click on the white moon icon on the upper right corner located on the header. This icon will toggle between light and dark mode, and swtiches to a gray sun on dark mode. The group followed a [guide](https://dev.to/skinnypetethegiraffe/lightdark-mode-toggle-using-mui-and-recoil-ts-3bj0), and did some modifications to make it fit for application. 
 
 ## :wrench: Technical requirements
 
 The application retrieves data from a csv file found at [Kaggle.com](https://www.kaggle.com/datasets/gregorut/videogamesales?resource=download). The data consist of 16 598 games with information about their publisher, platform, genre release year and sales in different areas. This data is added to a Neo4j database which is connected to an Apollo server. The data is retrieved to the frontend by the use of GraphQL. 
  
-We used Recoil to implement theme switching with light and dark modes. This covers the requirement to use some external state managment. The group found that the app didn't require any of global state managment so a decision was made to implement dark/ligth-themes solely in order to satisfy this requirement.
+The group used Recoil to implement theme switching with light and dark modes. This covers the requirement to use some external state managment. The group found that the app didn't require any of global state managment so a decision was made to implement dark/ligth-themes solely in order to satisfy this requirement.
 
 Most of the components, expect for the buttons, are MUI components, as the group saw it appropiate to use this component library.
 
