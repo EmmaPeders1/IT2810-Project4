@@ -1,0 +1,31 @@
+.infoBoxInner {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+  margin-top: 10%;
+  width: 80%;
+  max-width: 400px;
+  border-radius: 5%;
+  border: solid #9d00a8;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.infoIcon{
+  margin-left: 185px;
+  font-size: 25px;
+  padding: 10px;
+  color: #514ab0;
+
+}
+
+.infoIcon :hover {
+  cursor: pointer;
+  color: #9d00a8;
+}

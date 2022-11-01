@@ -1,15 +1,34 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+import { offsetLimitPagination } from "@apollo/client/utilities";
+import App from './App';
+import './index.css';
+
+
+const client = new ApolloClient({
+  uri: 'http://localhost:8080/',
+  cache: new InMemoryCache({
+    typePolicies: {
+      Query: {
+        fields: {
+          games: offsetLimitPagination(["where"]) //uses built in merge to merge lists of results in cache if they are in the same search (hence "where")
+
+        }
+      }
+    }
+  }),
+});
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <ApolloProvider client={client}>
+      <App />
+    </ApolloProvider>
   </React.StrictMode>
 );
 

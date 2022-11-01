@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Check if header is not empty 1`] = `
+<div>
+  <div
+    class="header"
+  >
+    <h1
+      id="headerText"
+    >
+      MeshGames
+    </h1>
+  </div>
+</div>
+`;

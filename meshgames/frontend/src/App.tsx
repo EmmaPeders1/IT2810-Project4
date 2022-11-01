@@ -1,27 +1,31 @@
-import React from 'react';
-import './App.css';
+import { HashRouter as Router, Route, Routes } from 'react-router-dom';
+import { RecoilRoot } from 'recoil';
 import Header from './Components/Header/Header';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Home from './Pages/Home';
-import Favorites from './Pages/Favorites';
-import Charts from './Pages/Charts';
-import About from './Pages/About';
+import ModeToggleButton from './Components/ModeToggleButton/ModeToggleButton';
+import Sidebar from './Components/Sidebar/Sidebar';
+import Home from './Pages/Home/Home';
+import Favorites from './Pages/Favorites/Favorites';
+import About from './Pages/About/About';
+import AppThemeProvider from './Recoil/ThemeProvider/ThemeProvider';
+import './App.css';
 
-
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <Router>
-        <Header/>
-        <Routes>
-          <Route path="/" element={<Home />}/>
-          <Route path="/favorites" element={<Favorites />}/>
-          <Route path="/about" element={<About />}/>
-          <Route path="/charts" element={<Charts />}/>
-        </Routes>
-      </Router>
-    </div>
+    <RecoilRoot>
+      <AppThemeProvider>
+        <div className="App">
+          <Router>
+            <Header />
+            <ModeToggleButton />
+            <Sidebar />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/favorites" element={<Favorites />} />
+              <Route path="/about" element={<About />} />
+            </Routes>
+          </Router>
+        </div>
+      </AppThemeProvider>
+    </RecoilRoot>
   );
 }
-
-export default App;

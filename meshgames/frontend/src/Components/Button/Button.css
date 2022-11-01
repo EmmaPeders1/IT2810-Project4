@@ -1,0 +1,22 @@
+.button-component {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  padding: 0.4rem 1rem;
+  border-radius: 5px;
+  font-size: inherit;
+  width: max-content;
+  height: 56px;
+  background: #514ab0;
+  border: 1.5px solid #fff;
+  color: rgb(255, 255, 255);
+  white-space: nowrap;
+}
+
+.button-component:focus:not(:disabled),
+.button-component:hover:not(:disabled) {
+  background: #9d00a8;
+  border: 1.5px solid rgb(4, 52, 71);
+}
