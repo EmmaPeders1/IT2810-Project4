@@ -34,6 +34,43 @@ describe('Test home page', () => {
       cy.get('[class = "button-component search-button"]').click()
   });
 
+  it('Test loading of more games', () => {
+    cy.get('[class = "gamecard-container"]')
+      .children()
+      .should('have.length', 8)
+    cy.get('[class = "button-component load-button"]').click().click()
+    cy.get('[class = "gamecard-container"]')
+      .children()
+      .should('have.length', 16)
+  });
+
+  it('Check game info', () => {
+    cy.get('[class = "gamecard-container"]')
+      .children()
+      .first()
+      .within(() => {
+        cy.get('[data-icon = "circle-info"]').click({force: true})
+      });
+      cy.get('[class = "infoBoxInner"]')
+        .children()
+        .first()
+        .children()
+        .first()
+        .should('have.text', 'Game information:')
+      cy.get('[class = "button-component closeInfo-button"]').click()
+  });
+
+  it('Test dark mode', () => {
+    cy.get('body')
+      .should('have.css', 'background-color', 'rgb(245, 245, 245)')
+    cy.get('[data-testid = "LightModeIcon"]').click()
+    cy.get('body')
+      .should('have.css', 'background-color', 'rgb(31, 31, 31)')
+    cy.get('[data-testid = "DarkModeIcon"]').click()
+    cy.get('body')
+      .should('have.css', 'background-color', 'rgb(245, 245, 245)')
+  });
+
   it('Test filtering', () => {
 
     //Filter by publisher
@@ -91,5 +128,26 @@ describe('Test home page', () => {
     .should('have.id', '471')
     .next()
     .should('have.id', '15526')
-  })
+  });
+
+  it('Test favorite functionality', () => {
+    cy.get('[id="search-game"]')
+      .type('God of War: Ghost of Sparta')
+    cy.get('[class = "button-component search-button"]').click()
+    cy.get('[data-testid = "FavoriteIcon"]').click()
+      .should('have.css', 'color', 'rgb(255, 51, 153)')
+    cy.get('[class = "sidebarIconToggle"]').click()
+    cy.get('[id = "sidebarMenu"]')
+      .find('.sidebarMenuInner li:first')
+      .next()
+      .find('a').click()
+    cy.get('[id = "2045"]')
+      .within(() => {
+        cy.get('[data-testid = "FavoriteIcon"]').click({force: true})
+        .should('have.css', 'color', 'rgba(0, 0, 0, 0.54)')
+    });
+    cy.get('[class = "button-component reload-button"]').click()
+    cy.get('[id = "2045"]').should('not.exist');
+  });
+
 })

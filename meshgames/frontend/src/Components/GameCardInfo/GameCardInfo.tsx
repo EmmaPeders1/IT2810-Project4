@@ -59,6 +59,7 @@ function GameCardInfo(props: gameCardInfoProps) {
               <Button
                 icon={faClose}
                 label=" CLOSE "
+                className="closeInfo-button"
                 onClick={handleClose}
               />
             </div>
