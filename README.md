@@ -38,28 +38,28 @@ Run *npm run build* to build the application.
 ### Content
 
 When starting the application, the user will be directed to the default page, which is the *"Home"*-page. 
-This page consists of a searchbar, three filter options, a sort option and eight game cards (which is the group's chosen way of presenting the data) with information. 
+This page consists of a searchbar, three filter options, a sort option and eight game cards (which is the group's chosen way of presenting the data) with information. The user can also see what they searched for in a separate section.
 
 At the upper left corner is an icon which will make the sidebar visible to the user. The bar contains the different pages of the application. The user can close the sidebar by clicking the same icon.
 
-The *"Favorite"*-page looks similar to the *Home*-page. This page stores all the games the user has favorited. If the user has not favorited any games, then a simple text is visible. All the favorited games will be visible here, and the group can add filter options, search options and pagination for further improvement. The page has also a button labeled *"Reload"*, which will reload the site. This is due to the fact that the favorization of a game will not automatically reload the page. The group has decided to use this method as a reload for each favorite would result in the *Home*-page reloading each time (which would not be sustainable as it would do a new query each time).  
+The *"Favorite"*-page looks similar to the *Home*-page. This page stores all the games the user has favorited. If the user has not favorited any games, a simple text is visible. All the favorited games will be visible here, and the group can add filter options, search options and pagination for further improvement. The page has also a button labeled *"Reload"*, which will reload the site. This is due to the fact that the favorization (or defavorization) of a game will not automatically reload the page. The group has decided to use this method as a reload for each favorite would result in the *Home*-page reloading each time (which would not be sustainable as it would do a new query each time).  
 
 The *"About"*-page consists of simple information about the application. 
 
 
 ###  Functionality
 
-The main functionality is the search function. The user can choose which games they want too view. This can be done by searching for a game at the search field and clicking the button labeled *"Search"*. Notice that the functionality is case sensitive, such that is it necessary to precisely match the title. 
+The main functionality is the search function. The user can choose which games they want too view. This can be done by searching for a game at the search field and clicking the button labeled *"Search"*. Notice that the functionality is case sensitive, meaning lowecase lettering will not result in an item with uppercase letters. 
 
-For further precision, the user can filter by *Publisher*, *Platform* or *Genre*. The filters are applied when clicking the button labeled *"Filter*. The user does not have to have done a search before filtering. The user can also sort the game cards by pressing the dropdown labeled *"Sort by"*, where one can sort the games ascending or descending (alphabetically). The default sorting is set to ascending. If the filtering or searching results in no games, the user will be informed by a simple text. A known bug, which we decided to abandon in dialogue with student assistants, is the fact that if the user first filters and chooses a sorting, and then wants to sort differently on the same result set, the functionality will not update. In other words, the user must change one of the filter options to make a new sorting.
+For further precision, the user can filter by *Publisher*, *Platform* or *Genre*. The filters are applied when clicking the button labeled *"Filter*. The user does not have to search before filtering. The user can also sort the game cards by pressing the dropdown labeled *"Sort by"*, where one can sort the games ascending or descending (alphabetically). The default sorting is set to ascending. If the filtering or searching results in no games, the user will be informed by a simple text. A known bug, which we decided to abandon in dialogue with student assistants, is the fact that if the user first filters and chooses a sorting, and then wants to sort differently on the same result set, the functionality will not update. In other words, the user must change one of the filter options to make a new sorting.
 
 The application implements pagination. The user can scroll to the bottom and click on a button labeled *"Load more..."* which will make eight more cards visible for the user. This process can be repeated until the user is satisfied or there are no more games to load. The game cards display the title and publisher of the game. The user can click on an icon on the bottom right of the card which will make a pop up appear and reveal more informationa about the game. On the bottom left is a heart icon. The game is favorited when the user clicks it, which is communicated through a color change. 
 
 The user can also navigate to other pages by use of the sidebar. When viewing the sidebar, the user can click on one of the tabs which will redirect them to the desired page. 
 
-To favorize a game, click on the heart icon located on the lower left corner of the game cards.
+To favorize a game, the user can click on the heart icon located on the lower left corner of the game cards.
 
-To switch theme of the page, click on the grey sun icon on the upper right corner located on the header. This icon will toggle between light and dark mode, and swtiches to a white moon on dark mode. We followed a [guide](https://dev.to/skinnypetethegiraffe/lightdark-mode-toggle-using-mui-and-recoil-ts-3bj0), and did some modifications to make it fit for application. 
+To switch theme of the page, the user can click on the grey sun icon on the upper right corner located on the header. This icon will toggle between light and dark mode, and swtiches to a white moon on dark mode. The group followed a [guide](https://dev.to/skinnypetethegiraffe/lightdark-mode-toggle-using-mui-and-recoil-ts-3bj0), and did some modifications to make it fit for application. 
 
 ## :wrench: Technical requirements
 
@@ -67,7 +67,7 @@ The application retrieves data from a csv file found at [Kaggle.com](https://www
 
 Use of global state management have been implemented through dark mode with use of Recoil. 
 
-Most of the components, expect for the buttons, are MUI components, as we saw it appropiate to use this component library.
+Most of the components, expect for the buttons, are MUI components, as the group saw it appropiate to use this component library.
 
 The solution has a responsive web design. Layout, scaling and interaction posibilities are adaptable based on what type of device and screen size. By using CSS flexboxes, all the elements and their contents are visible and available for the user to see and interact with.
 
