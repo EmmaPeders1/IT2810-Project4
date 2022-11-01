@@ -59,13 +59,13 @@ The user can also navigate to other pages by use of the sidebar. When viewing th
 
 To favorize a game, the user can click on the heart icon located on the lower left corner of the game cards.
 
-To switch theme of the page, the user can click on the grey sun icon on the upper right corner located on the header. This icon will toggle between light and dark mode, and swtiches to a white moon on dark mode. The group followed a [guide](https://dev.to/skinnypetethegiraffe/lightdark-mode-toggle-using-mui-and-recoil-ts-3bj0), and did some modifications to make it fit for application. 
+To switch theme of the page, the user can click on the white moon icon on the upper right corner located on the header. This icon will toggle between light and dark mode, and swtiches to a gray sun on dark mode. The group followed a [guide](https://dev.to/skinnypetethegiraffe/lightdark-mode-toggle-using-mui-and-recoil-ts-3bj0), and did some modifications to make it fit for application. 
 
 ## :wrench: Technical requirements
 
 The application retrieves data from a csv file found at [Kaggle.com](https://www.kaggle.com/datasets/gregorut/videogamesales?resource=download). The data consist of 16 598 games with information about their publisher, platform, genre release year and sales in different areas. This data is added to a Neo4j database which is connected to an Apollo server. The data is retrieved to the frontend by the use of GraphQL. 
-
-Use of global state management have been implemented through dark mode with use of Recoil. 
+ 
+We used Recoil to implement theme switching with light and dark modes. This covers the requirement to use some external state managment. The group found that the app didn't require any of global state managment so a decision was made to implement dark/ligth-themes solely in order to satisfy this requirement.
 
 Most of the components, expect for the buttons, are MUI components, as the group saw it appropiate to use this component library.
 
