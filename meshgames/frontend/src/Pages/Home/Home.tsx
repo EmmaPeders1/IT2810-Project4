@@ -7,6 +7,7 @@ import { useQuery } from '@apollo/client';
 import Search from '../../Components/Input/Search';
 import FilterBox from '../../Components/FilterBox/FilterBox';
 import getGameDataForCards from '../../GraphQL/Queries/getGameDataForCards';
+import { Box, Typography } from '@mui/material';
 
 // props which the GameCards use
 interface CardDataProps {
@@ -42,27 +43,27 @@ export default function Home() {
       },
       "gameName_CONTAINS": input
     },
-      "options": {
-        "sort": [
-          {
-            "gameName": sortInput
-          }
-        ],
-        "limit": limit,
-        "offset": 0,
+    "options": {
+      "sort": [
+        {
+          "gameName": sortInput
+        }
+      ],
+      "limit": limit,
+      "offset": 0,
+    },
+    "gamesAggregateWhere2": {
+      "publisher": {
+        "publisherId_CONTAINS": publisherName
       },
-      "gamesAggregateWhere2": {
-        "publisher": {
-          "publisherId_CONTAINS": publisherName
-        },
-        "platform": {
-          "platformId_CONTAINS": platformName
-        },
-        "genre": {
-          "genreId_CONTAINS": genreName
-        },
-        "gameName_CONTAINS": input
-      }
+      "platform": {
+        "platformId_CONTAINS": platformName
+      },
+      "genre": {
+        "genreId_CONTAINS": genreName
+      },
+      "gameName_CONTAINS": input
+    }
   }
 
   // function which executes the query
@@ -76,7 +77,7 @@ export default function Home() {
   }
 
   // function which clears the search
-  function handleClear(){
+  function handleClear() {
     setInput("");
     setPublisherName("");
     setPlatformName("");
@@ -150,7 +151,8 @@ export default function Home() {
       </div>
 
       {/* Message which will appear if there are no matching games to the user's input */}
-      {data.gamesAggregate.count === 0 &&
+      {
+        data.gamesAggregate.count === 0 &&
         <p className='zero-message'>There are no games that match your search...</p>
       }
 
@@ -168,7 +170,8 @@ export default function Home() {
       </div>
 
       {/* Button which appears if there are more GameCards to diplay */}
-      {(data.gamesAggregate.count > data.games.length) &&
+      {
+        (data.gamesAggregate.count > data.games.length) &&
         <div className="loadButton-container" id="loadButton-container">
           <Button
             className="load-button"
@@ -179,6 +182,6 @@ export default function Home() {
           />
         </div>
       }
-    </div>
+    </div >
   );
 }

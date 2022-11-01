@@ -36,18 +36,18 @@ function GameCardInfo(props: gameCardInfoProps) {
       >
         {/* div where the information is visible */}
         <div className="infoBoxInner">
-          <Box sx={{ backgroundColor: 'background.default', borderRadius: '5%', border: 'solid #9d00a8' }}>
+          <Box sx={{ backgroundColor: 'background.paper', borderRadius: '5%', border: 'solid #9d00a8' }}>
             <Typography
               variant="h5"
               component="h2"
-              sx={{ textAlign: 'center', m: 1, fontWeight: 'bold', bgcolor: 'background.default' }}
+              sx={{ textAlign: 'center', m: 1, fontWeight: 'bold', bgcolor: 'background.paper' }}
             >
               Game information:
             </Typography>
 
             {/* Information given by the props */}
             <Typography
-              sx={{ marginLeft: 'auto', marginRight: 'auto', marginBottom: '20px', bgcolor: 'background.default' }}>
+              sx={{ marginLeft: 'auto', marginRight: 'auto', marginBottom: '20px', bgcolor: 'background.paper' }}>
               <b>Title: </b> {props.gameNameInfo} <br />
               <b>Publisher: </b> {props.publisherInfo} <br />
               <b>Platform: </b> {props.platformInfo} <br />

@@ -31,9 +31,7 @@
   flex: 1 0 calc(25%-10px);
 }
 
-.info-container{
-  background-color: #fff;
-  border: solid #9d00a8;
+.info-container {
   padding: 20px;
   width: 30%;
   min-width: 225px;
@@ -45,12 +43,12 @@
   align-items: center;
 }
 
-.info-p{
+.info-p {
   margin: 3px;
   text-align: center;
 }
 
-.zero-message{
+.zero-message {
   margin: 20px auto 0 auto;
   text-align: center;
 }
