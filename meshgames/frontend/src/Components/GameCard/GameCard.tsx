@@ -11,6 +11,8 @@ import updateIsFavoritedById from '../../GraphQL/Mutations/updateIsFavoritedById
 import GameCardInfo from '../GameCardInfo/GameCardInfo';
 import './GameCard.css';
 
+
+// props which the GameCard use
 interface GameCardProps {
   gameId: string;
   gameName: string;
@@ -22,6 +24,7 @@ interface GameCardProps {
 
 const GameCard: FC<GameCardProps> = ({ gameId, gameName, publisher, platform, genre, isFavorited }) => {
 
+  // variables for the mutation
   const info = {
     "where": {
       "gameId": gameId
@@ -31,14 +34,17 @@ const GameCard: FC<GameCardProps> = ({ gameId, gameName, publisher, platform, ge
     }
   }
 
+  // functions to keep track of the state of favorites
   const [isFavoriteState, setIsFavoriteState] = useState<boolean>(isFavorited)
   const [heartColor, setHeartColor] = useState<string>(isFavorited ? "#ff3399" : "disabled");
   const [toggleIsFavorited] = useMutation(updateIsFavoritedById, { variables: info });
 
+  // function which makes it visible for the user that the game is favorited
   useEffect(() => {
     setHeartColor(isFavoriteState ? "#ff3399" : "disabled");
   }, [isFavoriteState]);
 
+  // function which handles the favorization
   const handleToggleFavorite = (e: React.MouseEvent<HTMLElement>) => {
     toggleIsFavorited();
     setIsFavoriteState(!isFavoriteState);
@@ -47,19 +53,26 @@ const GameCard: FC<GameCardProps> = ({ gameId, gameName, publisher, platform, ge
   return (
     <Card
       sx={{
-        width: 250,
-        height: 390,
+        width: 290,
+        minHeight: 390,
+        maxHeight: 500,
       }}
       id={gameId}
     >
+      {/* Header with the title (which is big due to some long titles) */}
       <CardHeader
         title={gameName}
         subheader={publisher}
         sx={{
-          minHeight: 150,
+          minHeight: 250,
         }}
       />
-      <div className='cardColorBox' />
+      {/* Div which will be replaced with image as the development progresses */}
+      <div className='cardColorBox'>
+        GameImage
+      </div>
+
+      {/* Icons which will make the favorization happen and show more information */}
       <CardActions disableSpacing>
         <IconButton
           onClick={handleToggleFavorite}
