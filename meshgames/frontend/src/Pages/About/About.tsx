@@ -1,6 +1,8 @@
 import './About.css';
 
-// About-page with information about the application
+/**
+ * A Funtional component that displays information about the application
+ */
 export default function About(){
 return(
   <div className="about">

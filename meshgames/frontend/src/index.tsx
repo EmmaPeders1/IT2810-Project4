@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { ApolloClient, InMemoryCache, ApolloProvider, gql } from '@apollo/client';
+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import { offsetLimitPagination } from "@apollo/client/utilities";
+import App from './App';
+import './index.css';
 
 
 const client = new ApolloClient({
@@ -13,7 +13,7 @@ const client = new ApolloClient({
     typePolicies: {
       Query: {
         fields: {
-          games: offsetLimitPagination(["where"]) //uses built in merge to merge lists of results in cache if they are in the same search (hence "where") 
+          games: offsetLimitPagination(["where"]) //uses built in merge to merge lists of results in cache if they are in the same search (hence "where")
 
         }
       }

@@ -4,15 +4,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 import Button from '../../Components/Button/Button';
+import getGenreData from '../../GraphQL/Queries/getGenreData';
 import getPlatformData from '../../GraphQL/Queries/getPlatformData';
 import getPublisherData from '../../GraphQL/Queries/getPublisherData';
-import getGenreData from '../../GraphQL/Queries/getGenreData';
 import './FilterBox.css';
 
+// Initializing lists to populate filter fields with data from database
 let platforms: { platformId: String; }[] = [];
 let publishers: { publisherId: String; }[] = [];
 let genres: { genreId: String; }[] = [];
 
+// Functions which populate the different autocompletes components
 function PopulatePlatforms() {
     const { loading, error, data } = useQuery(getPlatformData);
 
@@ -49,12 +51,17 @@ interface filterBoxProps {
     handleFilter: (platformInput: string, publisherInput: string, genreInput: string, sortInput: string) => void;
 }
 
+/**
+* A function for displaying filtering options and handle filtering
+* @param filterBoxProps interface
+* @returns a component containing input fields and button for filter functionality
+*/
 function FilterBox(props: filterBoxProps) {
 
     PopulatePlatforms();
     PopulatePublishers();
     PopulateGenres();
-    // useRef
+
     function handleFilter() {
         let platformInput = document.getElementById("choose-platform") as HTMLInputElement;
         let publisherInput = document.getElementById("choose-publisher") as HTMLInputElement;
@@ -68,25 +75,25 @@ function FilterBox(props: filterBoxProps) {
             <div id="searchBarContainer">
                 <Autocomplete
                     id="choose-publisher"
-                    sx={{ width: '250px', padding: '2px', margin: '3px', bgcolor: 'background.paper' }}
+                    sx={{ width: '250px', padding: '2px', margin: '3px', bgcolor: 'background.paper', borderRadius: '10%'}}
                     options={publishers.map((publisher: { publisherId: String }) => publisher.publisherId)}
                     renderInput={(params) => <TextField {...params} label="Publisher" />}
                 />
                 <Autocomplete
                     id="choose-platform"
-                    sx={{ width: '130px', padding: '2px', margin: '3px', bgcolor: 'background.paper' }}
+                    sx={{ width: '130px', padding: '2px', margin: '3px', bgcolor: 'background.paper', borderRadius: '10%' }}
                     options={platforms.map((platform: { platformId: String; }) => platform.platformId)}
                     renderInput={(params) => <TextField {...params} label="Platform" />}
                 />
                 <Autocomplete
                     id="choose-genre"
-                    sx={{ width: '180px', padding: '2px', margin: '3px', bgcolor: 'background.paper' }}
+                    sx={{ width: '180px', padding: '2px', margin: '3px', bgcolor: 'background.paper', borderRadius: '10%' }}
                     options={genres.map((genre: { genreId: String; }) => genre.genreId)}
                     renderInput={(params) => <TextField {...params} label="Genre" />}
                 />
                 <Autocomplete
                     id="choose-sort"
-                    sx={{ width: '130px', padding: '2px', margin: '3px', bgcolor: 'background.paper' }}
+                    sx={{ width: '135px', padding: '2px', margin: '3px', bgcolor: 'background.paper', borderRadius: '10%' }}
                     options={sortOptions}
                     renderInput={(params) => <TextField {...params} label="Sort by" />}
                 />
