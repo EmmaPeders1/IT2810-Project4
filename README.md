@@ -19,18 +19,20 @@ Developed by:
 
 ### Frontend
 
-- React -Typescript
+- React 
+-Typescript
+- Apollo client 
 
 ## :arrow_forward: Running the application
 
-In the project directory, you can run the project by typing *npm start* in the terminal.
+In the project directory, you can run the project by typing `npm start` in the terminal.
 Runs the app in the development mode.
 Open http://localhost:3000 to view it in the browser.
 The page will reload on edits.
 
-Run *npm test* to test the application.
+Run `npm test` to test the application.
 
-Run *npm run build* to build the application.
+Run `npm run build` to build the application.
 
 
 ## :page_with_curl: Content and functionality
@@ -42,10 +44,9 @@ This page consists of a searchbar, three filter options, a sort option and eight
 
 At the upper left corner is an icon which will make the sidebar visible to the user. The bar contains the different pages of the application. The user can close the sidebar by clicking the same icon.
 
-The *"Favorite"*-page looks similar to the *Home*-page. This page stores all the games the user has favorited. If the user has not favorited any games, a simple text is visible. All the favorited games will be visible here, and the group can add filter options, search options and pagination for further improvement. The page has also a button labeled *"Reload"*, which will reload the site. This is due to the fact that the favorization (or defavorization) of a game will not automatically reload the page. The group has decided to use this method as a reload for each favorite would result in the *Home*-page reloading each time (which would not be sustainable as it would do a new query each time).  
+The *"Favorite"*-page looks similar to the *Home*-page. This page stores all the games the user has favorited. If the user has not favorited any games, a simple text is visible. All the favorited games will be visible here, and the group can add filter options, search options and pagination for further improvement. The page has also a button labeled *"Reload"*, which will reload the site. This is due to the fact that the favorization (or defavorization) of a game will not automatically reload the page. This is a concious decision of the group, made to save possible reloads of the page (and re-querying) in order to adhere to good sustaiability practises.
 
 The *"About"*-page consists of simple information about the application. 
-
 
 ###  Functionality
 
@@ -91,5 +92,5 @@ In retrospective, the group have gained experience and have some thoughts on wha
 
 Improvements for next time:
 
-- Split the filter and sort functionality to indpendent functions.
-- Make the query case insensitive (this is not a feature in GraphQL, but could be implemented by the use of element.lowecased()).
+- Make the query case insensitive. Graphql does not have native support for this. It could be implemented with the help of Neo4j 'Search index', but the group found themselves short of time and decided to drop this feature.
+- Make the sidebar remove itself when clicking outside of it. As of now the user must click the 'close' button to go back to the homepage
