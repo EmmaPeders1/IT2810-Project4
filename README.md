@@ -1,92 +1,113 @@
-# Project3
+# Meshlab
+
+## 😃 Members
+
+Developed by:
+
+- Martine Mansåker
+- Emma Pedersen
+- Sindre Eidskrem
+- Hang Celin Le
+
+## :computer: Tech stack
+
+The application is built using the GRAND-Stack, Recoil and some elements from [MUI](https://mui.com/).
+
+### Backend
+
+- GraphQL
+    - The group uses GraphQL to query the database. 
+- Apollo server
+    - The Apollo server is used to connected to the database. The Apollo server also has the great feature of automatically creating queries defined from the typeDefs. The group used these queries throughout the whole development. 
+- Neo4j Database
+    - The Neo4j Database is a graph database. This means all the nodes are connected to each other through relationships. This makes for faster seraches which is more sustainable in the long run. Another great advantage of using the Neo4j database was that the group didn't need to create resolvers. The dataset is added to the database through the use of the Cypher query language. 
+
+### Frontend
+
+- React Typescript
+    - React Typescript is used to develop this application per the requirements. 
+- Apollo client 
+    - Apollo client is used to retrieve and modify the data from the database. This is mainly done through *"useState"*. The group discovered the *"Apollo Sandbox"* to be a great way of getting a better understanding of the queries. By using the sandbox, the group was able to easily create and test queries. 
+- Recoil
+    - Recoil is used as the global state manager which keeps track the user's choice of theme. 
+
+## :arrow_forward: Running the application
+
+- `npm install` (in both backend and frontend)
+
+- cd into backend and start the Apollo server with the command `node index.js`
+
+- cd into frontend and start the React application by typing `npm start` 
+
+Runs the app in the development mode.
+Open http://localhost:3000 to view it in the browser.
+The page will reload on edits.
+
+### To run the tests:
+
+- cd into frontend
+
+- Run `npm test` to test the application.
+
+- Run `npm run cypress:open` to run the end-to-end tests. 
 
 
+## :page_with_curl: Content and functionality
 
-## Getting started
+### Content
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+When starting the application, the user will be directed to the default page, which is the *"Home"*-page. 
+This page consists of a searchbar, three filter options, a sort option and eight game cards (which is the group's chosen way of presenting the data) with information. The user can also see what they searched for in a separate section.
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+At the upper left corner is an icon which will make the sidebar visible to the user. The bar contains the different pages of the application. The user can close the sidebar by clicking the same icon.
 
-## Add your files
+The *"Favorite"*-page looks similar to the *Home*-page. This page stores all the games the user has favorited. If the user has not favorited any games, a simple text is visible. All the favorited games will be visible here, and the group can add filter options, search options and pagination for further improvement. The page has also a button labeled *"Reload"*, which will reload the site. This is due to the fact that the favorization (or defavorization) of a game will not automatically reload the page. This is a concious decision of the group, made to save possible reloads of the page (and re-querying) in order to adhere to good sustaiability practises.
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+The *"About"*-page consists of simple information about the application. 
 
-```
-cd existing_repo
-git remote add origin https://gitlab.stud.idi.ntnu.no/it2810-h22/Team-17/project3.git
-git branch -M main
-git push -uf origin main
-```
+###  Functionality
 
-## Integrate with your tools
+The main functionality is the search function. The user can choose which games they want too view. This can be done by searching for a game at the search field and clicking the button labeled *"Search"*. Notice that the functionality is case sensitive, meaning lowecase lettering will not result in an item with uppercase letters. 
 
-- [ ] [Set up project integrations](https://gitlab.stud.idi.ntnu.no/it2810-h22/Team-17/project3/-/settings/integrations)
+For further precision, the user can filter by *Publisher*, *Platform* or *Genre*. The filters are applied when clicking the button labeled *"Filter"*. The user does not have to search before filtering. The user can also sort the game cards by pressing the dropdown labeled *"Sort by"*, where one can sort the games ascending or descending (alphabetically). The default sorting is set to ascending. If the filtering or searching results in no games, the user will be informed by a simple text. A known bug, which we decided to abandon in dialogue with student assistants, is the fact that if the user first filters and chooses a sorting, and then wants to sort differently on the same result set, the results will not update. In other words, the user must change one of the filter options to make a new sorting.
 
-## Collaborate with your team
+The application implements pagination. The user can scroll to the bottom and click on a button labeled *"Load more..."* which will make eight more cards visible for the user. This process can be repeated until the user is satisfied or there are no more games to load. 
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Automatically merge when pipeline succeeds](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+The game cards display the title and publisher of the game. The user can click on an icon on the bottom right of the card which will make a pop up appear and reveal more informationa about the game. 
 
-## Test and Deploy
+On the bottom left is a heart icon. The game is favorited when the user clicks it, which is communicated through a color change. 
 
-Use the built-in continuous integration in GitLab.
+The user can navigate to other pages by use of the sidebar. When viewing the sidebar, the user can click on one of the tabs which will redirect them to the desired page. 
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+To switch theme of the page, the user can click on the white moon icon on the upper right corner located on the header. This icon will toggle between light and dark mode, and swtiches to a gray sun on dark mode. The group followed a [guide](https://dev.to/skinnypetethegiraffe/lightdark-mode-toggle-using-mui-and-recoil-ts-3bj0), and did some modifications to make it fit for application. 
 
-***
+## :wrench: Technical requirements
 
-# Editing this README
+The application retrieves data from a csv file found at [Kaggle.com](https://www.kaggle.com/datasets/gregorut/videogamesales?resource=download). The data consist of 16 598 games with information about their publisher, platform, genre release year and sales in different areas. This data is added to a Neo4j database which is connected to an Apollo server. The data is retrieved to the frontend by the use of GraphQL. 
+ 
+The group used Recoil to implement theme switching with light and dark modes. This covers the requirement to use some external state managment. The group found that the app didn't require any of global state managment so a decision was made to implement dark/ligth-themes solely in order to satisfy this requirement.
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thank you to [makeareadme.com](https://www.makeareadme.com/) for this template.
+Most of the components, expect for the buttons, are MUI components, as the group saw it appropiate to use this component library.
 
-## Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+The solution has a responsive web design. Layout, scaling and interaction posibilities are adaptable based on what type of device and screen size. By using CSS flexboxes, all the elements and their contents are visible and available for the user to see and interact with.
 
-## Name
-Choose a self-explaining name for your project.
+# :gear: Testing
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+Testing is partly done by explorative testing done by members of the group and fellow students. This is done by giving the students prompts or letting them explore by themselves. The group pmembers then took notes of where the students had problems understanding or when an unexpected bug appeared. The project also consists of 2 unit tests and an end-to-end test. All the test files are allocated in the same folder as the component/file that is being tested. In such a manner, the components being tested are close to the test and the imports are kept short. 
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+The unit tests have been created using Jest and React's testing library. For example does the unit test GameCard.test.tsx render a GameCard component using mockdata and checks wheter or not the mockdata is displayed in the rendered card. Further it tests that the expand button in the card works and that information is both shown and hidden again when pressing the expand button. The unit test Header.test.tsx makes use of a snapshot to check that the Header component is rendered as expected. 
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+The end-to-end test is implemented using Cypress. The test mimics a user's journey through the application. This is done through testing all the main functionality (see above), except visiting the *About*-page.
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+In testing the user interface and responsive design, the group has used the device emaluation in the web browser to simulate the application on different phone screens (vertically and horizontally) and ordinary PCs (big screen) as well as IPads (medium screen).
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+# :earth_africa: Universal accessebility
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+To adhere to universal accessebility, the application has gone through a color change from lighter to darker colors. Such change makes the constrast between text and background greater, which passes all the tests according to the WCAG guidelines. The placeholders in the input fields does not pass these tests, but this is not changed due to being the default from MUI. The fonts used on the website are easy to read, with no extra distractions. The text is also easily readable, and the group has chosen not to implement a manual font size change due to most web browsers already having this functionality implemented (which is tested to work on our application in Chrome). The buttons also adhere to universal accessability as they change both color and cursor upon hovering, which signals the change to the user. 
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+# :pushpin: Improvements for next time:
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+- Make the query case insensitive. Graphql does not have native support for this. It could be implemented with the help of Neo4j 'Search index', but the group found themselves short of time and decided to drop this feature.
+- Make the sidebar remove itself when clicking outside of it. As of now the user must click the 'close' button to go back to the homepage
+- Fix known bug/shortcoming of having to change one ore more filters in order to change the sorting from ascending to descending, or vice versa.
+- Exclude the filter button entirely, and rather apply new filters as selection changes
