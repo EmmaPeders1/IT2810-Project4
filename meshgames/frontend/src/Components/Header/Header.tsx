@@ -1,6 +1,8 @@
-import React from 'react';
 import './Header.css';
 
+/**
+ * A Funtional component that contains the header
+ */
 function Header() {
   return (
     <div className="header">

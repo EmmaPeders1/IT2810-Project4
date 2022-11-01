@@ -1,13 +1,12 @@
-import GameCard from '../../Components/GameCard/GameCard';
-import { faArrowDown, faRefresh, faSearch, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faArrowDown, faSearch, faTrash } from '@fortawesome/free-solid-svg-icons';
 import React, { useState } from 'react';
-import Button from '../../Components/Button/Button';
-import './Home.css';
 import { useQuery } from '@apollo/client';
+import Button from '../../Components/Button/Button';
 import Search from '../../Components/Input/Search';
 import FilterBox from '../../Components/FilterBox/FilterBox';
+import GameCard from '../../Components/GameCard/GameCard';
 import getGameDataForCards from '../../GraphQL/Queries/getGameDataForCards';
-import { Box, Typography } from '@mui/material';
+import './Home.css';
 
 // props which the GameCards use
 interface CardDataProps {
@@ -19,6 +18,10 @@ interface CardDataProps {
   isFavorited: boolean;
 }
 
+/**
+ * A Funtional component that displays the main page
+ * The page consists of filter and search options and the GameCards
+ */
 export default function Home() {
 
   // functions to set the different states

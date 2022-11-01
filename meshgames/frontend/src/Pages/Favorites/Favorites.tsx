@@ -15,12 +15,15 @@ interface CardDataProps {
   isFavorited: boolean;
 }
 
+// function which reloads the application
 function handleReload(){
   window.location.reload();
 }
 
+/**
+* A functional component that displays the favorited games
+ */
 export default function Favorites(){
-
 
   // Where-statement to the query
   let info = {
