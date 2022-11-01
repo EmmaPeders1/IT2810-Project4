@@ -17,9 +17,9 @@ interface DynamicIconProps {
 */
 function DynamicIcon({ mode }: DynamicIconProps) {
   if (mode === 'dark') {
-    return <DarkModeIcon />;
+    return <LightModeIcon />;
   }
-  return <LightModeIcon />;
+  return <DarkModeIcon />;
 }
 
 /**
