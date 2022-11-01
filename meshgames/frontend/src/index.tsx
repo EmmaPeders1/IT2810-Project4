@@ -8,7 +8,7 @@ import './index.css';
 
 
 const client = new ApolloClient({
-  uri:  'http://it2810-17.idi.ntnu.no:8080', //'http://localhost:8080/',
+  uri:  'http://it2810-17.idi.ntnu.no:8080/graphql', //'http://localhost:8080/',
   cache: new InMemoryCache({
     typePolicies: {
       Query: {
