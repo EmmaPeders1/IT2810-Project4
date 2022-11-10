@@ -18,14 +18,15 @@
 }
 
 .infoIcon{
-  margin-left: 185px;
+  margin-left: 60px;
+  padding: 2px 0 2px 0;
   font-size: 25px;
-  padding: 10px;
-  color: #514ab0;
-
+  width: 120px;
 }
 
-.infoIcon :hover {
+.infoIcon:hover {
   cursor: pointer;
-  color: #9d00a8;
+  background-color: #f5f5f5;
+  color: #212121;
+  border-radius: 50% / 20px;
 }

@@ -8,8 +8,6 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import { useMutation } from '@apollo/client';
 import GameCardInfo from '../GameCardInfo/GameCardInfo';
 import updateIsFavoritedById from '../../GraphQL/Mutations/updateIsFavoritedById';
-import './GameCard.css';
-
 
 // props which the GameCard use
 interface gameCardProps {
@@ -45,7 +43,7 @@ const GameCard: FC<gameCardProps> = ({ gameId, gameName, publisher, platform, ge
 
   // function which makes it visible for the user that the game is favorited
   useEffect(() => {
-    setHeartColor(isFavoriteState ? "#ff3399" : "disabled");
+    setHeartColor(isFavoriteState ? "#FF0000" : "#D3D3D3");
   }, [isFavoriteState]);
 
   // function which handles the favorization
@@ -58,24 +56,19 @@ const GameCard: FC<gameCardProps> = ({ gameId, gameName, publisher, platform, ge
     <Card
       sx={{
         width: 290,
-        minHeight: 390,
-        maxHeight: 500,
+        minHeight: 250,
+        maxHeight: 300,
       }}
       id={gameId}
     >
       {/* Header with the title (which is big due to some long titles) */}
       <CardHeader
         title={gameName}
-        subheader={publisher}
+        subheader={publisher + ", " + platform}
         sx={{
-          minHeight: 250,
+          minHeight: 175,
         }}
       />
-      {/* Div which will be replaced with image as the development progresses */}
-      <div className='cardColorBox'>
-        GameImage
-      </div>
-
       {/* Icons which will make the favorization happen and show more information */}
       <CardActions disableSpacing>
         <IconButton
@@ -83,7 +76,7 @@ const GameCard: FC<gameCardProps> = ({ gameId, gameName, publisher, platform, ge
           aria-label="add to favorites"
           data-testid="favoriteIcon"
         >
-          <FavoriteIcon sx={{ color: heartColor }} />
+          <FavoriteIcon sx={{ color: heartColor }} /> LIKE
         </IconButton>
         <GameCardInfo
           gameNameInfo={gameName}
