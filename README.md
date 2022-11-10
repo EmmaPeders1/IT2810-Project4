@@ -15,6 +15,10 @@ In this task, I've chosen to focus on task d) *Process the client in project 3 s
     - A colorblind user  stated that the heart-icon's color was not too different when they liked/unliked a game. The heart-icon's color is therefore lighter in the unliked state and darker in the liked state. 
     - The blue-color on the information-icon and the color of the GameCard in dark-mode was not in line with the WCAG guidelines. The icon (and the addded text) is changed to the default text-color in light mode with a grey background upon hovering to imitate the heart-icon. In dark mode, the text is still the default for dark mode and changes to the default for light mode with the same gray background upon hovering. This is done to make it clear for the user where they can click in both light and dark mode. 
 
+- SideBar:
+    - The feedback suggested that the the sidebar was less than intuitive. The first issue was that the sidebar-icon was seen as too small. The second was that a user had to click on the icon or text to move to another page, but this was not communicated clearly. The last was thet the sidebar did not retract as the user clicked outside of the sidebar. To make it more accessible, I switched the sidebar with a navbar. The navbar is located directly underneath the header (and can therefore be seen as an extenstion of the header). 
+        - Further improvement on the NavBar could be making it clearer which page the user is on (by e.g. a color change on the Navbar)
+
 - Search:
     - Some users didn't realize that the search is case sensitive and spent extra time trying to search with no luck. To make this clear to the user, I added *"NB! Not case sensitive"* to the placeholder.
 
