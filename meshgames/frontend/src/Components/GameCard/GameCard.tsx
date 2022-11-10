@@ -38,7 +38,7 @@ const GameCard: FC<gameCardProps> = ({ gameId, gameName, publisher, platform, ge
 
   // functions to keep track of the state of favorites
   const [isFavoriteState, setIsFavoriteState] = useState<boolean>(isFavorited)
-  const [heartColor, setHeartColor] = useState<string>(isFavorited ? "#ff3399" : "disabled");
+  const [heartColor, setHeartColor] = useState<string>(isFavorited ? "#FF0000" : "#D3D3D3");
   const [toggleIsFavorited] = useMutation(updateIsFavoritedById, { variables: info });
 
   // function which makes it visible for the user that the game is favorited
