@@ -1,0 +1,23 @@
+.topnav {
+  overflow: hidden;
+  background-color: #514ab0;
+  display: flex;
+  justify-content: center;
+  position: sticky;
+  top: 120px;
+  z-index: 2;
+}
+
+.topnav a {
+  float: left;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.topnav a:hover {
+  background-color: whitesmoke;
+  color: #212121;
+}
