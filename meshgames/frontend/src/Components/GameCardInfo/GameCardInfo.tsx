@@ -1,9 +1,9 @@
-import './GameCardInfo.css';
-import { Box, Modal, Typography } from '@mui/material';
 import { useState } from 'react';
-import Button from '../../Components/Button/Button';
+import { Box, Modal, Typography } from '@mui/material';
 import { faClose, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Button from '../../Components/Button/Button';
+import './GameCardInfo.css';
 
 // Props which is passed into GameCardInfo (which will get their values from GameCard)
 interface gameCardInfoProps {
@@ -26,7 +26,7 @@ function GameCardInfo(props: gameCardInfoProps) {
     <div>
       {/* Icon which will show the information if clicked on */}
       <div onClick={handleOpen} className="infoIcon" data-testid="InfoButton">
-        <FontAwesomeIcon icon={faInfoCircle}/>
+        <FontAwesomeIcon icon={faInfoCircle}/> INFO
       </div>
 
       {/* Modal which handles the open and close functions */}
