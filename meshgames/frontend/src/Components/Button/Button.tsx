@@ -37,6 +37,7 @@ const Button: FC<buttonProps> = ({
   dataTestid }) => {
   return (
     <button
+      aria-label="button"
       disabled={disabled}
       className={`button-component ${className}`}
       id={id}

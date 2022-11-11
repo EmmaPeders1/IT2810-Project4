@@ -46,6 +46,10 @@ function AppThemeProvider({ children }: Props) {
           text: {
             primary: 'white',
           },
+          link: {
+            primary: '#000',
+            secondary: '#000',
+          },
         }),
       },
   });

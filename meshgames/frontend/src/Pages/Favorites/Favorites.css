@@ -17,3 +17,9 @@
 .gamecard-container Gamecard {
   flex: 1 0 calc(25%-10px);
 }
+
+.loading, .error {
+  margin: 20px auto 0 auto;
+  text-align: center;
+  font-size: 19px;
+}

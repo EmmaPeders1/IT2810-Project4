@@ -5,8 +5,8 @@ import './Header.css';
  */
 function Header() {
   return (
-    <div className="header">
-      <h1 id="headerText">MeshGames</h1>
+    <div className="header" aria-label="header">
+      <h1 id="headerText">eGAMES</h1>
     </div>
   );
 }

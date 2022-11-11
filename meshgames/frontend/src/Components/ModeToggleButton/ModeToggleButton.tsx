@@ -17,9 +17,9 @@ interface DynamicIconProps {
 */
 function DynamicIcon({ mode }: DynamicIconProps) {
   if (mode === 'dark') {
-    return <LightModeIcon />;
+    return <LightModeIcon sx={{height: 50, width: 50}} aria-label="light-mode" />;
   }
-  return <DarkModeIcon />;
+  return <DarkModeIcon sx={{height: 50, width: 50}} aria-label="dark-mode" />;
 }
 
 /**
@@ -35,8 +35,8 @@ function ModeToggleButton(){
   };
 
   return (
-    <Stack className="modeButton" direction="row" justifyContent="flex-end">
-      <IconButton onClick={toggleMode} sx={{ width: 40, height: 40 }}>
+    <Stack aria-label="toggle theme" className="modeButton" direction="row" justifyContent="flex-end">
+      <IconButton aria-label="toggle theme button" onClick={toggleMode} sx={{ width: 90, height: 90, color: 'white'}}>
         <DynamicIcon mode={mode} />
       </IconButton>
     </Stack>

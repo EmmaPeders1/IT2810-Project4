@@ -1,6 +1,5 @@
 import { useQuery } from '@apollo/client';
-import { faSpinner } from '@fortawesome/free-solid-svg-icons';
-import Button from '../../Components/Button/Button';
+import CircularProgress from '@mui/material/CircularProgress';
 import GameCard from '../../Components/GameCard/GameCard';
 import getFavorites from '../../GraphQL/Queries/getFavorites';
 import './Favorites.css';
@@ -13,11 +12,6 @@ interface CardDataProps {
   platform: { platformId: string };
   genre: { genreId: string };
   isFavorited: boolean;
-}
-
-// function which reloads the application
-function handleReload(){
-  window.location.reload();
 }
 
 /**
@@ -34,22 +28,12 @@ export default function Favorites(){
 
   // useQuery to get the favorited games with loading and error handling
   const { loading, error, data } = useQuery(getFavorites, { variables: info });
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error.message}</p>;
+  if (loading) return <p className="loading"><CircularProgress />Loading...</p>;
+  if (error) return <p className="error">Error: {error.message}</p>;
 
   return(
     <div>
       <h1>Favorites</h1>
-      <div className="reloadButton-container">
-        <Button
-          className="reload-button"
-          id="reload-button"
-          label='RELOAD'
-          icon={faSpinner}
-          onClick={handleReload}
-        />
-      </div>
-
       {/* Message which will appear if there are no favorited games */}
       {data.games.length === 0 &&
       <p>There are no favorited games...</p>}

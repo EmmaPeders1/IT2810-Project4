@@ -54,6 +54,7 @@ const GameCard: FC<gameCardProps> = ({ gameId, gameName, publisher, platform, ge
 
   return (
     <Card
+      aria-label="game card"
       sx={{
         width: 290,
         minHeight: 250,
@@ -63,6 +64,7 @@ const GameCard: FC<gameCardProps> = ({ gameId, gameName, publisher, platform, ge
     >
       {/* Header with the title (which is big due to some long titles) */}
       <CardHeader
+        aria-label={"game title: " + gameName + ", publisher: " + publisher + ", platform: " + platform}
         title={gameName}
         subheader={publisher + ", " + platform}
         sx={{
@@ -72,8 +74,8 @@ const GameCard: FC<gameCardProps> = ({ gameId, gameName, publisher, platform, ge
       {/* Icons which will make the favorization happen and show more information */}
       <CardActions disableSpacing>
         <IconButton
-          onClick={handleToggleFavorite}
           aria-label="add to favorites"
+          onClick={handleToggleFavorite}
           data-testid="favoriteIcon"
         >
           <FavoriteIcon sx={{ color: heartColor }} /> LIKE

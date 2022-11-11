@@ -9,10 +9,10 @@ import './NavBar.css';
 function NavBar() {
 
   return (
-    <div className="topnav">
-      <Link to="/"><FontAwesomeIcon icon={faHome} /> Home </Link>
-      <Link to="/favorites"><FontAwesomeIcon icon={faHeart} /> Favorites </Link>
-      <Link to="/about"><FontAwesomeIcon icon={faQuestion} /> About </Link>
+    <div className="topnav" aria-label="navbar">
+      <Link to="/" aria-label='link to home page'><FontAwesomeIcon icon={faHome} /> Home </Link>
+      <Link to="/favorites" aria-label='link to favorites page'><FontAwesomeIcon icon={faHeart} /> Favorites </Link>
+      <Link to="/about" aria-label='link to about page'><FontAwesomeIcon icon={faQuestion} /> About </Link>
     </div>
   );
 }

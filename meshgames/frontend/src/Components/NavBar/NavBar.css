@@ -1,20 +1,18 @@
 .topnav {
   overflow: hidden;
   background-color: #514ab0;
-  display: flex;
-  justify-content: center;
   position: sticky;
-  top: 120px;
+  top: 100px;
   z-index: 2;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
 }
 
 .topnav a {
   float: left;
   color: white;
-  text-align: center;
   padding: 14px 16px;
   text-decoration: none;
-  font-size: 18px;
+  font-size: 20px;
 }
 
 .topnav a:hover {

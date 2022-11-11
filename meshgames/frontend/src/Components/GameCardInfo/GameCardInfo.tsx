@@ -25,7 +25,7 @@ function GameCardInfo(props: gameCardInfoProps) {
   return (
     <div>
       {/* Icon which will show the information if clicked on */}
-      <div onClick={handleOpen} className="infoIcon" data-testid="InfoButton">
+      <div onClick={handleOpen} className="infoIcon" data-testid="InfoButton" aria-label="get more information" >
         <FontAwesomeIcon icon={faInfoCircle}/> INFO
       </div>
 
@@ -57,6 +57,7 @@ function GameCardInfo(props: gameCardInfoProps) {
             {/* Button to close the field (the user can also just click outside of the box, but added just in case) */}
             <div className="button-container">
               <Button
+                aria-label="close-info-button"
                 icon={faClose}
                 label=" CLOSE "
                 className="closeInfo-button"

@@ -48,7 +48,8 @@
   text-align: center;
 }
 
-.zero-message {
+.zero-message, .loading, .error {
   margin: 20px auto 0 auto;
   text-align: center;
+  font-size: 19px;
 }

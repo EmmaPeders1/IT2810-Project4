@@ -1,6 +1,7 @@
 import { useQuery } from '@apollo/client';
 import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
+import CircularProgress from '@mui/material/CircularProgress';
 import Button from '../Button/Button';
 import GameCard from '../GameCard/GameCard';
 import getGameDataForCards from '../../GraphQL/Queries/getGameDataForCards';
@@ -98,15 +99,15 @@ function ResultContainer(props: ResultQueryProps) {
     setLimit(limit + 8)
   }
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error.message}</p>;
+  if (loading) return <p className="loading"><CircularProgress />Loading...</p>;
+  if (error) return <p className="error">Error: {error.message}</p>;
 
   return (
     <div className="ResultContainer">
       {/* Message which will appear if there are no matching games to the user's input */}
       {
         data.gamesAggregate.count === 0 &&
-        <p className='zero-message'>There are no games that match your search...</p>
+        <p aria-label="paragraph for zero result" className='zero-message'>There are no games that match your search...</p>
       }
 
       {/* Flexbox with the favorited GameCards */}
@@ -127,6 +128,7 @@ function ResultContainer(props: ResultQueryProps) {
         (data.gamesAggregate.count > data.games.length) &&
         <div className="loadButton-container" id="loadButton-container">
           <Button
+            aria-label="load more button"
             className="load-button"
             id="load-button"
             label='LOAD MORE'

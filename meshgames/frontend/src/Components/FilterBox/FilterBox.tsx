@@ -74,24 +74,28 @@ function FilterBox(props: filterBoxProps) {
         <div id="filterbox">
             <div id="searchBarContainer">
                 <Autocomplete
+                    aria-label="filter publisher"
                     id="choose-publisher"
                     sx={{ width: '250px', padding: '2px', margin: '3px', bgcolor: 'background.paper', borderRadius: '10%'}}
                     options={publishers.map((publisher: { publisherId: String }) => publisher.publisherId)}
                     renderInput={(params) => <TextField {...params} label="Publisher" />}
                 />
                 <Autocomplete
+                    aria-label="filter platform"
                     id="choose-platform"
                     sx={{ width: '130px', padding: '2px', margin: '3px', bgcolor: 'background.paper', borderRadius: '10%' }}
                     options={platforms.map((platform: { platformId: String; }) => platform.platformId)}
                     renderInput={(params) => <TextField {...params} label="Platform" />}
                 />
                 <Autocomplete
+                    aria-label="filter genre"
                     id="choose-genre"
                     sx={{ width: '180px', padding: '2px', margin: '3px', bgcolor: 'background.paper', borderRadius: '10%' }}
                     options={genres.map((genre: { genreId: String; }) => genre.genreId)}
                     renderInput={(params) => <TextField {...params} label="Genre" />}
                 />
                 <Autocomplete
+                    aria-label="filter sorting"
                     id="choose-sort"
                     sx={{ width: '135px', padding: '2px', margin: '3px', bgcolor: 'background.paper', borderRadius: '10%' }}
                     options={sortOptions}
@@ -99,6 +103,7 @@ function FilterBox(props: filterBoxProps) {
                 />
                 <div id="innerButtonContainer">
                     <Button
+                        aria-label="filter button"
                         onClick={handleFilter}
                         icon={faFilter}
                         label=" FILTER "

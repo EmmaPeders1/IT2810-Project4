@@ -46,6 +46,7 @@ export default function Home() {
       <div className="search-container" >
         <Search />
         <Button
+          aria-label="search button"
           onClick={handleInput}
           label=" SEARCH "
           className="search-button"

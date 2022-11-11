@@ -17,7 +17,6 @@ export default function App() {
           <Router>
             <Header />
             <ModeToggleButton />
-            {/*<Sidebar />*/}
             <NavBar />
             <Routes>
               <Route path="/" element={<Home />} />
