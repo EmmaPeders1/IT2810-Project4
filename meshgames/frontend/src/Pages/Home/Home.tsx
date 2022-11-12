@@ -46,14 +46,6 @@ export default function Home() {
       <div className="search-container" >
         <Search
           onChange={handleInput}
-          onKeyDown={handleInput}
-        />
-        <Button
-          aria-label="search button"
-          onClick={handleInput}
-          label=" SEARCH "
-          className="search-button"
-          icon={faSearch}
         />
         <FilterBox handleFilter={handleFilter} />
       </div>

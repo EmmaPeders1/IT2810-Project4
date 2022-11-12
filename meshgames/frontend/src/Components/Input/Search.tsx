@@ -3,8 +3,7 @@ import { Input } from '@mui/material';
 
 // props which the Searchbar uses
 interface searchbarProps {
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onKeyDown: (e: React.KeyboardEvent) => void;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 /**
@@ -18,7 +17,6 @@ function Search(props: searchbarProps) {
       placeholder={"Search for a game (NB! Case sensitive)"}
       aria-label="search input field"
       onChange={props.onChange}
-      onKeyDown={props.onKeyDown}
     />
   )
 }
