@@ -6,6 +6,18 @@ Improvements done by Emma Pedersen.
 
 In this task, I've chosen to focus on task d) *Process the client in project 3 so that it meets the requirements of WAD and WCAG 2.1 (the requirements that will apply from 2023)*
 
+Before           |  After
+-------------------------|-------------------------
+<img src="/uploads/8ead5f57d1e1bf8fc8d0aba0be8b0171/image.png">  |  home light
+<img src="/uploads/aafb2a37e919a3b160d1360fcde85f3a/image.png"> | home dark
+<img src="/uploads/e114b33f2a247ebbc47ede7f8514037d/image.png"> | N/A
+<img src="/uploads/558d7957b1447eca600ee0d230d681bc/image.png"> | fav light
+<img src="/uploads/4e9639c89341b8d185ed2152917c8c0e/image.png"> | fav dark
+<img src="/uploads/ea1894984b03df3d2b81d67419dabef1/image.png"> | about light
+<img src="/uploads/b2fd1a4d87a922308defe4c6dea30db6/image.png"> | about dark
+
+
+
 ### Improvements done in this iteration:
 
 - Gamecard:
@@ -16,14 +28,23 @@ In this task, I've chosen to focus on task d) *Process the client in project 3 s
     - The blue-color on the information-icon and the color of the GameCard in dark-mode was not in line with the WCAG guidelines. The icon (and the addded text) is changed to the default text-color in light mode with a grey background upon hovering to imitate the heart-icon. In dark mode, the text is still the default for dark mode and changes to the default for light mode with the same gray background upon hovering. This is done to make it clear for the user where they can click in both light and dark mode. 
 
 - SideBar:
-    - The feedback suggested that the the sidebar was less than intuitive. The first issue was that the sidebar-icon was seen as too small. The second was that a user had to click on the icon or text to move to another page, but this was not communicated clearly. The last was thet the sidebar did not retract as the user clicked outside of the sidebar. To make it more accessible, I switched the sidebar with a navbar. The navbar is located directly underneath the header (and can therefore be seen as an extenstion of the header). 
-        - Further improvement on the NavBar could be making it clearer which page the user is on (by e.g. a color change on the Navbar)
+    - The feedback suggested that the the sidebar was less than intuitive. The first issue was that the sidebar-icon was seen as too small. The second was that a user had to click on the icon or text to move to another page, but this was not communicated clearly. The last was thet the sidebar did not retract as the user clicked outside of the sidebar. To make it more accessible, I switched the sidebar with a navbar. The navbar is located directly underneath the header (and can therefore be seen as an extenstion of the header). The navbar also shows which page the user is on by having a different color. 
 
 - Search:
-    - Some users didn't realize that the search is case sensitive and spent extra time trying to search with no luck. To make this clear to the user, I added *"NB! Not case sensitive"* to the placeholder.
+    - Some users didn't realize that the search is case sensitive and spent extra time trying to search with no luck. To make this clear to the user, I added *"NB! Case sensitive"* to the placeholder.
+    - To make the user experience even easier, I added onChange to the Search. By doing this and removing the button, I eliminated one extra step in the search sequence.
+
+- Header
+    - To make sure the website was accessible, I checked [this website](https://www.bdadyslexia.org.uk/advice/employers/creating-a-dyslexia-friendly-workplace/dyslexia-friendly-style-guide) which also stated a busy background could make it harder for dyslexic people to read. I therefore changed it to a solid color. 
+
+- ModeToggleButton
+    - Some feedback suggested the ModeToggleButton was not noticable enough. To fix this, I changed the color for greater contrast to the header and made the icon bigger. 
+
+- Lesser/other changes
+    - Removed reload-button as it caused more trouble rather than fixing the problem. 
+    - Changed the font to Arial to make it more accessible as it is one of the dyslexic-friendly fonts (and more sustainable as it is not imported)
 
 
-last ned text to speach på nettsiden og prøv
 ## Original documentation
 
 ### 😃 Members
