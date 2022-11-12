@@ -108,7 +108,6 @@ function FilterBox(props: filterBoxProps) {
                         icon={faFilter}
                         label=" FILTER "
                         className="filter-button"
-                        onKeyDown={() => console.log("filter!")}
                     />
                 </div>
             </div>

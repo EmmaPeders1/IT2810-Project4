@@ -2,7 +2,7 @@
   overflow: hidden;
   background-color: #514ab0;
   position: sticky;
-  top: 100px;
+  top: 80px;
   z-index: 2;
   box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
 }
@@ -15,7 +15,12 @@
   font-size: 20px;
 }
 
+
+.topnav a.active{
+  background-color: #7725AC;
+}
+
 .topnav a:hover {
-  background-color: whitesmoke;
   color: #212121;
+  background-color: whitesmoke;
 }

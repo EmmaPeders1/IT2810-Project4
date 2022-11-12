@@ -1,20 +1,19 @@
 .header {
   background: #9d00a8;
-  height: 100px;
+  height: 80px;
   width: 100%;
   color: whitesmoke;
   position: sticky;
   display: flex;
   flex-flow: column wrap;
   top: 0;
-
   justify-content: center;
   z-index: 2;
 }
 
 #headerText {
   padding: 1px;
-  font-size: 65px;
+  font-size: 60px;
   margin-left: 40px;
   align-self: flex-start;
 }

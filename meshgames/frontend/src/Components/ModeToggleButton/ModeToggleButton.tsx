@@ -36,7 +36,7 @@ function ModeToggleButton(){
 
   return (
     <Stack aria-label="toggle theme" className="modeButton" direction="row" justifyContent="flex-end">
-      <IconButton aria-label="toggle theme button" onClick={toggleMode} sx={{ width: 90, height: 90, color: 'white'}}>
+      <IconButton aria-label="toggle theme button" onClick={toggleMode} sx={{ width: 75, height: 75, color: 'white'}}>
         <DynamicIcon mode={mode} />
       </IconButton>
     </Stack>

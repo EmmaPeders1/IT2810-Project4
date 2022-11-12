@@ -1,5 +1,5 @@
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Button from '../../Components/Button/Button';
 import Search from '../../Components/Input/Search';
 import FilterBox from '../../Components/FilterBox/FilterBox';
@@ -20,9 +20,9 @@ export default function Home() {
   const [sortInput, setSortInput] = useState<string>("ASC");
 
   // function which handles the input in the search field
-  function handleInput(event: React.MouseEvent<HTMLButtonElement>) {
-    let input = document.getElementById("search-game") as HTMLInputElement;
-    setInput(input.value);
+  function handleInput() {
+    let searchbar = document.getElementById("search-game") as HTMLInputElement;
+    setInput(searchbar.value);
   }
 
   // function which handles the input in the filter fields
@@ -44,7 +44,10 @@ export default function Home() {
 
       {/* Search and filter-elements */}
       <div className="search-container" >
-        <Search />
+        <Search
+          onChange={handleInput}
+          onKeyDown={handleInput}
+        />
         <Button
           aria-label="search button"
           onClick={handleInput}
@@ -54,7 +57,6 @@ export default function Home() {
         />
         <FilterBox handleFilter={handleFilter} />
       </div>
-
       <ResultContainer input={input} publisher={publisherName} platform={platformName} genre={genreName} sort={sortInput} />
     </div >
   );
