@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Search from '../../Components/Input/Search';
 import FilterBox from '../../Components/FilterBox/FilterBox';
 import ResultContainer from '../../Components/ResultContainer/ResultContainer';
-import './Home.css';
 import ScrollToTop from '../../Components/ScrollToTop/ScrollToTop';
+import './Home.css';
 
 /**
  * A Funtional component that displays the main page

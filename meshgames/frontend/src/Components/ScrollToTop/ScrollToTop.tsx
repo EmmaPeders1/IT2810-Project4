@@ -36,9 +36,7 @@ function ScrollToTop() {
       {" "}
       {showTopBtn && (
         <div className="icon-position icon-style" onClick={goToTop}>
-          <FontAwesomeIcon
-            icon={faArrowUp}
-          />
+          <FontAwesomeIcon icon={faArrowUp} />
           SCROLL TO THE TOP
         </div>
       )}{" "}

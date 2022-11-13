@@ -1,6 +1,7 @@
 import { useQuery } from '@apollo/client';
 import CircularProgress from '@mui/material/CircularProgress';
 import GameCard from '../../Components/GameCard/GameCard';
+import ScrollToTop from '../../Components/ScrollToTop/ScrollToTop';
 import getFavorites from '../../GraphQL/Queries/getFavorites';
 import './Favorites.css';
 
@@ -50,6 +51,7 @@ export default function Favorites(){
             genre={cardData.genre.genreId}
             isFavorited={cardData.isFavorited} />)}
       </div>
+      <ScrollToTop />
     </div>
   );
 }
