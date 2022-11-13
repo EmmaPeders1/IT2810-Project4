@@ -1,10 +1,9 @@
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import { useState } from 'react';
-import Button from '../../Components/Button/Button';
+import { useEffect, useState } from 'react';
 import Search from '../../Components/Input/Search';
 import FilterBox from '../../Components/FilterBox/FilterBox';
 import ResultContainer from '../../Components/ResultContainer/ResultContainer';
 import './Home.css';
+import ScrollToTop from '../../Components/ScrollToTop/ScrollToTop';
 
 /**
  * A Funtional component that displays the main page
@@ -41,15 +40,21 @@ export default function Home() {
 
   return (
     <div className="home">
-
       {/* Search and filter-elements */}
       <div className="search-container" >
-        <Search
-          onChange={handleInput}
-        />
+        <Search onChange={handleInput} />
         <FilterBox handleFilter={handleFilter} />
       </div>
-      <ResultContainer input={input} publisher={publisherName} platform={platformName} genre={genreName} sort={sortInput} />
+
+      {/* Container for the resulting GameCards */}
+      <ResultContainer
+        input={input}
+        publisher={publisherName}
+        platform={platformName}
+        genre={genreName}
+        sort={sortInput}
+      />
+      <ScrollToTop />
     </div >
   );
 }

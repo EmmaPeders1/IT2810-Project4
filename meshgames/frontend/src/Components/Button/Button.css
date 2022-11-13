@@ -5,8 +5,8 @@
   gap: 0.5rem;
   cursor: pointer;
   padding: 0.4rem 1rem;
-  border-radius: 5px;
-  font-size: inherit;
+  border-radius: 10px;
+  font-size: 18px;
   width: max-content;
   height: 56px;
   background: #514ab0;
@@ -18,5 +18,5 @@
 .button-component:focus:not(:disabled),
 .button-component:hover:not(:disabled) {
   background: #9d00a8;
-  border: 1.5px solid rgb(4, 52, 71);
+  border: 2px solid rgb(4, 52, 71);
 }

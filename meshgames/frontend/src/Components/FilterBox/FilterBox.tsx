@@ -67,7 +67,7 @@ function FilterBox(props: filterBoxProps) {
         let publisherInput = document.getElementById("choose-publisher") as HTMLInputElement;
         let genreInput = document.getElementById("choose-genre") as HTMLInputElement;
         let sortInput = document.getElementById("choose-sort") as HTMLInputElement;
-        props.handleFilter(platformInput.value, publisherInput.value, genreInput.value, sortInput.value)
+        props.handleFilter(platformInput.value, publisherInput.value, genreInput.value, sortInput.value);
     }
 
     return (
