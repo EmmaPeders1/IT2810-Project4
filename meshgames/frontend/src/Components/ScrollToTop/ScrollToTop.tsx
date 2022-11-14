@@ -35,7 +35,7 @@ function ScrollToTop() {
     <div className="top-to-btm">
       {" "}
       {showTopBtn && (
-        <div className="icon-position icon-style" onClick={goToTop}>
+        <div className="icon-position icon-style" onClick={goToTop} aria-label="scroll to top">
           <FontAwesomeIcon icon={faArrowUp} />
           SCROLL TO THE TOP
         </div>
