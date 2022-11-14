@@ -6,43 +6,39 @@ Improvements done by Emma Pedersen.
 
 In this task, I've chosen to focus on task d) *Process the client in project 3 so that it meets the requirements of WAD and WCAG 2.1 (the requirements that will apply from 2023)*
 
+### The application before and after project 4 was finished
 Before           |  After
 -------------------------|-------------------------
-<img src="/uploads/8ead5f57d1e1bf8fc8d0aba0be8b0171/image.png">  |  home light
-<img src="/uploads/aafb2a37e919a3b160d1360fcde85f3a/image.png"> | home dark
+<img src="/uploads/8ead5f57d1e1bf8fc8d0aba0be8b0171/image.png">  |  <img src="/uploads/3de8f29a09864101890902dd6d02d895/image.png">
+<img src="/uploads/aafb2a37e919a3b160d1360fcde85f3a/image.png"> | <img src="/uploads/fcf36a2deffbfaac54bd76d74a29af62/image.png">
 <img src="/uploads/e114b33f2a247ebbc47ede7f8514037d/image.png"> | N/A
-<img src="/uploads/558d7957b1447eca600ee0d230d681bc/image.png"> | fav light
-<img src="/uploads/4e9639c89341b8d185ed2152917c8c0e/image.png"> | fav dark
-<img src="/uploads/ea1894984b03df3d2b81d67419dabef1/image.png"> | about light
-<img src="/uploads/b2fd1a4d87a922308defe4c6dea30db6/image.png"> | about dark
-
+<img src="/uploads/558d7957b1447eca600ee0d230d681bc/image.png"> | <img src="/uploads/b118d2f512332a863e42444e8b8d6dca/image.png">
+<img src="/uploads/4e9639c89341b8d185ed2152917c8c0e/image.png"> | <img src="/uploads/1ed2132342957afeb5c9afef2c45bd2c/image.png">
+<img src="/uploads/ea1894984b03df3d2b81d67419dabef1/image.png"> | <img src="/uploads/3eb10082992ffb95996412dd61b210d5/image.png">
+<img src="/uploads/b2fd1a4d87a922308defe4c6dea30db6/image.png"> | <img src="/uploads/498b0a8ac2561929e5eab5b709d89ae2/image.png">
 
 
 ### Improvements done in this iteration:
 
-- Gamecard:
-    - The feedback suggested that the placeholder-div on the GameCard made the experience worse as they thought the images simply did not load or that not every game had an image connected to it. To fix this, I simply removed the placeholder-div. 
-    - A feedback stated that some users might not be familiar with the icons and their intended use and that the icons might be too small. I therefore added text to make it easier to understand the meaning and make the element easier to click on. 
-    - Since games with the same name but on different platforms appear as different elements, some users thought there was a bug when multiple games of the same title appeared. To minimize this confusion, the subheader now includes the platform. 
-    - A colorblind user  stated that the heart-icon's color was not too different when they liked/unliked a game. The heart-icon's color is therefore lighter in the unliked state and darker in the liked state. 
-    - The blue-color on the information-icon and the color of the GameCard in dark-mode was not in line with the WCAG guidelines. The icon (and the addded text) is changed to the default text-color in light mode with a grey background upon hovering to imitate the heart-icon. In dark mode, the text is still the default for dark mode and changes to the default for light mode with the same gray background upon hovering. This is done to make it clear for the user where they can click in both light and dark mode. 
+In this iteration, the guidelines found at [uutilsynet.no](https://www.uutilsynet.no/fremtidig-regelverk/wcag-21-standarden/140) is followed. Most of the improvements are being done on the basis of the student assessments from project 3. 
 
-- SideBar:
-    - The feedback suggested that the the sidebar was less than intuitive. The first issue was that the sidebar-icon was seen as too small. The second was that a user had to click on the icon or text to move to another page, but this was not communicated clearly. The last was thet the sidebar did not retract as the user clicked outside of the sidebar. To make it more accessible, I switched the sidebar with a navbar. The navbar is located directly underneath the header (and can therefore be seen as an extenstion of the header). The navbar also shows which page the user is on by having a different color. 
+Component | Why did it need improvement? | How it is improved? | Which WSAG 2.1 Guidelines is being taken into account?
+---|---|---|---
+Gamecard | The placeholder-div on the GameCard made the experience worse as some users thought the images simply did not load or that not every game had an image connected to it | Removal the placeholder-div | 1.4.1 Use of Color
+GameCard | Some users might not be familiar with the icons and their intended use and the icons might be too small | Added text to make it easier to understand the meaning and make the element easier to click on | 2.5.3 Label in Name
+GameCard | Since games with the same name but on different platforms appear as different elements, some users thought there was a bug when multiple games of the same title appeared | The subheader now includes the platform | 4.1.3 Status Messages
+GameCard | The heart-icon's color was not too different when the game is liked or unliked | The heart-icon's color is lighter in the unliked state and darker in the liked state | 1.4.3 Contrast (Minimum), 1.4.11 Non-text Contrast
+Gamecard | The blue-color on the information-icon and the color of the GameCard in dark-mode was not in line with the WCAG guidelines | The icon (and the addded text) is changed to the default text-color in light mode with a grey background upon hovering to imitate the heart-icon. In dark mode, the text is still the default for dark mode and changes to the default for light mode with the same gray background upon hovering. This is done to make it clear for the user where they can click in both light and dark mode | 1.4.3 Contrast (Minimum)
+SideBar | The sidebar was less than intuitive. The first issue was that the sidebar-icon was seen as too small. The second was that a user had to click on the icon or text to move to another page, but this was not communicated clearly. The last was thet the sidebar did not retract as the user clicked outside of the sidebar | Switched the sidebar with a navbar. The navbar is located directly underneath the header (and can therefore be seen as an extenstion of the header). The navbar also shows which page the user is on by having a different color | 2.4.2 Page Titled, 2.5.1 Pointer Gestures, 4.1.3 Status Messages
+SearchBar | Some users didn't realize that the SearchBar is case sensitive and spent extra time trying to search with no luck | Added *"NB! Case sensitive"* to the placeholder | 2.4.6 Headings and Labels
 
-- Search:
-    - Some users didn't realize that the search is case sensitive and spent extra time trying to search with no luck. To make this clear to the user, I added *"NB! Case sensitive"* to the placeholder.
-    - To make the user experience even easier, I added onChange to the Search. By doing this and removing the button, I eliminated one extra step in the search sequence.
-
-- Header
-    - To make sure the website was accessible, I checked [this website](https://www.bdadyslexia.org.uk/advice/employers/creating-a-dyslexia-friendly-workplace/dyslexia-friendly-style-guide) which also stated a busy background could make it harder for dyslexic people to read. I therefore changed it to a solid color. 
-
-- ModeToggleButton
-    - Some feedback suggested the ModeToggleButton was not noticable enough. To fix this, I changed the color for greater contrast to the header and made the icon bigger. 
-
-- Lesser/other changes
-    - Removed reload-button as it caused more trouble rather than fixing the problem. 
-    - Changed the font to Arial to make it more accessible as it is one of the dyslexic-friendly fonts (and more sustainable as it is not imported)
+**Lesser/other changes**
+- Removed reload-button as it caused more trouble rather than fixing the problem. 
+- Changed the font to Arial to make it more accessible as it is one of the dyslexic-friendly fonts (and more sustainable as it is not imported)
+- Added onChange to the Searchbar to remove the extra click on the button between each search
+- Changed the background color of the header to a solid color as the gradient made the background too busy, making it harder to read for people with reading disorders
+- Changed the color of the ModeToggleButton for greater contrast to the header and made the icon bigger as some users did not find it noticable enough
+- Added ScrollToTop, a component which takes the user to the top of the Home and Favorites pages when they have have scrolled a certain lenght
 
 
 ## Original documentation
