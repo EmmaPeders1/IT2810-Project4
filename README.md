@@ -1,21 +1,21 @@
-# MeshGames
+# eGAMES
 
-## Updated documentation
+## Updated documentation (after project 4)
 
-Improvements done by Emma Pedersen. 
+Improvements done by **:panda_face: Emma Pedersen**. 
 
-In this task, I've chosen to focus on task d) *Process the client in project 3 so that it meets the requirements of WAD and WCAG 2.1 (the requirements that will apply from 2023)*
+In this iteration, I've chosen to focus on task d) *Process the client in project 3 so that it meets the requirements of WAD and WCAG 2.1 (the requirements that will apply from 2023)*. This means almost all changes are to better the application's universial accessability, and not to improve the project in other areas. An example of this is with the SearchBar, which is not case sensitive. Even though the application could benefit from implementing this feature, the accessability does not directly suffer from the lack of it. However, to make the application more accessible, I added text which explained the situation to the user. 
 
 ### The application before and after project 4 was finished
 Before           |  After
 -------------------------|-------------------------
-<img src="/uploads/8ead5f57d1e1bf8fc8d0aba0be8b0171/image.png">  |  <img src="/uploads/3de8f29a09864101890902dd6d02d895/image.png">
-<img src="/uploads/aafb2a37e919a3b160d1360fcde85f3a/image.png"> | <img src="/uploads/fcf36a2deffbfaac54bd76d74a29af62/image.png">
+<img src="/uploads/8ead5f57d1e1bf8fc8d0aba0be8b0171/image.png">  |  <img src="/uploads/620867adb555783869de9bc530d545be/image.png">
+<img src="/uploads/aafb2a37e919a3b160d1360fcde85f3a/image.png"> | <img src="/uploads/93f2b3aca1980c7f7553c23304424ac4/image.png">
 <img src="/uploads/e114b33f2a247ebbc47ede7f8514037d/image.png"> | N/A
-<img src="/uploads/558d7957b1447eca600ee0d230d681bc/image.png"> | <img src="/uploads/b118d2f512332a863e42444e8b8d6dca/image.png">
-<img src="/uploads/4e9639c89341b8d185ed2152917c8c0e/image.png"> | <img src="/uploads/1ed2132342957afeb5c9afef2c45bd2c/image.png">
-<img src="/uploads/ea1894984b03df3d2b81d67419dabef1/image.png"> | <img src="/uploads/3eb10082992ffb95996412dd61b210d5/image.png">
-<img src="/uploads/b2fd1a4d87a922308defe4c6dea30db6/image.png"> | <img src="/uploads/498b0a8ac2561929e5eab5b709d89ae2/image.png">
+<img src="/uploads/558d7957b1447eca600ee0d230d681bc/image.png"> | <img src="/uploads/0a75fcafc8729fbc8f1b291ac22d5c90/image.png">
+<img src="/uploads/4e9639c89341b8d185ed2152917c8c0e/image.png"> | <img src="/uploads/01d8165090bbdf4b07e8a2592127e603/image.png">
+<img src="/uploads/ea1894984b03df3d2b81d67419dabef1/image.png"> | <img src="/uploads/7d472ae35cf831414c35cbc5c95a575e/image.png">
+<img src="/uploads/b2fd1a4d87a922308defe4c6dea30db6/image.png"> | <img src="/uploads/3f788d41284be5655d4a4f79a401f189/image.png">
 
 
 ### Improvements done in this iteration:
@@ -28,7 +28,7 @@ Gamecard | The placeholder-div on the GameCard made the experience worse as some
 GameCard | Some users might not be familiar with the icons and their intended use and the icons might be too small | Added text to make it easier to understand the meaning and make the element easier to click on | 2.5.3 Label in Name
 GameCard | Since games with the same name but on different platforms appear as different elements, some users thought there was a bug when multiple games of the same title appeared | The subheader now includes the platform | 4.1.3 Status Messages
 GameCard | The heart-icon's color was not too different when the game is liked or unliked | The heart-icon's color is lighter in the unliked state and darker in the liked state | 1.4.3 Contrast (Minimum), 1.4.11 Non-text Contrast
-Gamecard | The blue-color on the information-icon and the color of the GameCard in dark-mode was not in line with the WCAG guidelines | The icon (and the addded text) is changed to the default text-color in light mode with a grey background upon hovering to imitate the heart-icon. In dark mode, the text is still the default for dark mode and changes to the default for light mode with the same gray background upon hovering. This is done to make it clear for the user where they can click in both light and dark mode | 1.4.3 Contrast (Minimum)
+Gamecard | The blue-color on the information-icon and the color of the GameCard in dark-mode was not in line with the WCAG guidelines | Changed it into a standard button to make it easier to click on | 1.4.3 Contrast (Minimum)
 SideBar | The sidebar was less than intuitive. The first issue was that the sidebar-icon was seen as too small. The second was that a user had to click on the icon or text to move to another page, but this was not communicated clearly. The last was thet the sidebar did not retract as the user clicked outside of the sidebar | Switched the sidebar with a navbar. The navbar is located directly underneath the header (and can therefore be seen as an extenstion of the header). The navbar also shows which page the user is on by having a different color | 2.4.2 Page Titled, 2.5.1 Pointer Gestures, 4.1.3 Status Messages
 SearchBar | Some users didn't realize that the SearchBar is case sensitive and spent extra time trying to search with no luck | Added *"NB! Case sensitive"* to the placeholder | 2.4.6 Headings and Labels
 
@@ -39,9 +39,11 @@ SearchBar | Some users didn't realize that the SearchBar is case sensitive and s
 - Changed the background color of the header to a solid color as the gradient made the background too busy, making it harder to read for people with reading disorders
 - Changed the color of the ModeToggleButton for greater contrast to the header and made the icon bigger as some users did not find it noticable enough
 - Added ScrollToTop, a component which takes the user to the top of the Home and Favorites pages when they have have scrolled a certain lenght
+- Made sure all the components on the application could be reached by keyboard use only 
+- Added aria-labels to the components to make the application easier to navigate for users with sight impairments
 
 
-## Original documentation
+## Original documentation (from project 3)
 
 ### 😃 Members
 
