@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Box, Modal, Typography } from '@mui/material';
 import { faClose, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Button from '../../Components/Button/Button';
 import './GameCardInfo.css';
 
@@ -24,10 +23,15 @@ function GameCardInfo(props: gameCardInfoProps) {
 
   return (
     <div>
-      {/* Icon which will show the information if clicked on */}
-      <div onClick={handleOpen} className="infoIcon" data-testid="InfoButton" aria-label="get more information" >
-        <FontAwesomeIcon icon={faInfoCircle}/> INFO
-      </div>
+      {/* Button which will show the information if clicked on */}
+      <Button
+        aria-label="get more information"
+        onClick={handleOpen}
+        icon={faInfoCircle}
+        label=" INFO"
+        className="infoIcon"
+        data-testid="InfoButton"
+      />
 
       {/* Modal which handles the open and close functions */}
       <Modal

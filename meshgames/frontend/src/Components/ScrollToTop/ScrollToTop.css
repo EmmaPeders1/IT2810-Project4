@@ -10,18 +10,7 @@
 }
 
 .icon-style{
-  background-color: #514ab0;
-  border: 2px solid #fff;
-  border-radius: 10px;
-  height: 100px;
-  width: 80px;
-  color: white;
-  cursor: pointer;
+  height: 60px;
+  width: 140px;
 }
 
-.icon-style:hover{
-  animation: none;
-  background: #9d00a8;
-  color: #fff;
-  border: 2px solid rgb(4, 52, 71);
-}

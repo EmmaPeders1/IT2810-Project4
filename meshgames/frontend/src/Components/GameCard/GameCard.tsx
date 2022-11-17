@@ -57,8 +57,7 @@ const GameCard: FC<gameCardProps> = ({ gameId, gameName, publisher, platform, ge
       aria-label="game card"
       sx={{
         width: 290,
-        minHeight: 250,
-        maxHeight: 300,
+        height: 250,
       }}
       id={gameId}
     >

@@ -17,16 +17,7 @@
   margin-bottom: 20px;
 }
 
-.infoIcon{
-  margin-left: 60px;
-  padding: 2px 0 2px 0;
-  font-size: 25px;
-  width: 120px;
-}
-
-.infoIcon:hover {
-  cursor: pointer;
-  background-color: #f5f5f5;
-  color: #212121;
-  border-radius: 50% / 20px;
+.infoIcon {
+  margin-left: 35px;
+  font-size: 20px;
 }
