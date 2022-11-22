@@ -1,19 +1,65 @@
-# Meshlab
+# eGAMES
 
-## 😃 Members
+## Updated documentation (after project 4)
 
-Developed by:
+Improvements done by **:panda_face: Emma Pedersen**. 
+
+In this iteration, I've chosen to focus on task d) *Process the client in project 3 so that it meets the requirements of WAD and WCAG 2.1 (the requirements that will apply from 2023)*. This means almost all changes are to better the application's universial accessability, and not to improve the project in other areas. An example of this is with the SearchBar, which is not case sensitive. Even though the application could benefit from implementing this feature, the accessability does not directly suffer from the lack of it. However, to make the application more accessible, I added text which explained the situation to the user. 
+
+### The application before and after project 4 was finished
+Before           |  After
+-------------------------|-------------------------
+<img src="/uploads/8ead5f57d1e1bf8fc8d0aba0be8b0171/image.png">  |  <img src="/uploads/620867adb555783869de9bc530d545be/image.png">
+<img src="/uploads/aafb2a37e919a3b160d1360fcde85f3a/image.png"> | <img src="/uploads/93f2b3aca1980c7f7553c23304424ac4/image.png">
+<img src="/uploads/e114b33f2a247ebbc47ede7f8514037d/image.png"> | N/A
+<img src="/uploads/558d7957b1447eca600ee0d230d681bc/image.png"> | <img src="/uploads/0a75fcafc8729fbc8f1b291ac22d5c90/image.png">
+<img src="/uploads/4e9639c89341b8d185ed2152917c8c0e/image.png"> | <img src="/uploads/01d8165090bbdf4b07e8a2592127e603/image.png">
+<img src="/uploads/ea1894984b03df3d2b81d67419dabef1/image.png"> | <img src="/uploads/7d472ae35cf831414c35cbc5c95a575e/image.png">
+<img src="/uploads/b2fd1a4d87a922308defe4c6dea30db6/image.png"> | <img src="/uploads/3f788d41284be5655d4a4f79a401f189/image.png">
+
+
+### Improvements done in this iteration:
+
+In this iteration, the guidelines found at [uutilsynet.no](https://www.uutilsynet.no/fremtidig-regelverk/wcag-21-standarden/140) is followed. Most of the improvements are being done on the basis of the student assessments from project 3. 
+
+Component | Why did it need improvement? | How it is improved? | Which WSAG 2.1 Guidelines is being taken into account?
+---|---|---|---
+Gamecard | The placeholder-div on the GameCard made the experience worse as some users thought the images simply did not load or that not every game had an image connected to it | Removal the placeholder-div | 1.4.1 Use of Color
+GameCard | Some users might not be familiar with the icons and their intended use and the icons might be too small | Added text to make it easier to understand the meaning and make the element easier to click on | 2.5.3 Label in Name
+GameCard | Since games with the same name but on different platforms appear as different elements, some users thought there was a bug when multiple games of the same title appeared | The subheader now includes the platform | 4.1.3 Status Messages
+GameCard | The heart-icon's color was not too different when the game is liked or unliked | The heart-icon's color is lighter in the unliked state and darker in the liked state | 1.4.3 Contrast (Minimum), 1.4.11 Non-text Contrast
+Gamecard | The blue-color on the information-icon and the color of the GameCard in dark-mode was not in line with the WCAG guidelines | Changed it into a standard button to make it easier to click on | 1.4.3 Contrast (Minimum)
+SideBar | The sidebar was less than intuitive. The first issue was that the sidebar-icon was seen as too small. The second was that a user had to click on the icon or text to move to another page, but this was not communicated clearly. The last was thet the sidebar did not retract as the user clicked outside of the sidebar | Switched the sidebar with a navbar. The navbar is located directly underneath the header (and can therefore be seen as an extenstion of the header). The navbar also shows which page the user is on by having a different color | 2.4.2 Page Titled, 2.5.1 Pointer Gestures, 4.1.3 Status Messages
+SearchBar | Some users didn't realize that the SearchBar is case sensitive and spent extra time trying to search with no luck | Added *"NB! Case sensitive"* to the placeholder | 2.4.6 Headings and Labels
+
+**Lesser/other changes**
+- Removed reload-button as it caused more trouble rather than fixing the problem. 
+- Changed the font to Arial to make it more accessible as it is one of the dyslexic-friendly fonts (and more sustainable as it is not imported)
+- Added onChange to the Searchbar to remove the extra click on the button between each search
+- Changed the background color of the header to a solid color as the gradient made the background too busy, making it harder to read for people with reading disorders
+- Changed the color of the ModeToggleButton for greater contrast to the header and made the icon bigger as some users did not find it noticable enough
+- Added ScrollToTop, a component which takes the user to the top of the Home and Favorites pages when they have have scrolled a certain lenght
+- Made sure all the components on the application could be reached by keyboard use only 
+- Added aria-labels to the components to make the application easier to navigate for users with sight impairments
+
+
+## Original documentation (from project 3)
+
+### 😃 Members
+
+Originally developed by:
 
 - Martine Mansåker
 - Emma Pedersen
 - Sindre Eidskrem
 - Hang Celin Le
 
-## :computer: Tech stack
+
+### :computer: Tech stack
 
 The application is built using the GRAND-Stack, Recoil and some elements from [MUI](https://mui.com/).
 
-### Backend
+#### Backend
 
 - GraphQL
     - The group uses GraphQL to query the database. 
@@ -22,7 +68,7 @@ The application is built using the GRAND-Stack, Recoil and some elements from [M
 - Neo4j Database
     - The Neo4j Database is a graph database. This means all the nodes are connected to each other through relationships. This makes for faster seraches which is more sustainable in the long run. Another great advantage of using the Neo4j database was that the group didn't need to create resolvers. The dataset is added to the database through the use of the Cypher query language. 
 
-### Frontend
+#### Frontend
 
 - React Typescript
     - React Typescript is used to develop this application per the requirements. 
@@ -31,7 +77,7 @@ The application is built using the GRAND-Stack, Recoil and some elements from [M
 - Recoil
     - Recoil is used as the global state manager which keeps track the user's choice of theme. 
 
-## :arrow_forward: Running the application
+### :arrow_forward: Running the application
 
 - `npm install` (in both backend and frontend)
 
@@ -43,7 +89,7 @@ Runs the app in the development mode.
 Open http://localhost:3000 to view it in the browser.
 The page will reload on edits.
 
-### To run the tests:
+#### To run the tests:
 
 - cd into frontend
 
@@ -52,9 +98,9 @@ The page will reload on edits.
 - Run `npm run cypress:open` to run the end-to-end tests. 
 
 
-## :page_with_curl: Content and functionality
+### :page_with_curl: Content and functionality
 
-### Content
+#### Content
 
 When starting the application, the user will be directed to the default page, which is the *"Home"*-page. 
 This page consists of a searchbar, three filter options, a sort option and eight game cards (which is the group's chosen way of presenting the data) with information. The user can also see what they searched for in a separate section.
@@ -65,7 +111,7 @@ The *"Favorite"*-page looks similar to the *Home*-page. This page stores all the
 
 The *"About"*-page consists of simple information about the application. 
 
-###  Functionality
+####  Functionality
 
 The main functionality is the search function. The user can choose which games they want too view. This can be done by searching for a game at the search field and clicking the button labeled *"Search"*. Notice that the functionality is case sensitive, meaning lowecase lettering will not result in an item with uppercase letters. 
 
@@ -81,7 +127,7 @@ The user can navigate to other pages by use of the sidebar. When viewing the sid
 
 To switch theme of the page, the user can click on the grey moon icon on the upper right corner located on the header. This icon will toggle between light and dark mode, and swtiches to a white sun on dark mode. The group followed a [guide](https://dev.to/skinnypetethegiraffe/lightdark-mode-toggle-using-mui-and-recoil-ts-3bj0), and did some modifications to make it fit for application. 
 
-## :wrench: Technical requirements
+### :wrench: Technical requirements
 
 The application retrieves data from a csv file found at [Kaggle.com](https://www.kaggle.com/datasets/gregorut/videogamesales?resource=download). The data consist of 16 598 games with information about their publisher, platform, genre release year and sales in different areas. This data is added to a Neo4j database which is connected to an Apollo server. The data is retrieved to the frontend by the use of GraphQL. 
  
@@ -91,7 +137,7 @@ Most of the components, expect for the buttons, are MUI components, as the group
 
 The solution has a responsive web design. Layout, scaling and interaction posibilities are adaptable based on what type of device and screen size. By using CSS flexboxes, all the elements and their contents are visible and available for the user to see and interact with.
 
-# :gear: Testing
+## :gear: Testing
 
 Testing is partly done by explorative testing done by members of the group and fellow students. This is done by giving the students prompts or letting them explore by themselves. The group pmembers then took notes of where the students had problems understanding or when an unexpected bug appeared. The project also consists of 2 unit tests and an end-to-end test. All the test files are allocated in the same folder as the component/file that is being tested. In such a manner, the components being tested are close to the test and the imports are kept short. 
 
@@ -101,11 +147,11 @@ The end-to-end test is implemented using Cypress. The test mimics a user's journ
 
 In testing the user interface and responsive design, the group has used the device emaluation in the web browser to simulate the application on different phone screens (vertically and horizontally) and ordinary PCs (big screen) as well as IPads (medium screen).
 
-# :earth_africa: Universal accessebility
+## :earth_africa: Universal accessebility
 
 To adhere to universal accessebility, the application has gone through a color change from lighter to darker colors. Such change makes the constrast between text and background greater, which passes all the tests according to the WCAG guidelines. The placeholders in the input fields does not pass these tests, but this is not changed due to being the default from MUI. The fonts used on the website are easy to read, with no extra distractions. The text is also easily readable, and the group has chosen not to implement a manual font size change due to most web browsers already having this functionality implemented (which is tested to work on our application in Chrome). The buttons also adhere to universal accessability as they change both color and cursor upon hovering, which signals the change to the user. 
 
-# :pushpin: Improvements for next time:
+## :pushpin: Improvements for next time:
 
 - Make the query case insensitive. Graphql does not have native support for this. It could be implemented with the help of Neo4j 'Search index', but the group found themselves short of time and decided to drop this feature.
 - Make the sidebar remove itself when clicking outside of it. As of now the user must click the 'close' button to go back to the homepage
