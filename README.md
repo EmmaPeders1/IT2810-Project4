@@ -11,13 +11,13 @@ An example of this is with the SearchBar, which is not case sensitive. Even thou
 ### The application before and after project 4 was finished
 Before           |  After
 -------------------------|-------------------------
-<img src="/uploads/8ead5f57d1e1bf8fc8d0aba0be8b0171/image.png">  |  <img src="/uploads/620867adb555783869de9bc530d545be/image.png">
-<img src="/uploads/aafb2a37e919a3b160d1360fcde85f3a/image.png"> | <img src="/uploads/93f2b3aca1980c7f7553c23304424ac4/image.png">
+<img src="/uploads/8ead5f57d1e1bf8fc8d0aba0be8b0171/image.png">  |  <img src="/uploads/0fbcb2af9c9e5ae65a7ea043c6d32eca/image.png">
+<img src="/uploads/aafb2a37e919a3b160d1360fcde85f3a/image.png"> | <img src="/uploads/f231abe7d8a83a119c075bfff0b5e6cb/image.png">
 <img src="/uploads/e114b33f2a247ebbc47ede7f8514037d/image.png"> | N/A
-<img src="/uploads/558d7957b1447eca600ee0d230d681bc/image.png"> | <img src="/uploads/0a75fcafc8729fbc8f1b291ac22d5c90/image.png">
-<img src="/uploads/4e9639c89341b8d185ed2152917c8c0e/image.png"> | <img src="/uploads/01d8165090bbdf4b07e8a2592127e603/image.png">
-<img src="/uploads/ea1894984b03df3d2b81d67419dabef1/image.png"> | <img src="/uploads/7d472ae35cf831414c35cbc5c95a575e/image.png">
-<img src="/uploads/b2fd1a4d87a922308defe4c6dea30db6/image.png"> | <img src="/uploads/3f788d41284be5655d4a4f79a401f189/image.png">
+<img src="/uploads/558d7957b1447eca600ee0d230d681bc/image.png"> | <img src="/uploads/87b4a51057e1607ffe27f3fe3af1b1ef/image.png">
+<img src="/uploads/4e9639c89341b8d185ed2152917c8c0e/image.png"> | <img src="/uploads/95eb56f787d40a8ff69b61720fde6140/image.png">
+<img src="/uploads/ea1894984b03df3d2b81d67419dabef1/image.png"> | <img src="/uploads/b2687e32e4258baa50ccd6f33a20a2ac/image.png">
+<img src="/uploads/b2fd1a4d87a922308defe4c6dea30db6/image.png"> | <img src="/uploads/57af2d104fd08eacec69b0239132e016/image.png">
 
 
 ### Improvements done in this iteration:
@@ -44,6 +44,9 @@ SearchBar | Some users didn't realize that the SearchBar is case sensitive and s
 - Made sure all the components on the application could be reached by keyboard use only
 - Added aria-labels to the components to make the application easier to navigate for users with sight impairments
 
+### Git convensions
+
+Even though I worked on this project alone, I started with a strict way of documenting changes. The structure was creating an issue, creating a branch for the issue, merge the changes into the *dev*-branch and repeat until finished. As the project progressed, I found myself fixing things I "should" do later. Since I originally tried to follow the set Git convension, I had to remove these changes and later add them again. This caused extra work and a bumpy process. I therefore made a consious choice to abandon the strict method for a smoother development process.  Git was still used, as I worked with the documentation in a separate branch, and had a *dev*-branch where I worked. At the end of the project, I merged all the branches into *main*. 
 
 ## Original documentation (from project 3)
 
