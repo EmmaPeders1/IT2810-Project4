@@ -57,7 +57,7 @@ const GameCard: FC<gameCardProps> = ({ gameId, gameName, publisher, platform, ge
       aria-label="game card"
       sx={{
         width: 290,
-        height: 250,
+        height: 290,
       }}
       id={gameId}
     >
@@ -67,7 +67,7 @@ const GameCard: FC<gameCardProps> = ({ gameId, gameName, publisher, platform, ge
         title={gameName}
         subheader={publisher + ", " + platform}
         sx={{
-          minHeight: 175,
+          minHeight: 215,
         }}
       />
       {/* Icons which will make the favorization happen and show more information */}
