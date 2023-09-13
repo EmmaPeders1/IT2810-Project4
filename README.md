@@ -11,14 +11,13 @@ An example of this is with the SearchBar, which is not case sensitive. Even thou
 ### The application before and after project 4 was finished
 Before           |  After
 -------------------------|-------------------------
-<img src="/uploads/8ead5f57d1e1bf8fc8d0aba0be8b0171/image.png">  |  <img src="/uploads/0fbcb2af9c9e5ae65a7ea043c6d32eca/image.png">
-<img src="/uploads/aafb2a37e919a3b160d1360fcde85f3a/image.png"> | <img src="/uploads/f231abe7d8a83a119c075bfff0b5e6cb/image.png">
-<img src="/uploads/e114b33f2a247ebbc47ede7f8514037d/image.png"> | N/A
-<img src="/uploads/558d7957b1447eca600ee0d230d681bc/image.png"> | <img src="/uploads/87b4a51057e1607ffe27f3fe3af1b1ef/image.png">
-<img src="/uploads/4e9639c89341b8d185ed2152917c8c0e/image.png"> | <img src="/uploads/95eb56f787d40a8ff69b61720fde6140/image.png">
-<img src="/uploads/ea1894984b03df3d2b81d67419dabef1/image.png"> | <img src="/uploads/b2687e32e4258baa50ccd6f33a20a2ac/image.png">
-<img src="/uploads/b2fd1a4d87a922308defe4c6dea30db6/image.png"> | <img src="/uploads/57af2d104fd08eacec69b0239132e016/image.png">
-
+![image](https://github.com/EmmaPeders1/IT2810-Project4/assets/69582549/a97e9929-1bad-4cf1-8ac3-6fe5974d04c7) | ![image](https://github.com/EmmaPeders1/IT2810-Project4/assets/69582549/4ab2b796-e748-43f0-9842-f908786b3334)
+![image](https://github.com/EmmaPeders1/IT2810-Project4/assets/69582549/e02cd5cc-ce53-43a6-8020-efd578a73b67) |![image](https://github.com/EmmaPeders1/IT2810-Project4/assets/69582549/2f29c0b8-6a07-46de-b0b4-34b5251843b1)
+![image](https://github.com/EmmaPeders1/IT2810-Project4/assets/69582549/53713dcf-a9cc-494d-9a80-a58b32b81165) | N/A
+![image](https://github.com/EmmaPeders1/IT2810-Project4/assets/69582549/305bd506-1da1-4b7c-bad9-9457f269085a) | ![image](https://github.com/EmmaPeders1/IT2810-Project4/assets/69582549/99ff71d2-8cf2-4b49-9cca-7424f2b801fc)
+![image](https://github.com/EmmaPeders1/IT2810-Project4/assets/69582549/74bd54df-6fd5-4fda-aa8f-979a0508049d) |![image](https://github.com/EmmaPeders1/IT2810-Project4/assets/69582549/09d180e1-8b4f-46f2-8745-cf5a1fc61e28)
+![image](https://github.com/EmmaPeders1/IT2810-Project4/assets/69582549/6aaf088a-ae05-4161-b854-1c9a1bef103d) | ![image](https://github.com/EmmaPeders1/IT2810-Project4/assets/69582549/4f0a58bd-5509-4e47-9b16-9fc6eba5f9d5)
+![image](https://github.com/EmmaPeders1/IT2810-Project4/assets/69582549/58e8de71-ff77-4420-b8b3-381efcb51621) | ![image](https://github.com/EmmaPeders1/IT2810-Project4/assets/69582549/6bec6040-92a2-4242-9470-ad37c5dc169c)
 
 ### Improvements done in this iteration:
 
